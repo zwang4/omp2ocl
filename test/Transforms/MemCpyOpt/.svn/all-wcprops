@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/123999/llvm/trunk/test/Transforms/MemCpyOpt
+END
+align.ll
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/123148/llvm/trunk/test/Transforms/MemCpyOpt/align.ll
+END
+memcpy.ll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/121362/llvm/trunk/test/Transforms/MemCpyOpt/memcpy.ll
+END
+form-memset.ll
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/123302/llvm/trunk/test/Transforms/MemCpyOpt/form-memset.ll
+END
+sret.ll
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/119916/llvm/trunk/test/Transforms/MemCpyOpt/sret.ll
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/test/Transforms/MemCpyOpt/dg.exp
+END
+smaller.ll
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/123999/llvm/trunk/test/Transforms/MemCpyOpt/smaller.ll
+END
+crash.ll
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/121361/llvm/trunk/test/Transforms/MemCpyOpt/crash.ll
+END
+memcpy-to-memset.ll
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/122548/llvm/trunk/test/Transforms/MemCpyOpt/memcpy-to-memset.ll
+END
+2008-03-13-ReturnSlotBitcast.ll
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/MemCpyOpt/2008-03-13-ReturnSlotBitcast.ll
+END
+2008-02-24-MultipleUseofSRet.ll
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/MemCpyOpt/2008-02-24-MultipleUseofSRet.ll
+END
+memmove.ll
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/MemCpyOpt/memmove.ll
+END
+loadstore-sret.ll
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/MemCpyOpt/loadstore-sret.ll
+END

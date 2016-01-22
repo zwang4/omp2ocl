@@ -1,0 +1,77 @@
+Lexer.cpp:  while (LexStart != BufStart) {
+Lexer.cpp:  } while (TheTok.getKind() != tok::eof);
+Lexer.cpp:  } while (true);
+Lexer.cpp:  while (Lexer::isObviouslySimpleCharacter(*TokPtr)) {
+Lexer.cpp:  while (isWhitespace(Ptr[Size])) {
+Lexer.cpp:  while (1) {
+Lexer.cpp:  while (isIdentifierBody(C))
+Lexer.cpp:  while (1) {
+Lexer.cpp:    while (isIdentifierBody(C)) { // FIXME: UCNs.
+Lexer.cpp:  while (isNumberBody(C)) { // FIXME: UCNs?
+Lexer.cpp:  while (C != '"') {
+Lexer.cpp:  while (C != '>') {
+Lexer.cpp:  while (C != '\'') {
+Lexer.cpp:  while (1) {
+Lexer.cpp:    while (isHorizontalWhitespace(Char))
+Lexer.cpp:    while (C != 0 &&                // Potentially EOF.
+Lexer.cpp:            while (isspace(*ForwardPtr))  // Skip whitespace.
+Lexer.cpp:  } while (C != '\n' && C != '\r');
+Lexer.cpp:  while (isHorizontalWhitespace(*CurPtr) || *CurPtr == 0) {
+Lexer.cpp:  while (1) {
+Lexer.cpp:      while (C != '/' && ((intptr_t)CurPtr & 0x0F) != 0)
+Lexer.cpp:      while (CurPtr+16 <= BufferEnd &&
+Lexer.cpp:      while (CurPtr+16 <= BufferEnd &&
+Lexer.cpp:      while (CurPtr[0] != '/' &&
+Lexer.cpp:    while (C != '/' && C != '\0')
+Lexer.cpp:  while (1) {
+Lexer.cpp:  // If we hit the end of the file while parsing a preprocessor directive,
+Lexer.cpp:  while (!ConditionalStack.empty()) {
+Lexer.cpp:  // Save state that can be changed while lexing so that we can restore it.
+Lexer.cpp:  while (Pos != llvm::StringRef::npos) {
+Lexer.cpp:    while (*CurPtr != '\r' && *CurPtr != '\n') {
+Lexer.cpp:    while (CurPtr != BufferEnd && *CurPtr != '\r' && *CurPtr != '\n')
+Lexer.cpp:    while ((*CurPtr == ' ') || (*CurPtr == '\t'))
+LiteralSupport.cpp:    } while (ThisTokBuf != ThisTokEnd && NumDigits < 3 &&
+LiteralSupport.cpp:  while ((1U << MaxBitsPerDigit) < radix)
+LiteralSupport.cpp:  while (s < SuffixBegin) {
+LiteralSupport.cpp:  while (begin[0] != '\'') {
+LiteralSupport.cpp:    while (ThisTokBuf != ThisTokEnd) {
+LiteralSupport.cpp:        } while (ThisTokBuf != ThisTokEnd && ThisTokBuf[0] != '\\');
+LiteralSupport.cpp:  while (ByteNo) {
+MacroArgs.cpp:  } while (Result.back().isNot(tok::eof));
+MacroArgs.cpp:    while (Result[FirstNonSlash] == '\\')
+PPDirectives.cpp:    assert(Tmp.isNot(tok::eof) && "EOF seen while discarding directive tokens");
+PPDirectives.cpp:  } while (Tmp.isNot(tok::eod));
+PPDirectives.cpp:  while (Tmp.is(tok::comment))  // Skip comments in -C mode.
+PPDirectives.cpp:  while (1) {
+PPDirectives.cpp:      while (!CurPPLexer->ConditionalStack.empty()) {
+PPDirectives.cpp:  while (1) {
+PPDirectives.cpp:  while (CurTok.isNot(tok::eod)) {
+PPDirectives.cpp:  } while (TmpTok.isNot(tok::hashhash));
+PPDirectives.cpp:  while (1) {
+PPDirectives.cpp:    while (Tok.isNot(tok::eod)) {
+PPDirectives.cpp:    while (Tok.isNot(tok::eod)) {
+PPExpressions.cpp:/// DefinedTracker - This struct is used while parsing expressions to keep track
+PPExpressions.cpp:  while (1) {
+PPExpressions.cpp:    else  // All others should munch while higher precedence.
+PPLexerChange.cpp:  while (Tok.isNot(tok::eod) && Tok.isNot(tok::eof))
+PPMacroExpansion.cpp:  // Outer loop, while there are more arguments, keep reading them.
+PPMacroExpansion.cpp:  while (Tok.isNot(tok::r_paren)) {
+PPMacroExpansion.cpp:    while (1) {
+PPMacroExpansion.cpp:      while (NextLoc.isValid()) {
+Pragma.cpp:	while (Tok.isNot(tok::eof)) {
+Pragma.cpp:	while (1) {
+Pragma.cpp:		// skipping while reading the identifier to poison.
+Pragma.cpp:		while (DependencyTok.isNot(tok::eod)) {
+Pragma.cpp:		while (Tok.is(tok::string_literal)) {
+Pragma.cpp:	while (Tok.is(tok::string_literal)) {
+Pragma.cpp:	while(tok.isNot(tok::eod))
+Pragma.cpp:	while (tok.isNot(tok::eod) && tok.isNot(tok::r_paren))
+Pragma.cpp:	while (tok.isNot(tok::eod))
+Pragma.cpp:				while (Tok.is(tok::string_literal)) {
+Preprocessor.cpp:  while (!IncludeMacroStack.empty()) {
+PTHLexer.cpp:  // If we hit the end of the file while parsing a preprocessor directive,
+PTHLexer.cpp:  while (!ConditionalStack.empty()) {
+PTHLexer.cpp:  while (1) {
+PTHLexer.cpp:  while (HashEntryI < LastHashTokPtr);
+TokenLexer.cpp:  } while (!isAtEnd() && Tokens[CurToken].is(tok::hashhash));

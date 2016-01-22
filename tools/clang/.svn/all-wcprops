@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/llvm-project/!svn/ver/128702/cfe/trunk
+END
+ModuleInfo.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/llvm-project/!svn/ver/39735/cfe/trunk/ModuleInfo.txt
+END
+LICENSE.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/llvm-project/!svn/ver/93063/cfe/trunk/LICENSE.TXT
+END
+TODO.txt
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/llvm-project/!svn/ver/122824/cfe/trunk/TODO.txt
+END
+INSTALL.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/llvm-project/!svn/ver/81667/cfe/trunk/INSTALL.txt
+END
+NOTES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/llvm-project/!svn/ver/107760/cfe/trunk/NOTES.txt
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/llvm-project/!svn/ver/106217/cfe/trunk/README.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/llvm-project/!svn/ver/128595/cfe/trunk/Makefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/llvm-project/!svn/ver/128483/cfe/trunk/CMakeLists.txt
+END

@@ -1,0 +1,25 @@
+            Assigns: 6303757
+                BBs: 3162116
+           Barriers: 8192
+ CoalescedMemAccess: 4100
+       Conditionals: 0
+        ConstMemUse: 0
+          Float2Ops: 0
+          Float4Ops: 3145736
+           FloatOps: 10485760
+       GlobalMemUse: 4100
+            Int2Ops: 0
+            Int4Ops: 0
+             IntOps: 1060865
+        LocalMemUse: 2101248
+              Loops: 1052672
+      OCLArithmetic: 1048576
+          OCLAtomic: 0
+ StaticLocalMemSize: 0
+              Stmts: 10518551
+     GlobalWorksize: 1048576
+            Workdim: 1
+      DataTransfers: 4
+   DataTransferSize: 67108864
+MaxDataTransferSize: 16777216
+DynamicLocalMemSize: 256

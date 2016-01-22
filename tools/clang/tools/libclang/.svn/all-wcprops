@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/llvm-project/!svn/ver/128139/cfe/trunk/tools/libclang
+END
+CXTranslationUnit.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/119585/cfe/trunk/tools/libclang/CXTranslationUnit.h
+END
+CIndexCodeCompletion.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/128011/cfe/trunk/tools/libclang/CIndexCodeCompletion.cpp
+END
+CXString.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/119585/cfe/trunk/tools/libclang/CXString.cpp
+END
+CIndexer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/127283/cfe/trunk/tools/libclang/CIndexer.cpp
+END
+CXString.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/119337/cfe/trunk/tools/libclang/CXString.h
+END
+CIndexer.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/120297/cfe/trunk/tools/libclang/CIndexer.h
+END
+CXCursor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/127475/cfe/trunk/tools/libclang/CXCursor.cpp
+END
+CIndex.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/128139/cfe/trunk/tools/libclang/CIndex.cpp
+END
+CXType.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/124377/cfe/trunk/tools/libclang/CXType.cpp
+END
+CXCursor.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/119337/cfe/trunk/tools/libclang/CXCursor.h
+END
+CIndexDiagnostic.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/119802/cfe/trunk/tools/libclang/CIndexDiagnostic.cpp
+END
+libclang.darwin.exports
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/127920/cfe/trunk/tools/libclang/libclang.darwin.exports
+END
+CXType.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/119337/cfe/trunk/tools/libclang/CXType.h
+END
+CIndexInclusionStack.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/127052/cfe/trunk/tools/libclang/CIndexInclusionStack.cpp
+END
+CIndexDiagnostic.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/116250/cfe/trunk/tools/libclang/CIndexDiagnostic.h
+END
+CIndexUSRs.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/126069/cfe/trunk/tools/libclang/CIndexUSRs.cpp
+END
+CXSourceLocation.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/107101/cfe/trunk/tools/libclang/CXSourceLocation.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/127579/cfe/trunk/tools/libclang/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/126060/cfe/trunk/tools/libclang/Makefile
+END
+CIndexCXX.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/119337/cfe/trunk/tools/libclang/CIndexCXX.cpp
+END
+libclang.exports
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/127920/cfe/trunk/tools/libclang/libclang.exports
+END

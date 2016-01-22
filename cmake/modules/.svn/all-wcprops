@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/llvm-project/!svn/ver/128499/llvm/trunk/cmake/modules
+END
+LLVMConfig.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/128484/llvm/trunk/cmake/modules/LLVMConfig.cmake
+END
+HandleLLVMOptions.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/127244/llvm/trunk/cmake/modules/HandleLLVMOptions.cmake
+END
+GetTargetTriple.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/GetTargetTriple.cmake
+END
+LLVM.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/126309/llvm/trunk/cmake/modules/LLVM.cmake
+END
+CheckAtomic.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/CheckAtomic.cmake
+END
+FindBison.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/FindBison.cmake
+END
+LLVMProcessSources.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/LLVMProcessSources.cmake
+END
+LLVMLibDeps.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/128499/llvm/trunk/cmake/modules/LLVMLibDeps.cmake
+END
+AddLLVMDefinitions.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/AddLLVMDefinitions.cmake
+END
+TableGen.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/124854/llvm/trunk/cmake/modules/TableGen.cmake
+END
+ChooseMSVCCRT.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/ChooseMSVCCRT.cmake
+END
+AddLLVM.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/128484/llvm/trunk/cmake/modules/AddLLVM.cmake
+END
+VersionFromVCS.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/VersionFromVCS.cmake
+END
+LLVMParseArguments.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/126031/llvm/trunk/cmake/modules/LLVMParseArguments.cmake
+END
+CrossCompileLLVM.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/124793/llvm/trunk/cmake/modules/CrossCompileLLVM.cmake
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/126224/llvm/trunk/cmake/modules/CMakeLists.txt
+END

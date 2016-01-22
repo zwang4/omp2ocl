@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/111862/llvm/trunk/tools/llvmc/examples/Simple
+END
+Simple.td
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/111862/llvm/trunk/tools/llvmc/examples/Simple/Simple.td
+END
+Simple.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/111553/llvm/trunk/tools/llvmc/examples/Simple/Simple.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/111553/llvm/trunk/tools/llvmc/examples/Simple/Makefile
+END

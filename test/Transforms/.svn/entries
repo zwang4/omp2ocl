@@ -1,0 +1,178 @@
+10
+
+dir
+128710
+http://llvm.org/svn/llvm-project/llvm/trunk/test/Transforms
+http://llvm.org/svn/llvm-project
+
+
+
+2011-03-31T22:57:29.121085Z
+128683
+nadav
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+BlockPlacement
+dir
+
+GlobalOpt
+dir
+
+LICM
+dir
+
+SRETPromotion
+dir
+
+LowerAtomic
+dir
+
+LoopSimplify
+dir
+
+ConstProp
+dir
+
+ScalarRepl
+dir
+
+ArgumentPromotion
+dir
+
+LoopIdiom
+dir
+
+ADCE
+dir
+
+TailCallElim
+dir
+
+LoopDeletion
+dir
+
+LoopUnswitch
+dir
+
+IndVarSimplify
+dir
+
+LoopUnroll
+dir
+
+ConstantMerge
+dir
+
+LowerSwitch
+dir
+
+LowerSetJmp
+dir
+
+MemCpyOpt
+dir
+
+LoopStrengthReduce
+dir
+
+IPConstantProp
+dir
+
+CodeGenPrepare
+dir
+
+Internalize
+dir
+
+CorrelatedValuePropagation
+dir
+
+LoopRotate
+dir
+
+SCCP
+dir
+
+InstSimplify
+dir
+
+GVN
+dir
+
+DeadArgElim
+dir
+
+Mem2Reg
+dir
+
+BranchFolding
+dir
+
+JumpThreading
+dir
+
+Reassociate
+dir
+
+SimplifyLibCalls
+dir
+
+TailDup
+dir
+
+DeadStoreElimination
+dir
+
+FunctionAttrs
+dir
+
+LowerInvoke
+dir
+
+Sink
+dir
+
+LCSSA
+dir
+
+CodeExtractor
+dir
+
+PruneEH
+dir
+
+EarlyCSE
+dir
+
+InstCombine
+dir
+
+StripSymbols
+dir
+
+MergeFunc
+dir
+
+GlobalDCE
+dir
+
+SimplifyCFG
+dir
+
+Inline
+dir
+

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles
+END
+trivial-object-test.coff-x86-64
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.coff-x86-64
+END
+trivial-object-test.elf-i386
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.elf-i386
+END
+trivial-object-test.macho-i386
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.macho-i386
+END
+trivial-object-test.elf-x86-64
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.elf-x86-64
+END
+trivial-object-test.macho-x86-64
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.macho-x86-64
+END
+trivial-object-test.coff-i386
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/TestObjectFiles/trivial-object-test.coff-i386
+END

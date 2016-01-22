@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis
+END
+alias.ll
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis/alias.ll
+END
+siv-strong.ll
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis/siv-strong.ll
+END
+siv-weak-crossing.ll
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis/siv-weak-crossing.ll
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/74402/llvm/trunk/test/Analysis/LoopDependenceAnalysis/dg.exp
+END
+siv-weak-zero.ll
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis/siv-weak-zero.ll
+END
+ziv.ll
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Analysis/LoopDependenceAnalysis/ziv.ll
+END

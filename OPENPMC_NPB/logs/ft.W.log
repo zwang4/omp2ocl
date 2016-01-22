@@ -1,0 +1,570 @@
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.79
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.77
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.78
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - FT Benchmark
+
+ Size                : 128x128x 32
+ Iterations          :           6
+T =     1     Checksum =     5.673612178944e+02     5.293246849175e+02
+T =     2     Checksum =     5.631436885271e+02     5.282149986629e+02
+T =     3     Checksum =     5.594024089970e+02     5.270996558037e+02
+T =     4     Checksum =     5.560698047020e+02     5.260027904925e+02
+T =     5     Checksum =     5.530898991250e+02     5.249400845633e+02
+T =     6     Checksum =     5.504159734538e+02     5.239212247086e+02
+Result verification successful
+cclass = W
+
+
+ FT Benchmark Completed
+ Class           =                        W
+ Size            =              128x128x 32
+ Iterations      =                        6
+ Threads         =                        1
+ Time in seconds =                     3.89
+ Mop/s total     =                    95.76
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 512 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1

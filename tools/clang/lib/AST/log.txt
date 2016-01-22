@@ -1,0 +1,79 @@
+ASTContext.cpp:  FunctionProtoTypes(this_()),
+ASTContext.cpp:    const FunctionProtoType *FPT = cast<FunctionProtoType>(T);
+ASTContext.cpp:    FunctionProtoType::ExtProtoInfo EPI = FPT->getExtProtoInfo();
+ASTContext.cpp:  FunctionProtoType::ExtInfo newInfo = Info.withCallingConv(CallConv);
+ASTContext.cpp:                            const FunctionProtoType::ExtProtoInfo &EPI) const {
+ASTContext.cpp:  FunctionProtoType::Profile(ID, ResultTy, ArgArray, NumArgs, EPI, *this);
+ASTContext.cpp:  if (FunctionProtoType *FTP =
+ASTContext.cpp:        FunctionProtoTypes.FindNodeOrInsertPos(ID, InsertPos))
+ASTContext.cpp:    FunctionProtoType::ExtProtoInfo CanonicalEPI = EPI;
+ASTContext.cpp:    FunctionProtoType *NewIP =
+ASTContext.cpp:      FunctionProtoTypes.FindNodeOrInsertPos(ID, InsertPos);
+ASTContext.cpp:  // FunctionProtoType objects are allocated with extra bytes after them
+ASTContext.cpp:  size_t Size = sizeof(FunctionProtoType) +
+ASTContext.cpp:  FunctionProtoType *FTP = (FunctionProtoType*) Allocate(Size, TypeAlignment);
+ASTContext.cpp:  FunctionProtoType::ExtProtoInfo newEPI = EPI;
+ASTContext.cpp:  new (FTP) FunctionProtoType(ResultTy, ArgArray, NumArgs, Canonical, newEPI);
+ASTContext.cpp:  FunctionProtoTypes.InsertNode(FTP, InsertPos);
+ASTContext.cpp:  const FunctionProtoType *lproto = dyn_cast<FunctionProtoType>(lbase);
+ASTContext.cpp:  const FunctionProtoType *rproto = dyn_cast<FunctionProtoType>(rbase);
+ASTContext.cpp:    FunctionProtoType::ExtProtoInfo EPI = lproto->getExtProtoInfo();
+ASTContext.cpp:  const FunctionProtoType *proto = lproto ? lproto : rproto;
+ASTContext.cpp:    FunctionProtoType::ExtProtoInfo EPI = proto->getExtProtoInfo();
+ASTContext.cpp:      if (const FunctionProtoType *FPT = cast<FunctionProtoType>(F)) {
+ASTContext.cpp:        FunctionProtoType::ExtProtoInfo EPI = FPT->getExtProtoInfo();
+ASTContext.cpp:  FunctionProtoType::ExtProtoInfo EPI;
+ASTImporter.cpp:    QualType VisitFunctionProtoType(const FunctionProtoType *T);
+ASTImporter.cpp:    const FunctionProtoType *Proto1 = cast<FunctionProtoType>(T1);
+ASTImporter.cpp:    const FunctionProtoType *Proto2 = cast<FunctionProtoType>(T2);
+ASTImporter.cpp:QualType ASTNodeImporter::VisitFunctionProtoType(const FunctionProtoType *T) {
+ASTImporter.cpp:  for (FunctionProtoType::arg_type_iterator A = T->arg_type_begin(),
+ASTImporter.cpp:  for (FunctionProtoType::exception_iterator E = T->exception_begin(),
+ASTImporter.cpp:  FunctionProtoType::ExtProtoInfo EPI = T->getExtProtoInfo();
+Decl.cpp:      const FunctionProtoType *FT = 0;
+Decl.cpp:        FT = dyn_cast<FunctionProtoType>(FD->getType()->getAs<FunctionType>());
+Decl.cpp:  if (const FunctionProtoType *FT = getType()->getAs<FunctionProtoType>())
+Decl.cpp:  return cast<FunctionProtoType>(FT)->getNumArgs();
+DeclCXX.cpp:    const FunctionProtoType *FnType 
+DeclCXX.cpp:      = Method->getType()->getAs<FunctionProtoType>();
+DeclCXX.cpp:      const FunctionProtoType *FnType 
+DeclCXX.cpp:        = Method->getType()->getAs<FunctionProtoType>();
+DeclCXX.cpp:          getType()->getAs<FunctionProtoType>()->isVariadic()) ||
+DeclPrinter.cpp:		const FunctionProtoType *FT = 0;
+DeclPrinter.cpp:			FT = dyn_cast<FunctionProtoType>(AFT);
+DumpXML.cpp:  void visitFunctionProtoTypeAttrs(FunctionProtoType *T) {
+DumpXML.cpp:  void visitFunctionProtoTypeChildren(FunctionProtoType *T) {
+DumpXML.cpp:    for (FunctionProtoType::arg_type_iterator
+DumpXML.cpp:      for (FunctionProtoType::exception_iterator
+Expr.cpp:    const FunctionProtoType *FT = 0;
+Expr.cpp:      FT = dyn_cast<FunctionProtoType>(AFT);
+Expr.cpp:  const FunctionProtoType *FT;
+Expr.cpp:  if ((FT = T->getAs<FunctionProtoType>())) {
+Expr.cpp:    FT = PT->getPointeeType()->getAs<FunctionProtoType>();
+Expr.cpp:    FT = RT->getPointeeType()->getAs<FunctionProtoType>();
+Expr.cpp:    FT = MT->getPointeeType()->getAs<FunctionProtoType>();
+Expr.cpp:    FT = BT->getPointeeType()->getAs<FunctionProtoType>();
+ExprCXX.cpp:    castAs<FunctionProtoType>()->isNothrow(Ctx);
+ExprCXX.cpp:                                         FunctionProtoType::ExtProtoInfo())),
+ItaniumMangle.cpp:void CXXNameMangler::mangleType(const FunctionProtoType *T) {
+ItaniumMangle.cpp:  const FunctionProtoType *Proto = cast<FunctionProtoType>(T);
+ItaniumMangle.cpp:  for (FunctionProtoType::arg_type_iterator Arg = Proto->arg_type_begin(),
+ItaniumMangle.cpp:  if (const FunctionProtoType *FPT = dyn_cast<FunctionProtoType>(PointeeType)) {
+MicrosoftMangle.cpp:  void mangleThrowSpecification(const FunctionProtoType *T);
+MicrosoftMangle.cpp:  const FunctionProtoType *FT = cast<FunctionProtoType>(FD->getType());
+MicrosoftMangle.cpp:void MicrosoftCXXNameMangler::mangleType(const FunctionProtoType *T) {
+MicrosoftMangle.cpp:  const FunctionProtoType *Proto = cast<FunctionProtoType>(T);
+MicrosoftMangle.cpp:      for (FunctionProtoType::arg_type_iterator Arg = Proto->arg_type_begin(),
+MicrosoftMangle.cpp:                                                const FunctionProtoType *FT) {
+MicrosoftMangle.cpp:  if (const FunctionProtoType *FPT = dyn_cast<FunctionProtoType>(PointeeType)) {
+StmtPrinter.cpp:	} else if (!BD->param_empty() || cast<FunctionProtoType>(AFT)->isVariadic()) {
+StmtPrinter.cpp:		const FunctionProtoType *FT = cast<FunctionProtoType>(AFT);
+Type.cpp:FunctionProtoType::FunctionProtoType(QualType result, const QualType *args,
+Type.cpp:FunctionProtoType::NoexceptResult
+Type.cpp:FunctionProtoType::getNoexceptSpec(ASTContext &ctx) const {
+Type.cpp:bool FunctionProtoType::isTemplateVariadic() const {
+Type.cpp:void FunctionProtoType::Profile(llvm::FoldingSetNodeID &ID, QualType Result,
+Type.cpp:void FunctionProtoType::Profile(llvm::FoldingSetNodeID &ID,
+Type.cpp:    const FunctionProtoType *FPT = cast<FunctionProtoType>(T);
+Type.cpp:    for (FunctionProtoType::arg_type_iterator ai = FPT->arg_type_begin(),
+TypePrinter.cpp:void TypePrinter::printFunctionProto(const FunctionProtoType *T, 

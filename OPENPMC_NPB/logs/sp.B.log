@@ -1,0 +1,840 @@
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.21
+ Mop/s total     =                   674.65
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.31
+ Mop/s total     =                   674.53
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.51
+ Mop/s total     =                   674.28
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.35
+ Mop/s total     =                   674.47
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.59
+ Mop/s total     =                   674.17
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.44
+ Mop/s total     =                   674.36
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.56
+ Mop/s total     =                   674.20
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.48
+ Mop/s total     =                   674.31
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.53
+ Mop/s total     =                   674.25
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - SP Benchmark
+
+ No input file inputsp.data. Using compiled defaults Size: 102x102x102
+ Iterations: 400   dt:   0.001000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Time step   80
+ Time step  100
+ Time step  120
+ Time step  140
+ Time step  160
+ Time step  180
+ Time step  200
+ Time step  220
+ Time step  240
+ Time step  260
+ Time step  280
+ Time step  300
+ Time step  320
+ Time step  340
+ Time step  360
+ Time step  380
+ Time step  400
+ Verification being performed for cclass B
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+           0                -nan 6.9032935799980e+01                 nan
+           1                -nan 3.0951344880840e+01                 nan
+           2                -nan 4.1033366470170e+01                 nan
+           3                -nan 3.8647690096040e+01                 nan
+           4                -nan 5.6434822725960e+01                 nan
+ Comparison of RMS-norms of solution error
+           0                -nan 9.8100061901880e-03                 nan
+           1                -nan 1.0228279056700e-03                 nan
+           2                -nan 1.7205979116920e-03                 nan
+           3                -nan 1.6944794282310e-03                 nan
+           4                -nan 1.8474562639810e-02                 nan
+ Verification Successful
+
+
+ SP Benchmark Completed
+ Class           =                        B
+ Size            =              102x102x102
+ Iterations      =                      400
+ Threads         =                        1
+ Time in seconds =                   526.58
+ Mop/s total     =                   674.18
+ Operation type  =           floating point
+ Verification    =               SUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              17 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> local array reduction variable configuration = 1

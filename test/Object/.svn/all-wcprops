@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/llvm-project/!svn/ver/123972/llvm/trunk/test/Object
+END
+nm-trivial-object.test-broken
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/123972/llvm/trunk/test/Object/nm-trivial-object.test-broken
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/123899/llvm/trunk/test/Object/dg.exp
+END
+objdump-trivial-object.test-broken
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/123972/llvm/trunk/test/Object/objdump-trivial-object.test-broken
+END

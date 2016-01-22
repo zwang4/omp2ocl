@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/llvm-project/!svn/ver/127958/llvm/trunk/tools/llvm-config
+END
+llvm-config.in.in
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/119057/llvm/trunk/tools/llvm-config/llvm-config.in.in
+END
+find-cycles.pl
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/95300/llvm/trunk/tools/llvm-config/find-cycles.pl
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/127958/llvm/trunk/tools/llvm-config/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/97743/llvm/trunk/tools/llvm-config/Makefile
+END

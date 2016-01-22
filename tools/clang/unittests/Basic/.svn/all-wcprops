@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/llvm-project/!svn/ver/126060/cfe/trunk/unittests/Basic
+END
+FileManagerTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/125600/cfe/trunk/unittests/Basic/FileManagerTest.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/llvm-project/!svn/ver/126060/cfe/trunk/unittests/Basic/Makefile
+END

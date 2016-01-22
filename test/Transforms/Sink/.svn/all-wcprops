@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/Sink
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/103257/llvm/trunk/test/Transforms/Sink/dg.exp
+END
+basic.ll
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/116720/llvm/trunk/test/Transforms/Sink/basic.ll
+END

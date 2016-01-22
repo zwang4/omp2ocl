@@ -1,0 +1,151 @@
+tools/clang/lib/AST/OpenCLKernelCodeGeneration.cpp:#include "clang/Omp2Ocl/OpenCLPrinter.h"
+tools/clang/lib/AST/OpenCLKernelCodeGeneration.cpp:	OpenCLPrinter op(llvm::nulls(), Context, NULL, Context.PrintingPolicy, 4, true);
+tools/clang/lib/AST/OpenCLKernelCodeGeneration.cpp:	OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 4);
+tools/clang/lib/AST/OpenCLKernelCodeGeneration.cpp:	OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 0);
+tools/clang/lib/AST/OpenCLKernelCodeGenerator.cpp:#include "clang/Omp2Ocl/OpenCLPrinter.h"
+tools/clang/lib/AST/OpenCLKernelCodeGenerator.cpp:	OpenCLPrinter op(llvm::nulls(), Context, NULL, Context.PrintingPolicy, 4, true);
+tools/clang/lib/AST/OpenCLKernelCodeGenerator.cpp:	OpenCLPrinter op(Out, Context, NULL, Context.PrintingPolicy, 4, true);
+tools/clang/lib/AST/OpenCLKernelSchedule.bak:	OpenCLPrinter p(Out, Context, NULL, Context.PrintingPolicy, 4, true);
+tools/clang/lib/AST/OpenCLKernelSchedule.bak:	OpenCLPrinter op(Out, Context, NULL, Context.PrintingPolicy, 4, true);
+tools/clang/lib/AST/OpenCLKernelSchedule.bak:		OpenCLPrinter op(Out, Context, NULL, Context.PrintingPolicy, 4, bReduction);
+tools/clang/lib/AST/OpenCLKernelSchedule.bak:		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 4);
+tools/clang/lib/AST/OpenCLKernelSchedule.bak:		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 0);
+tools/clang/lib/AST/OpenCLKernelSchedule.cpp:		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 4);
+tools/clang/lib/AST/OpenCLKernelSchedule.cpp:		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 0);
+tools/clang/lib/AST/OpenCLPrinter.cpp://===--- OpenCLPrinter.cpp - Printing implementation for Stmt ASTs ----------===//
+tools/clang/lib/AST/OpenCLPrinter.cpp:#include "clang/Omp2Ocl/OpenCLPrinter.h"
+tools/clang/lib/AST/OpenCLPrinter.cpp:vector<OpenCLTLSBufferAccess> OpenCLPrinter::tls_access;
+tools/clang/lib/AST/OpenCLPrinter.cpp:// OpenCLPrinter Visitor
+tools/clang/lib/AST/OpenCLPrinter.cpp:bool OpenCLPrinter::isAGlobalWriteBuf(string name)
+tools/clang/lib/AST/OpenCLPrinter.cpp:bool OpenCLPrinter::shouldTLSTrack(string name, string access, unsigned long long stmt_ver)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::GPUTLsTrackStmts()
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::addTLSAccessObj(string name, string access_seq,  bool isWrite)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::printFuncBody(Stmt* body, bool printB)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintVLoadDeclareInfor(CompoundStmt* Node)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::GenerateLoadCode(vector<ArrayIndex>& Is, unsigned arraySize, unsigned idx, 
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintLoadCode(CompoundStmt* Node)
+tools/clang/lib/AST/OpenCLPrinter.cpp:					OpenCLPrinter opv(O, Context, NULL, Policy);
+tools/clang/lib/AST/OpenCLPrinter.cpp:bool OpenCLPrinter::hasVLoadString(ArraySubscriptExpr* Node, ValueDecl* D, string& replaceString)
+tools/clang/lib/AST/OpenCLPrinter.cpp:	OpenCLPrinter opv(O, Context, NULL, Policy);
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintRawCompoundStmt(CompoundStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintRawDecl(Decl *D) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintRawDeclStmt(DeclStmt *S) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitNullStmt(NullStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDeclStmt(DeclStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCompoundStmt(CompoundStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCaseStmt(CaseStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDefaultStmt(DefaultStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitLabelStmt(LabelStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintRawIfStmt(IfStmt *If) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitIfStmt(IfStmt *If) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitSwitchStmt(SwitchStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitWhileStmt(WhileStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDoStmt(DoStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitForHeader(ForStmt *Node)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::ReductionPrefix(ForStmt* Node)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitForStmt(ForStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitGotoStmt(GotoStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitIndirectGotoStmt(IndirectGotoStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitContinueStmt(ContinueStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitBreakStmt(BreakStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitReturnStmt(ReturnStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitAsmStmt(AsmStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCAtTryStmt(ObjCAtTryStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCAtFinallyStmt(ObjCAtFinallyStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCAtCatchStmt (ObjCAtCatchStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCAtThrowStmt(ObjCAtThrowStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCAtSynchronizedStmt(ObjCAtSynchronizedStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintRawCXXCatchStmt(CXXCatchStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXCatchStmt(CXXCatchStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXTryStmt(CXXTryStmt *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDeclRefExpr(DeclRefExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDependentScopeDeclRefExpr(
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitUnresolvedLookupExpr(UnresolvedLookupExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCIvarRefExpr(ObjCIvarRefExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCPropertyRefExpr(ObjCPropertyRefExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitPredefinedExpr(PredefinedExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCharacterLiteral(CharacterLiteral *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitIntegerLiteral(IntegerLiteral *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitFloatingLiteral(FloatingLiteral *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitImaginaryLiteral(ImaginaryLiteral *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitStringLiteral(StringLiteral *Str) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitParenExpr(ParenExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitUnaryOperator(UnaryOperator *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOffsetOfExpr(OffsetOfExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitUnaryExprOrTypeTraitExpr(UnaryExprOrTypeTraitExpr *Node){
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitArraySubscriptExpr(ArraySubscriptExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::PrintCallArgs(CallExpr *Call) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCallExpr(CallExpr *Call) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitMemberExpr(MemberExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCIsaExpr(ObjCIsaExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitExtVectorElementExpr(ExtVectorElementExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCStyleCastExpr(CStyleCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCompoundLiteralExpr(CompoundLiteralExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitImplicitCastExpr(ImplicitCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitBinaryOperator(BinaryOperator *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCompoundAssignOperator(CompoundAssignOperator *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitConditionalOperator(ConditionalOperator *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:OpenCLPrinter::VisitBinaryConditionalOperator(BinaryConditionalOperator *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitAddrLabelExpr(AddrLabelExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitStmtExpr(StmtExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitChooseExpr(ChooseExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitGNUNullExpr(GNUNullExpr *) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitShuffleVectorExpr(ShuffleVectorExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitInitListExpr(InitListExpr* Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitParenListExpr(ParenListExpr* Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitDesignatedInitExpr(DesignatedInitExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitImplicitValueInitExpr(ImplicitValueInitExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitVAArgExpr(VAArgExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXOperatorCallExpr(CXXOperatorCallExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXMemberCallExpr(CXXMemberCallExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCUDAKernelCallExpr(CUDAKernelCallExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXNamedCastExpr(CXXNamedCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXStaticCastExpr(CXXStaticCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXDynamicCastExpr(CXXDynamicCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXReinterpretCastExpr(CXXReinterpretCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXConstCastExpr(CXXConstCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXTypeidExpr(CXXTypeidExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXUuidofExpr(CXXUuidofExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXBoolLiteralExpr(CXXBoolLiteralExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXNullPtrLiteralExpr(CXXNullPtrLiteralExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXThisExpr(CXXThisExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXThrowExpr(CXXThrowExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXDefaultArgExpr(CXXDefaultArgExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXFunctionalCastExpr(CXXFunctionalCastExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXBindTemporaryExpr(CXXBindTemporaryExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXTemporaryObjectExpr(CXXTemporaryObjectExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXScalarValueInitExpr(CXXScalarValueInitExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXNewExpr(CXXNewExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXDeleteExpr(CXXDeleteExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXPseudoDestructorExpr(CXXPseudoDestructorExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXConstructExpr(CXXConstructExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitExprWithCleanups(ExprWithCleanups *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:OpenCLPrinter::VisitCXXUnresolvedConstructExpr(
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXDependentScopeMemberExpr(
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitUnresolvedMemberExpr(UnresolvedMemberExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitCXXNoexceptExpr(CXXNoexceptExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitPackExpansionExpr(PackExpansionExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitSizeOfPackExpr(SizeOfPackExpr *E) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitSubstNonTypeTemplateParmPackExpr(
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCStringLiteral(ObjCStringLiteral *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCEncodeExpr(ObjCEncodeExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCSelectorExpr(ObjCSelectorExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCProtocolExpr(ObjCProtocolExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCMessageExpr(ObjCMessageExpr *Mess) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitBlockExpr(BlockExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitBlockDeclRefExpr(BlockDeclRefExpr *Node) {
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOpaqueValueExpr(OpaqueValueExpr *Node) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:	OpenCLPrinter P(OS, Context, Helper, Policy, Indentation);
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitBinaryTypeTraitExpr(clang::BinaryTypeTraitExpr*)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitObjCForCollectionStmt(clang::ObjCForCollectionStmt*)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitUnaryTypeTraitExpr(clang::UnaryTypeTraitExpr*)
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclFlush(clang::OclFlush*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclInit(clang::OclInit*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclTerm(clang::OclTerm*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclSync(clang::OclSync*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclResetMLStmt(clang::OclResetMLStmt*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclEnableMLRecordStmt(clang::OclEnableMLRecordStmt*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclDisableMLRecordStmt(clang::OclDisableMLRecordStmt*) {}
+tools/clang/lib/AST/OpenCLPrinter.cpp:void OpenCLPrinter::VisitOclDumpMLFStmt(clang::OclDumpMLFStmt*) {}
+tools/clang/lib/AST/OpenCLReductionKernelGenerator.cpp:#include "clang/Omp2Ocl/OpenCLPrinter.h"
+tools/clang/lib/AST/OpenCLReductionKernelGenerator.cpp:	OpenCLPrinter p(Out, getContext(), NULL, getContext().PrintingPolicy, 4, true);

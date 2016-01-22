@@ -1,0 +1,154 @@
+gcc -c -std=c99 -O3 -W -D_REENTRANT  -DOCL_RELEASE_GTP_BUFFERS_IMMEDIATE -I/home/zwang4/opencl -I/opt/OpenCL/AMD-APP-SDK-v2.6-RC3-lnx64//include -I/usr/include -I. -I. -o ft.host.o ft.host.c
+ft.host.c: In function ‘cffts1’:
+ft.host.c:919:4: error: ‘_ocl_thread_num’ undeclared (first use in this function)
+ft.host.c:919:4: note: each undeclared identifier is reported only once for each function it appears in
+ft.host.c:930:7: error: ‘logd_0’ undeclared (first use in this function)
+ft.host.c: At top level:
+ft.host.c:936:42: error: expected ‘)’ before numeric constant
+ft.host.c:938:4: error: expected identifier or ‘(’ before ‘{’ token
+ft.host.c:938:4: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:943:42: error: expected ‘)’ before numeric constant
+ft.host.c:945:42: error: expected ‘)’ before numeric constant
+ft.host.c:947:42: error: expected ‘)’ before numeric constant
+ft.host.c:949:42: error: expected ‘)’ before numeric constant
+ft.host.c:951:42: error: expected ‘)’ before numeric constant
+ft.host.c:953:36: error: expected ‘)’ before numeric constant
+ft.host.c:955:4: error: initializer element is not constant
+ft.host.c:956:36: error: expected ‘)’ before numeric constant
+ft.host.c:958:25: error: ‘d’ undeclared here (not in a function)
+ft.host.c:959:36: error: expected ‘)’ before numeric constant
+ft.host.c:962:36: error: expected ‘)’ before numeric constant
+ft.host.c:971:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:971:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:971:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:972:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:972:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:972:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:973:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:973:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:973:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:974:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:974:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:974:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:975:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:975:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:975:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:982:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:982:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:982:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:983:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:983:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:983:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:988:33: error: expected ‘)’ before numeric constant
+ft.host.c:990:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:990:4: warning: type defaults to ‘int’ in declaration of ‘oclSync’ [enabled by default]
+ft.host.c:991:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:999:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1007:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1015:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1024:3: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1026:2: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1027:1: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c: In function ‘cffts2’:
+ft.host.c:1088:4: error: ‘_ocl_thread_num’ undeclared (first use in this function)
+ft.host.c:1099:7: error: ‘logd_1’ undeclared (first use in this function)
+ft.host.c: At top level:
+ft.host.c:1105:42: error: expected ‘)’ before numeric constant
+ft.host.c:1107:4: error: expected identifier or ‘(’ before ‘{’ token
+ft.host.c:1107:4: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1112:42: error: expected ‘)’ before numeric constant
+ft.host.c:1114:42: error: expected ‘)’ before numeric constant
+ft.host.c:1116:42: error: expected ‘)’ before numeric constant
+ft.host.c:1118:42: error: expected ‘)’ before numeric constant
+ft.host.c:1120:42: error: expected ‘)’ before numeric constant
+ft.host.c:1122:36: error: expected ‘)’ before numeric constant
+ft.host.c:1124:4: error: initializer element is not constant
+ft.host.c:1125:36: error: expected ‘)’ before numeric constant
+ft.host.c:1128:36: error: expected ‘)’ before numeric constant
+ft.host.c:1130:8: error: redefinition of ‘__ocl_k_bound’
+ft.host.c:961:8: note: previous definition of ‘__ocl_k_bound’ was here
+ft.host.c:1131:36: error: expected ‘)’ before numeric constant
+ft.host.c:1140:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1140:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1140:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1141:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1141:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1141:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1142:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1142:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1142:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1143:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1143:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1143:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1144:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1144:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1144:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1151:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1151:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:1151:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1152:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1152:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:1152:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1157:33: error: expected ‘)’ before numeric constant
+ft.host.c:1159:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1159:4: warning: type defaults to ‘int’ in declaration of ‘oclSync’ [enabled by default]
+ft.host.c:1160:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1168:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1176:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1184:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1193:3: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1195:2: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1196:1: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c: In function ‘cffts3’:
+ft.host.c:1257:4: error: ‘_ocl_thread_num’ undeclared (first use in this function)
+ft.host.c:1268:7: error: ‘logd_2’ undeclared (first use in this function)
+ft.host.c: At top level:
+ft.host.c:1274:42: error: expected ‘)’ before numeric constant
+ft.host.c:1276:4: error: expected identifier or ‘(’ before ‘{’ token
+ft.host.c:1276:4: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1281:42: error: expected ‘)’ before numeric constant
+ft.host.c:1283:42: error: expected ‘)’ before numeric constant
+ft.host.c:1285:42: error: expected ‘)’ before numeric constant
+ft.host.c:1287:42: error: expected ‘)’ before numeric constant
+ft.host.c:1289:42: error: expected ‘)’ before numeric constant
+ft.host.c:1291:36: error: expected ‘)’ before numeric constant
+ft.host.c:1293:8: error: redefinition of ‘__ocl_ii_inc’
+ft.host.c:1124:8: note: previous definition of ‘__ocl_ii_inc’ was here
+ft.host.c:1293:4: error: initializer element is not constant
+ft.host.c:1294:36: error: expected ‘)’ before numeric constant
+ft.host.c:1296:8: error: redefinition of ‘__ocl_ii_bound’
+ft.host.c:1127:8: note: previous definition of ‘__ocl_ii_bound’ was here
+ft.host.c:1297:36: error: expected ‘)’ before numeric constant
+ft.host.c:1300:36: error: expected ‘)’ before numeric constant
+ft.host.c:1309:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1309:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1309:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1310:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1310:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1310:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1311:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1311:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1311:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1312:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1312:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1312:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1313:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1313:4: warning: type defaults to ‘int’ in declaration of ‘oclDevWrites’ [enabled by default]
+ft.host.c:1313:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1320:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1320:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:1320:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1321:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1321:4: warning: type defaults to ‘int’ in declaration of ‘oclDevReads’ [enabled by default]
+ft.host.c:1321:4: warning: parameter names (without types) in function declaration [enabled by default]
+ft.host.c:1326:33: error: expected ‘)’ before numeric constant
+ft.host.c:1328:4: warning: data definition has no type or storage class [enabled by default]
+ft.host.c:1328:4: warning: type defaults to ‘int’ in declaration of ‘oclSync’ [enabled by default]
+ft.host.c:1329:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1337:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1345:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1353:4: error: expected identifier or ‘(’ before ‘if’
+ft.host.c:1362:3: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1364:2: error: expected identifier or ‘(’ before ‘}’ token
+ft.host.c:1365:1: error: expected identifier or ‘(’ before ‘}’ token
+make: *** [ft.host.o] Error 1

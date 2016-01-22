@@ -1,0 +1,57 @@
+tools/clang/lib/Parse/ParseObjc.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "@synchronized";
+tools/clang/lib/Parse/ParseObjc.cpp:        Diag(AtCatchFinallyLoc, diag::err_expected_lparen_after)
+tools/clang/lib/Parse/ParseObjc.cpp:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@encode");
+tools/clang/lib/Parse/ParseObjc.cpp:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@protocol");
+tools/clang/lib/Parse/ParseObjc.cpp:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@selector");
+tools/clang/lib/Parse/ParseDeclCXX.cpp:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/ParseDeclCXX.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "throw";
+tools/clang/lib/Parse/ParseExprCXX.cpp:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after, CastName))
+tools/clang/lib/Parse/ParseExprCXX.cpp:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/ParseExprCXX.cpp:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseDeclCXX.cpp.svn-base:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseDeclCXX.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "throw";
+tools/clang/lib/Parse/.svn/text-base/ParseExpr.cpp.svn-base:      return ExprError(Diag(Tok, diag::err_expected_lparen_after_type)
+tools/clang/lib/Parse/.svn/text-base/ParseExpr.cpp.svn-base:                         diag::err_expected_lparen_after, "noexcept"))
+tools/clang/lib/Parse/.svn/text-base/ParseExpr.cpp.svn-base:      Diag(Tok,diag::err_expected_lparen_after_id) << OpTok.getIdentifierInfo();
+tools/clang/lib/Parse/.svn/text-base/ParseExpr.cpp.svn-base:    return ExprError(Diag(Tok, diag::err_expected_lparen_after_id)
+tools/clang/lib/Parse/.svn/text-base/Parser.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "asm";
+tools/clang/lib/Parse/.svn/text-base/ParseExprCXX.cpp.svn-base:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after, CastName))
+tools/clang/lib/Parse/.svn/text-base/ParseExprCXX.cpp.svn-base:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseExprCXX.cpp.svn-base:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseObjc.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "@synchronized";
+tools/clang/lib/Parse/.svn/text-base/ParseObjc.cpp.svn-base:        Diag(AtCatchFinallyLoc, diag::err_expected_lparen_after)
+tools/clang/lib/Parse/.svn/text-base/ParseObjc.cpp.svn-base:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@encode");
+tools/clang/lib/Parse/.svn/text-base/ParseObjc.cpp.svn-base:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@protocol");
+tools/clang/lib/Parse/.svn/text-base/ParseObjc.cpp.svn-base:    return ExprError(Diag(Tok, diag::err_expected_lparen_after) << "@selector");
+tools/clang/lib/Parse/.svn/text-base/ParseDecl.cpp.svn-base:    if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseDecl.cpp.svn-base:    if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after, "(")) {
+tools/clang/lib/Parse/.svn/text-base/ParseDecl.cpp.svn-base:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "if";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "switch";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "while";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "do/while";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "for";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:    Diag(Tok, diag::err_expected_lparen_after) << "asm";
+tools/clang/lib/Parse/.svn/text-base/ParseStmt.cpp.svn-base:      Diag(Tok, diag::err_expected_lparen_after) << "asm operand";
+tools/clang/lib/Parse/ParseDecl.cpp:    if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/ParseDecl.cpp:    if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after, "(")) {
+tools/clang/lib/Parse/ParseDecl.cpp:  if (ExpectAndConsume(tok::l_paren, diag::err_expected_lparen_after,
+tools/clang/lib/Parse/Parser.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "asm";
+tools/clang/lib/Parse/ParseStmt.cpp:		Diag(Tok, diag::err_expected_lparen_after) << "I am expecting a for after the omp parallel for pragma" << std::endl;
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "if";
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "switch";
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "while";
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "do/while";
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "for";
+tools/clang/lib/Parse/ParseStmt.cpp:    Diag(Tok, diag::err_expected_lparen_after) << "asm";
+tools/clang/lib/Parse/ParseStmt.cpp:      Diag(Tok, diag::err_expected_lparen_after) << "asm operand";
+tools/clang/lib/Parse/ParseExpr.cpp:      return ExprError(Diag(Tok, diag::err_expected_lparen_after_type)
+tools/clang/lib/Parse/ParseExpr.cpp:                         diag::err_expected_lparen_after, "noexcept"))
+tools/clang/lib/Parse/ParseExpr.cpp:      Diag(Tok,diag::err_expected_lparen_after_id) << OpTok.getIdentifierInfo();
+tools/clang/lib/Parse/ParseExpr.cpp:    return ExprError(Diag(Tok, diag::err_expected_lparen_after_id)
+tools/clang/include/clang/Basic/DiagnosticParseKinds.td:def err_expected_lparen_after : Error<"expected '(' after '%0'">;
+tools/clang/include/clang/Basic/DiagnosticParseKinds.td:def err_expected_lparen_after_id : Error<"expected '(' after %0">;
+tools/clang/include/clang/Basic/DiagnosticParseKinds.td:def err_expected_lparen_after_type : Error<
+tools/clang/include/clang/Basic/.svn/text-base/DiagnosticParseKinds.td.svn-base:def err_expected_lparen_after : Error<"expected '(' after '%0'">;
+tools/clang/include/clang/Basic/.svn/text-base/DiagnosticParseKinds.td.svn-base:def err_expected_lparen_after_id : Error<"expected '(' after %0">;
+tools/clang/include/clang/Basic/.svn/text-base/DiagnosticParseKinds.td.svn-base:def err_expected_lparen_after_type : Error<

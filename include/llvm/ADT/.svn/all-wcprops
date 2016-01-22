@@ -1,0 +1,335 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/llvm-project/!svn/ver/128567/llvm/trunk/include/llvm/ADT
+END
+STLExtras.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/112498/llvm/trunk/include/llvm/ADT/STLExtras.h
+END
+PointerUnion.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/127153/llvm/trunk/include/llvm/ADT/PointerUnion.h
+END
+ScopedHashTable.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/126591/llvm/trunk/include/llvm/ADT/ScopedHashTable.h
+END
+VectorExtras.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/include/llvm/ADT/VectorExtras.h
+END
+ilist_node.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/103723/llvm/trunk/include/llvm/ADT/ilist_node.h
+END
+SmallBitVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/114830/llvm/trunk/include/llvm/ADT/SmallBitVector.h
+END
+PostOrderIterator.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/125211/llvm/trunk/include/llvm/ADT/PostOrderIterator.h
+END
+IntEqClasses.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/122296/llvm/trunk/include/llvm/ADT/IntEqClasses.h
+END
+SetOperations.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/include/llvm/ADT/SetOperations.h
+END
+SmallString.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/122086/llvm/trunk/include/llvm/ADT/SmallString.h
+END
+DeltaAlgorithm.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/96498/llvm/trunk/include/llvm/ADT/DeltaAlgorithm.h
+END
+BitVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/120183/llvm/trunk/include/llvm/ADT/BitVector.h
+END
+StringRef.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/120495/llvm/trunk/include/llvm/ADT/StringRef.h
+END
+Trie.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/90135/llvm/trunk/include/llvm/ADT/Trie.h
+END
+StringMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/128567/llvm/trunk/include/llvm/ADT/StringMap.h
+END
+Statistic.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/126558/llvm/trunk/include/llvm/ADT/Statistic.h
+END
+DenseMapInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/117880/llvm/trunk/include/llvm/ADT/DenseMapInfo.h
+END
+APInt.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/128379/llvm/trunk/include/llvm/ADT/APInt.h
+END
+ArrayRef.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/126878/llvm/trunk/include/llvm/ADT/ArrayRef.h
+END
+ImmutableList.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/ImmutableList.h
+END
+ImmutableMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/126256/llvm/trunk/include/llvm/ADT/ImmutableMap.h
+END
+SetVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/114612/llvm/trunk/include/llvm/ADT/SetVector.h
+END
+SparseBitVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/SparseBitVector.h
+END
+IntrusiveRefCntPtr.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/128054/llvm/trunk/include/llvm/ADT/IntrusiveRefCntPtr.h
+END
+SCCIterator.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/125480/llvm/trunk/include/llvm/ADT/SCCIterator.h
+END
+StringSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/109212/llvm/trunk/include/llvm/ADT/StringSet.h
+END
+SmallSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/81856/llvm/trunk/include/llvm/ADT/SmallSet.h
+END
+ilist.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/122193/llvm/trunk/include/llvm/ADT/ilist.h
+END
+PriorityQueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/86186/llvm/trunk/include/llvm/ADT/PriorityQueue.h
+END
+DepthFirstIterator.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/126785/llvm/trunk/include/llvm/ADT/DepthFirstIterator.h
+END
+OwningPtr.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/100499/llvm/trunk/include/llvm/ADT/OwningPtr.h
+END
+GraphTraits.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/89091/llvm/trunk/include/llvm/ADT/GraphTraits.h
+END
+UniqueVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/include/llvm/ADT/UniqueVector.h
+END
+ImmutableSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/120459/llvm/trunk/include/llvm/ADT/ImmutableSet.h
+END
+SmallVector.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/122193/llvm/trunk/include/llvm/ADT/SmallVector.h
+END
+DenseMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/128564/llvm/trunk/include/llvm/ADT/DenseMap.h
+END
+StringExtras.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/StringExtras.h
+END
+APSInt.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/121120/llvm/trunk/include/llvm/ADT/APSInt.h
+END
+FoldingSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/FoldingSet.h
+END
+Triple.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/127705/llvm/trunk/include/llvm/ADT/Triple.h
+END
+InMemoryStruct.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/120201/llvm/trunk/include/llvm/ADT/InMemoryStruct.h
+END
+PointerIntPair.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/126019/llvm/trunk/include/llvm/ADT/PointerIntPair.h
+END
+DenseSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/124370/llvm/trunk/include/llvm/ADT/DenseSet.h
+END
+SmallPtrSet.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/128566/llvm/trunk/include/llvm/ADT/SmallPtrSet.h
+END
+ValueMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/ValueMap.h
+END
+DAGDeltaAlgorithm.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/105675/llvm/trunk/include/llvm/ADT/DAGDeltaAlgorithm.h
+END
+IndexedMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/123130/llvm/trunk/include/llvm/ADT/IndexedMap.h
+END
+EquivalenceClasses.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/include/llvm/ADT/EquivalenceClasses.h
+END
+IntervalMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/122093/llvm/trunk/include/llvm/ADT/IntervalMap.h
+END
+ImmutableIntervalMap.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/126256/llvm/trunk/include/llvm/ADT/ImmutableIntervalMap.h
+END
+NullablePtr.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/109348/llvm/trunk/include/llvm/ADT/NullablePtr.h
+END
+Optional.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/125380/llvm/trunk/include/llvm/ADT/Optional.h
+END
+APFloat.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/128545/llvm/trunk/include/llvm/ADT/APFloat.h
+END
+Twine.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/120600/llvm/trunk/include/llvm/ADT/Twine.h
+END
+StringSwitch.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/111454/llvm/trunk/include/llvm/ADT/StringSwitch.h
+END

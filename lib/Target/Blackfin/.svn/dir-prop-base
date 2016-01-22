@@ -1,0 +1,24 @@
+K 10
+svn:ignore
+V 392
+BlackfinGenAsmWriter.inc
+BlackfinGenCallingConv.inc
+BlackfinGenDAGISel.inc
+BlackfinGenInstrInfo.inc
+BlackfinGenInstrNames.inc
+BlackfinGenIntrinsics.inc
+BlackfinGenRegisterInfo.h.inc
+BlackfinGenRegisterInfo.inc
+BlackfinGenRegisterNames.inc
+BlackfinGenSubtarget.inc
+Debug
+Debug+Checks
+Debug+Coverage
+Debug+Coverage-Asserts
+Release
+Release-Asserts
+Release+Coverage
+Debug+Asserts
+Release+Asserts
+
+END

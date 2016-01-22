@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/120164/llvm/trunk/test/FrontendObjC++
+END
+2007-10-03-MetadataPointers.mm
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/llvm-project/!svn/ver/120164/llvm/trunk/test/FrontendObjC++/2007-10-03-MetadataPointers.mm
+END
+2010-08-06-X.Y-syntax.mm
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/120164/llvm/trunk/test/FrontendObjC++/2010-08-06-X.Y-syntax.mm
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/test/FrontendObjC++/dg.exp
+END
+2010-08-04-Template.mm
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/120164/llvm/trunk/test/FrontendObjC++/2010-08-04-Template.mm
+END
+2010-08-02-NonPODObjectValue.mm
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/llvm-project/!svn/ver/120164/llvm/trunk/test/FrontendObjC++/2010-08-02-NonPODObjectValue.mm
+END

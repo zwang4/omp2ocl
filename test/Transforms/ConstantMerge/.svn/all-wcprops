@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/123584/llvm/trunk/test/Transforms/ConstantMerge
+END
+merge-both.ll
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/123584/llvm/trunk/test/Transforms/ConstantMerge/merge-both.ll
+END
+2002-09-23-CPR-Update.ll
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/llvm-project/!svn/ver/81537/llvm/trunk/test/Transforms/ConstantMerge/2002-09-23-CPR-Update.ll
+END
+2011-01-15-EitherOrder.ll
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/123584/llvm/trunk/test/Transforms/ConstantMerge/2011-01-15-EitherOrder.ll
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/test/Transforms/ConstantMerge/dg.exp
+END
+unnamed-addr.ll
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/123584/llvm/trunk/test/Transforms/ConstantMerge/unnamed-addr.ll
+END
+dont-merge.ll
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/113911/llvm/trunk/test/Transforms/ConstantMerge/dont-merge.ll
+END
+2003-10-28-MergeExternalConstants.ll
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/llvm-project/!svn/ver/81083/llvm/trunk/test/Transforms/ConstantMerge/2003-10-28-MergeExternalConstants.ll
+END

@@ -1,0 +1,82 @@
+10
+
+dir
+128710
+http://llvm.org/svn/llvm-project/llvm/trunk/test/CodeGen
+http://llvm.org/svn/llvm-project
+
+
+
+2011-04-01T06:27:25.023199Z
+128707
+evancheng
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+Thumb
+dir
+
+PowerPC
+dir
+
+ARM
+dir
+
+XCore
+dir
+
+CPP
+dir
+
+Alpha
+dir
+
+X86
+dir
+
+MSP430
+dir
+
+CBackend
+dir
+
+Thumb2
+dir
+
+CellSPU
+dir
+
+SPARC
+dir
+
+Mips
+dir
+
+Blackfin
+dir
+
+MBlaze
+dir
+
+PTX
+dir
+
+Generic
+dir
+
+SystemZ
+dir
+

@@ -1,0 +1,610 @@
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1308
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   256.46
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1253
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   267.85
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1237
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.12
+ Mop/s total     =                   271.35
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1255
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   267.45
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1254
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   267.54
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1255
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   267.27
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1237
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.12
+ Mop/s total     =                   271.34
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1277
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.13
+ Mop/s total     =                   262.68
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1242
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.12
+ Mop/s total     =                   270.26
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - EP Benchmark
+ Number of random numbers generated:      33554432
+EP Benchmark Results: 
+CPU Time =     0.1227
+N = 2^   24
+No. Gaussian Pairs =               0
+Sums =    -3.304417371749878e+00     0.000000000000000e+00
+Counts:
+  0               0
+  1               0
+  2               0
+  3               0
+  4               0
+  5               0
+  6               0
+  7               0
+  8               0
+  9               0
+
+
+ EP Benchmark Completed
+ Class           =                        S
+ Size            =                       25
+ Iterations      =                        0
+ Threads         =                        1
+ Time in seconds =                     0.12
+ Mop/s total     =                   273.52
+ Operation type  = Random numbers generated
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              23 Aug 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = randdp
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> local array reduction variable configuration = 1

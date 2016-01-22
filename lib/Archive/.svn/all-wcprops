@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/llvm-project/!svn/ver/126773/llvm/trunk/lib/Archive
+END
+ArchiveWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/126773/llvm/trunk/lib/Archive/ArchiveWriter.cpp
+END
+Archive.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/llvm-project/!svn/ver/123595/llvm/trunk/lib/Archive/Archive.cpp
+END
+ArchiveReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/102297/llvm/trunk/lib/Archive/ArchiveReader.cpp
+END
+ArchiveInternals.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/lib/Archive/ArchiveInternals.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/113819/llvm/trunk/lib/Archive/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/94378/llvm/trunk/lib/Archive/Makefile
+END

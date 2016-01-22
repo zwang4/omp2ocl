@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 139
+Debug
+Release
+Release-Asserts
+Debug+Coverage-Asserts
+Debug+Coverage
+Release+Coverage
+Debug+Checks
+EDInfo.inc
+Debug+Asserts
+Release+Asserts
+
+END

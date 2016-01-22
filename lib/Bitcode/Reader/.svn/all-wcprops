@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/128537/llvm/trunk/lib/Bitcode/Reader
+END
+BitReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/97608/llvm/trunk/lib/Bitcode/Reader/BitReader.cpp
+END
+BitcodeReader.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/115728/llvm/trunk/lib/Bitcode/Reader/BitcodeReader.h
+END
+BitcodeReader.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/128537/llvm/trunk/lib/Bitcode/Reader/BitcodeReader.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/113819/llvm/trunk/lib/Bitcode/Reader/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/94378/llvm/trunk/lib/Bitcode/Reader/Makefile
+END

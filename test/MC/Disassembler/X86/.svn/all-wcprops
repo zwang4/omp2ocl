@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/127647/llvm/trunk/test/MC/Disassembler/X86
+END
+enhanced.txt
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/126302/llvm/trunk/test/MC/Disassembler/X86/enhanced.txt
+END
+truncated-input.txt
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/122962/llvm/trunk/test/MC/Disassembler/X86/truncated-input.txt
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/119050/llvm/trunk/test/MC/Disassembler/X86/dg.exp
+END
+simple-tests.txt
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/127647/llvm/trunk/test/MC/Disassembler/X86/simple-tests.txt
+END

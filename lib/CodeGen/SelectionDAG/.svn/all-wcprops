@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/128696/llvm/trunk/lib/CodeGen/SelectionDAG
+END
+InstrEmitter.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/103827/llvm/trunk/lib/CodeGen/SelectionDAG/InstrEmitter.h
+END
+LegalizeIntegerTypes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/127000/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeIntegerTypes.cpp
+END
+LegalizeVectorOps.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/127951/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeVectorOps.cpp
+END
+SelectionDAG.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/127649/llvm/trunk/lib/CodeGen/SelectionDAG/SelectionDAG.cpp
+END
+LegalizeVectorTypes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/llvm-project/!svn/ver/128176/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeVectorTypes.cpp
+END
+ScheduleDAGList.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/122541/llvm/trunk/lib/CodeGen/SelectionDAG/ScheduleDAGList.cpp
+END
+SelectionDAGPrinter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/llvm-project/!svn/ver/126562/llvm/trunk/lib/CodeGen/SelectionDAG/SelectionDAGPrinter.cpp
+END
+LegalizeFloatTypes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/126518/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeFloatTypes.cpp
+END
+LegalizeDAG.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/128696/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeDAG.cpp
+END
+FunctionLoweringInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/126969/llvm/trunk/lib/CodeGen/SelectionDAG/FunctionLoweringInfo.cpp
+END
+ScheduleDAGRRList.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/128266/llvm/trunk/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp
+END
+SelectionDAGBuilder.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/llvm-project/!svn/ver/128342/llvm/trunk/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.cpp
+END
+FastISel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/127496/llvm/trunk/lib/CodeGen/SelectionDAG/FastISel.cpp
+END
+DAGCombiner.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/127440/llvm/trunk/lib/CodeGen/SelectionDAG/DAGCombiner.cpp
+END
+SDNodeOrdering.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/91920/llvm/trunk/lib/CodeGen/SelectionDAG/SDNodeOrdering.h
+END
+SelectionDAGBuilder.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/128342/llvm/trunk/lib/CodeGen/SelectionDAG/SelectionDAGBuilder.h
+END
+LegalizeTypesGeneric.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/119990/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeTypesGeneric.cpp
+END
+SelectionDAGISel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/128132/llvm/trunk/lib/CodeGen/SelectionDAG/SelectionDAGISel.cpp
+END
+LegalizeTypes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/123202/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeTypes.cpp
+END
+TargetSelectionDAGInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/llvm-project/!svn/ver/103481/llvm/trunk/lib/CodeGen/SelectionDAG/TargetSelectionDAGInfo.cpp
+END
+LegalizeTypes.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/128176/llvm/trunk/lib/CodeGen/SelectionDAG/LegalizeTypes.h
+END
+ScheduleDAGFast.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/127380/llvm/trunk/lib/CodeGen/SelectionDAG/ScheduleDAGFast.cpp
+END
+ScheduleDAGSDNodes.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/127347/llvm/trunk/lib/CodeGen/SelectionDAG/ScheduleDAGSDNodes.cpp
+END
+InstrEmitter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/123155/llvm/trunk/lib/CodeGen/SelectionDAG/InstrEmitter.cpp
+END
+SDNodeDbgValue.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/125984/llvm/trunk/lib/CodeGen/SelectionDAG/SDNodeDbgValue.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/94378/llvm/trunk/lib/CodeGen/SelectionDAG/Makefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/114999/llvm/trunk/lib/CodeGen/SelectionDAG/CMakeLists.txt
+END
+ScheduleDAGSDNodes.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/124853/llvm/trunk/lib/CodeGen/SelectionDAG/ScheduleDAGSDNodes.h
+END
+TargetLowering.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/128696/llvm/trunk/lib/CodeGen/SelectionDAG/TargetLowering.cpp
+END

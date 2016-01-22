@@ -1,0 +1,58 @@
+./lib/AST/StmtPrinter.cpp:			DeclPrinter::enableFunctionTrack();
+./lib/AST/StmtPrinter.cpp:		DeclPrinter::disableFunctionTrack();
+./lib/AST/OpenCLHostCode.cpp:#include "clang/AST/DeclPrinter.h"
+./lib/AST/Expr.cpp:// FIXME: Maybe this should use DeclPrinter with a special "print predefined
+./lib/AST/OpenCLKernelSchedule.cpp:	DeclPrinter ParamPrinter(Out, Context, Context.PrintingPolicy, 0);
+./lib/AST/OpenCLKernelSchedule.cpp:	DeclPrinter dp(os_v, Context, Context.PrintingPolicy, 4);
+./lib/AST/OpenCLKernelSchedule.cpp:	DeclPrinter ParamPrinter(Out, Context, Context.PrintingPolicy, 0);
+./lib/AST/OpenCLKernelSchedule.cpp:	DeclPrinter dp(Out, Context, Context.PrintingPolicy, 4);
+./lib/AST/OpenCLKernelSchedule.cpp:	vector<FunctionDecl*> candidateFuncs = collectCandidateFunc(DeclPrinter::functions);
+./lib/AST/DeclPrinter.cpp://===--- DeclPrinter.cpp - Printing implementation for Decl ASTs ----------===//
+./lib/AST/DeclPrinter.cpp:#include "clang/AST/DeclPrinter.h"
+./lib/AST/DeclPrinter.cpp:vector<FunctionDecl*> DeclPrinter::functions;
+./lib/AST/DeclPrinter.cpp:bool DeclPrinter::isEnableFunctionTrack;
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::addFunction(FunctionDecl* decl)
+./lib/AST/DeclPrinter.cpp:			for (vector<FunctionDecl*>::iterator iter = DeclPrinter::functions.begin(); iter != DeclPrinter::functions.end(); iter++)
+./lib/AST/DeclPrinter.cpp:			DeclPrinter::functions.push_back(decl);
+./lib/AST/DeclPrinter.cpp:	DeclPrinter Printer(Out, getASTContext(), Policy, Indentation);
+./lib/AST/DeclPrinter.cpp:	DeclPrinter Printer(llvm::errs(), Ctx, Ctx.PrintingPolicy, 0);
+./lib/AST/DeclPrinter.cpp:llvm::raw_ostream& DeclPrinter::Indent(unsigned Indentation) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::ProcessDeclGroup(llvm::SmallVectorImpl<Decl*>& Decls) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::Print(AccessSpecifier AS) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitDeclContext(DeclContext *DC, bool Indent) {
+./lib/AST/DeclPrinter.cpp:		// FIXME: Need to be able to tell the DeclPrinter when
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitTranslationUnitDecl(TranslationUnitDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitTypedefDecl(TypedefDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitEnumDecl(EnumDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitRecordDecl(RecordDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitEnumConstantDecl(EnumConstantDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitFunctionDecl(FunctionDecl *D) {
+./lib/AST/DeclPrinter.cpp:			DeclPrinter ParamPrinter(POut, Context, SubPolicy, Indentation);
+./lib/AST/DeclPrinter.cpp:			DeclPrinter ParamPrinter(Out, Context, SubPolicy, Indentation);
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitFieldDecl(FieldDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitLabelDecl(LabelDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitVarDecl(VarDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitParmVarDecl(ParmVarDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitFileScopeAsmDecl(FileScopeAsmDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitStaticAssertDecl(StaticAssertDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitNamespaceDecl(NamespaceDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitUsingDirectiveDecl(UsingDirectiveDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitNamespaceAliasDecl(NamespaceAliasDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitCXXRecordDecl(CXXRecordDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitLinkageSpecDecl(LinkageSpecDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitTemplateDecl(TemplateDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCClassDecl(ObjCClassDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCMethodDecl(ObjCMethodDecl *OMD) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCImplementationDecl(ObjCImplementationDecl *OID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCInterfaceDecl(ObjCInterfaceDecl *OID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCForwardProtocolDecl(ObjCForwardProtocolDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCProtocolDecl(ObjCProtocolDecl *PID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCCategoryImplDecl(ObjCCategoryImplDecl *PID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCCategoryDecl(ObjCCategoryDecl *PID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCCompatibleAliasDecl(ObjCCompatibleAliasDecl *AID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCPropertyDecl(ObjCPropertyDecl *PDecl) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitObjCPropertyImplDecl(ObjCPropertyImplDecl *PID) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitUsingDecl(UsingDecl *D) {
+./lib/AST/DeclPrinter.cpp:DeclPrinter::VisitUnresolvedUsingTypenameDecl(UnresolvedUsingTypenameDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitUnresolvedUsingValueDecl(UnresolvedUsingValueDecl *D) {
+./lib/AST/DeclPrinter.cpp:void DeclPrinter::VisitUsingShadowDecl(UsingShadowDecl *D) {

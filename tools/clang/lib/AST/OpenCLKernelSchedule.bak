@@ -1,0 +1,2344 @@
+#include "clang/Omp2Ocl/OpenCLKernelSchedule.h"
+#include "clang/Basic/SourceManager.h"
+#include "clang/AST/StmtPrinter.h"
+#include "clang/Omp2Ocl/OpenCLRoutine.h"
+#include "clang/Omp2Ocl/OpenCLCommon.h"
+
+vector<OpenCLKernelLoop*> OpenCLKernelSchedule::openclLoops;
+vector<DeclRefExpr*> OpenCLKernelSchedule::collectedFunctions;
+vector<DeclRefExpr*> OpenCLKernelLoop::functions;
+vector<string> OpenCLKernelSchedule::oclKernelNames;
+
+//  Stmt printing methods.
+//===----------------------------------------------------------------------===//
+//OpenCL related methods
+unsigned int OpenCLKernelSchedule::getKernelIndex(string funcName)
+{
+	for (vector<KernelIndex>::iterator iter = genKernels.begin(); iter != genKernels.end(); iter++)
+	{
+		if (iter->function == funcName)
+		{
+			unsigned int index = iter->index;
+			iter->index++;
+			return index;
+		}
+	}
+
+	KernelIndex g(funcName);
+	genKernels.push_back(g);
+
+	return 0;
+}
+
+std::string OpenCLKernelSchedule::OpenCLKernelName(FunctionDecl*& f)
+{
+	std::string s;
+	char buf[1024];
+	if (f == NULL)
+	{
+		snprintf(buf, 1024, "loop_%u", Context.getGlobalVLoop());
+		s = buf;
+		return s;
+	}
+
+	s = f->getNameInfo().getAsString();
+	snprintf(buf, 1024, "_%u", getKernelIndex(s));
+
+	s = s + buf;
+
+	return s;
+}
+
+void OpenCLKernelSchedule::initArraySubRecord(ArraySubscriptExpr* Node)
+{
+	if (getCurLoop()->arrayV)
+	{
+		if (getCurLoop()->arrayV->getBase() != NULL)
+		{		
+			getCurLoop()->pushCurrentArraySubV();
+			//This is a new array accessing
+		}
+		getCurLoop()->newArraySubVariable();
+	}
+	else
+	{
+		getCurLoop()->newArraySubVariable();
+	}
+
+}
+
+void OpenCLKernelSchedule::forLoopEndRoutine()
+{
+	if (getCurLoop()->arrayV)
+	{
+		if (getCurLoop()->arrayV->getBase() != NULL)
+		{		
+			getCurLoop()->pushCurrentArraySubV();
+			//This is a new array accessing
+		}
+	}
+}
+
+/* Those routine is used to tracked the loop accessing index
+ *
+ *
+ */
+
+void OpenCLKernelSchedule::recordArraySub(DeclRefExpr* e)
+{
+	if (getCurLoop()->arrayV)
+	{
+		getCurLoop()->arrayV->addElement(e);
+	}
+}
+
+void OpenCLKernelSchedule::setArrayBase(DeclRefExpr* base)
+{
+	if (getCurLoop()->arrayV)
+	{
+		getCurLoop()->arrayV->setBase(base);
+	}
+}
+
+DeclRefExpr* OpenCLKernelSchedule::getArrayBase()
+{
+	if (getCurLoop()->arrayV)
+	{
+		return getCurLoop()->arrayV->getBase();
+	}
+
+	return NULL;
+}
+
+void OpenCLKernelSchedule::enableTrackingArraySubExpr() { 
+	isTArraySubExpr = true; 
+	isMetTheArrayDecl = false;
+}
+
+
+void OpenCLKernelSchedule::metArrayDecl(DeclRefExpr* expr) { 
+	isMetTheArrayDecl = true; 
+	setArrayBase(expr);
+}
+
+
+void OpenCLKernelSchedule::newOpenCLCurrentLoop(ForStmt* forNode, const FunctionDecl* func) { 
+	this->curLoop = new OpenCLKernelLoop(forNode); 
+	this->curLoop->func = const_cast<FunctionDecl*>(func);
+}
+
+void OpenCLKernelSchedule::setOpenCLOut(llvm::raw_fd_ostream* opencl)
+{
+	this->fOpenCL = opencl;
+}
+
+string OpenCLKernelSchedule::OpenCLIndent(unsigned int level)
+{
+	string str = "	";
+	for (unsigned int i = 0; i<level; i++)
+		str = str + "	";
+
+	return str;
+}
+
+void OpenCLKernelSchedule::disableTrackingArraySubExpr() { 
+	isTArraySubExpr = false; 
+	isMetTheArrayDecl=false;
+}
+
+bool OpenCLKernelSchedule::isExpVariableAlreadyInParameterList(string name, vector<string>& ParamList)
+{
+	for (vector<string>::iterator iter = ParamList.begin(); iter != ParamList.end(); iter++)
+	{
+		if (name == (*iter))
+			return true;
+	}
+
+	return false;
+}
+
+
+//This function collect arguments that should be passed into the OpenCL Kernels as global memory buffe
+void OpenCLKernelSchedule::CollectGlobalInputParameters(OpenCLKernelLoop* curLoop)
+{
+	std::string name;
+	vector<string> ParamList;
+
+	for (vector<PLoopParam>::iterator iter = curLoop->params.begin(); iter != curLoop->params.end(); iter++)
+	{
+		name = iter->declRef->getNameInfo().getAsString();
+
+		//make sure this is not a private variable
+		if ((curLoop->for_stmt->getOMPFor().isVariablePrivate(name)) == true)
+		{
+			continue;
+		}
+
+		//This variable is declared inside the loop
+		if (curLoop->isInnerDecl(iter->declRef))
+		{
+			continue;
+		}
+
+		if (curLoop->isAGlobalVariable(name))
+			continue;
+
+#ifdef SHADOW_COPY
+		//This variable has been added as expended argument
+		if (isExpVariableAlreadyInParameterList(name, ParamList))
+		{
+			//Remove from the global memory variable list because the memory will be copied to local
+			curLoop->removeFromGMVarList(name);
+			continue;
+		}
+#endif
+
+		std::string type = iter->declRef->getType().getAsString();
+		//Check if is an array? FIXME: THIS IS STUPID
+		if (type.find('[') != string::npos)
+		{
+			curLoop->addGlobalMemoryVar(iter->declRef->getDecl());
+		}
+	}
+}
+
+//Scan thread privated variables of the loop body
+void OpenCLKernelSchedule::ScanThreadPrivate(OpenCLKernelLoop* loop)
+{	
+	string string_buf;
+	llvm::raw_string_ostream Out(string_buf);
+	//dr visits the kernel to record the DeclRef information of variables
+	StmtPicker dr (Out, Context, NULL, Context.PrintingPolicy, 0);
+	dr.Visit(loop->Kernel);
+	vector<DeclRefExpr*>& decls = dr.getDecl();
+
+	for (vector<DeclRefExpr*>::iterator iter = decls.begin(); iter != decls.end(); iter++)
+	{
+		string name = (*iter)->getNameInfo().getAsString();
+		ValueDecl* decl = (*iter)->getDecl();
+		VarDecl* varDecl = dyn_cast<VarDecl>(decl);
+
+		//I have met a threadprivate name that has the same name and it is 
+		//not declared locally
+		if (otp.isAThreadPrivateVariable(name))
+		{
+			bool pri=true;
+			if (varDecl)
+			{
+				if (varDecl->isLocalVarDecl())
+				{
+					pri=false;
+				}
+			}
+			if (pri)
+			{
+				//Do worry, the addPrivateVariable will check whether a variable
+				//with the same name has already existed or not!
+				OMPThreadPrivateObject obj(name, otp.getLoc(name));
+				loop->addThreadPrivateVariable(obj);
+			}
+		}
+	}
+}
+
+// Generate OPENCL input arguments for reduction variables (first phase)
+string OpenCLKernelSchedule::GenerateReductionInput_FirstPhase(OpenCLKernelLoop* loop)
+{
+	string argu;
+
+	vector<OMPReductionObj>& reducObjs = loop->for_stmt->getOMPFor().getReductionObjs();
+	vector<ValueDecl*> rVariables;
+
+	for (vector<PLoopParam>::iterator iter = loop->params.begin(); iter != loop->params.end(); iter++)
+	{
+		string name = iter->declRef->getNameInfo().getAsString();
+		ValueDecl* decl = iter->declRef->getDecl();
+
+		if (loop->isAReductionVariable(name))
+		{
+			rVariables.push_back(decl);
+		}
+	}
+
+	assert(rVariables.size() == reducObjs.size() && "I cannot find the declare reference of some reduction variables");
+
+	for (unsigned i = 0; i < rVariables.size(); i++)
+	{
+		ValueDecl* d = rVariables[i];
+		string type = d->getType().getAsString();
+
+		argu = argu + "__global " + type + "* __ocl_partial_" + d->getNameAsString();
+		argu = argu + ", ";
+	}
+
+	loop->for_stmt->setReductionVariables(rVariables);
+
+	if (argu.length() > 0)
+	{
+		//remove ' '
+		argu.erase(argu.end()-1);
+		//remove ','
+		argu.erase(argu.end()-1);
+	}
+
+	return argu;
+}
+
+//Generate copyIn code
+void OpenCLKernelSchedule::declareCopyInBuffers(OpenCLKernelLoop* loop)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	vector<ValueDecl*>& copyInBuffers = loop->getCopyInBuffers();
+
+	for (unsigned i=0; i<copyInBuffers.size(); i++)
+	{
+		ValueDecl* d = copyInBuffers[i];
+		string name = d->getNameAsString();
+
+		if (loop->isAThreadPrivateVariable(name))
+			continue;
+
+		string type = d->getType().getAsString();
+		string gtype = getGlobalType(type);
+
+		Out << type << " " << name;
+
+		vector<unsigned> arrayDef = getArrayDef(type);
+		for (unsigned j=0; j<arrayDef.size(); j++)
+		{
+			Out << "[" << arrayDef[j] << "]";
+		}
+
+		Out << ";\n";
+	}
+}
+
+void OpenCLKernelSchedule::generateCopyInCode(OpenCLKernelLoop* loop)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	vector<ValueDecl*>& copyInBuffers = loop->getCopyInBuffers();
+
+	Out << "//COPYIN (START)\n";
+	for (unsigned i=0; i<copyInBuffers.size(); i++)
+	{
+		ValueDecl* d = copyInBuffers[i];
+		string name = d->getNameAsString();
+		string type = d->getType().getAsString();
+		string gtype = getGlobalType(type);
+
+		vector<unsigned> arrayDef = getArrayDef(type);
+
+		string passInName = "__ocl_copyin_" + name;
+		if (isOCLPremitiveType(gtype))
+		{
+			Out << getVectorCopyInCode(gtype, passInName, name, arrayDef);
+		}
+		else
+		{
+			const QualType ctype = d->getType().getCanonicalType();
+			RecordDecl* rd = getRecordDecl(ctype);	
+			if (!rd)
+			{
+				cerr << "I cannot handle copyin of " << name << "(Type=" << type << ")\n";
+				exit(-1);
+			}
+			else
+			{
+				vector<QualType> structTypes;
+				if (isVLoadable(rd, structTypes))
+				{
+					assert(structTypes.size() && "No element type found!");
+					string elem_type = getGlobalType(structTypes[0].getAsString());
+					Out << generateVLoadForStructure(elem_type, structTypes.size(), passInName, name, arrayDef);
+				}
+				else
+				{
+					cerr << "A scalar copyin implementation for " << name << "(Type=" << type << ") is needed.\n";
+					exit(-1);
+				}	
+			}
+		}
+	}
+	Out << "//COPYIN (END)\n\n";
+}
+
+
+/* Those routine is used to tracked the loop accessing index*/
+//FXIED ME: THIS SHOULD BE MERGED WITH CollectGlobalInputParameters
+//This is used to generate the arguments for the OpenCL kernel
+std::string OpenCLKernelSchedule::GenerateInputParameters(OpenCLKernelLoop* loop)
+{
+	std::string argu;
+	std::string name;
+	vector<string> ParamList;
+
+	//This is for reduction variables
+
+	for (vector<PLoopParam>::iterator iter = loop->params.begin(); iter != loop->params.end(); iter++)
+	{
+		name = iter->declRef->getNameInfo().getAsString();
+
+		//make sure this is not a private variable
+		if ((loop->for_stmt->getOMPFor().isVariablePrivate(name)) == true)
+		{
+			continue;
+		}
+
+		//This variable is declared inside the loop
+		if (loop->isInnerDecl(iter->declRef))
+		{
+			continue;
+		}
+
+		if (loop->isAGlobalVariable(name))
+			continue;
+
+		if (loop->isAReductionVariable(name))
+		{
+			continue;
+		}
+
+		//I have met a threadprivate name that has the same name and it is 
+		//not declared locally
+		if (!loop->isACopyIn(name) && loop->isAThreadPrivateVariable(name))
+		{
+			continue;
+		}
+
+#ifdef SHADOW_COPY
+		//This variable has been added as expended argument
+		if (isExpVariableAlreadyInParameterList(name, ParamList))
+		{
+			//Remove from the global memory variable list because the memory will be copied to local
+			loop->removeFromGMVarList(name);
+			continue;
+		}
+#endif
+
+		std::string type = iter->declRef->getType().getAsString();
+		unsigned dim = getArrayDimension(type);
+
+		OpenCLInputArgu inarg(iter->declRef->getDecl(), dim, loop->isACopyIn(name));
+
+		if (dim)
+		{
+			argu = argu + "__global ";
+			argu = argu + getGlobalType(type) + "* ";
+
+			//Each copyin variable has a local copy
+			if (!loop->isACopyIn(name))
+			{
+				//FIXME: This should be moved out from here
+				//added into the global memory variable list
+				loop->addGlobalMemoryVar(iter->declRef->getDecl());
+			}
+			else
+			{
+				loop->addCopyInBuffer(iter->declRef->getDecl());
+			}
+		}
+		else
+		{
+			type = type + " ";
+			argu = argu + type;
+		}
+
+		loop->for_stmt->addInputArgu(inarg);
+
+		if (loop->isACopyIn(name))
+			name = "__ocl_copyin_" + name;
+
+		argu = argu + name;
+		argu = argu + ", ";
+	}
+
+	//Gnereate loop bounds for the get_global_id variables
+
+	vector<GlobalVariable> GV = loop->getOclLoopIndexs();
+	for (vector<GlobalVariable>::iterator iter = GV.begin(); iter != GV.end(); iter++)
+	{
+		if (iter->Cond && !iter->isCondInt)
+		{				
+			argu = argu + iter->type + " __ocl_" + iter->variable + "_bound";
+			argu = argu + ", ";
+		}
+	}
+
+	loop->for_stmt->setLoopIndex(GV);
+
+	if (argu.length() > 0)
+	{
+		//remove ' '
+		argu.erase(argu.end()-1);
+		//remove ','
+		argu.erase(argu.end()-1);
+	}
+
+	return argu;
+}
+
+
+/// ------------------------------------------------------------------------------
+//
+//	OpenCL Related Routines Starts
+//
+//  ------------------------------------------------------------------------------
+
+//Zheng: I should implement the OpenCL dump here.
+/*
+ * Check whether a loop is a perfect nest loop
+ * A perfect nest looks like:
+ * 	for (...)
+ * 		for (...)
+ * 			for (...)
+ *
+ */
+bool OpenCLKernelSchedule::isPerfectNestLoop(ForStmt* forLoop)
+{
+	Stmt* stmt = forLoop->getBody(); 
+
+	if (CompoundStmt *CS = dyn_cast<CompoundStmt>(stmt))
+	{
+		unsigned int c = 0;
+		for (CompoundStmt::body_iterator I = CS->body_begin(), E = CS->body_end();
+				I != E; ++I)
+		{
+			stmt = (*I);
+			//The first statement should be a for statement, otherwise, it won't be
+			//a perfect nest loop.
+			if (!dyn_cast<ForStmt>(stmt))
+			{
+				return false;
+			}
+
+			c++;
+		}
+
+		if (c > 1)
+		{
+			return false;
+		}
+	}
+	else
+	{	
+		if (!dyn_cast<ForStmt>(stmt)) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+LoopIndex* OpenCLKernelSchedule::getLoopIndex(ForStmt* Node)
+{
+	if (dyn_cast<DeclStmt>(Node->getInit()))
+	{
+		cerr << "The loop index is a DeclStmt which is not supported yet" << endl;
+		exit(-1);
+	}
+	else
+	{
+		Expr* expr = cast<Expr>(Node->getInit());
+		if (expr->getStmtClass() == Stmt::BinaryOperatorClass)
+		{
+			BinaryOperator *op = (BinaryOperator*) expr;
+			LoopIndex* l = new LoopIndex(op->getLHS(), op->getRHS(), Node);
+			return l;
+		}
+		else
+		{
+			cerr << "I can only handle a BinaryOperatorClass" << endl;
+		}
+	}
+
+	return NULL;
+}
+
+/*Collect global variables*/
+bool OpenCLKernelSchedule::RetriveGlobalVariable(OpenCLKernelLoop* loop, ForStmt* Node)
+{
+
+	LoopIndex *l = getLoopIndex(Node);
+	if (dyn_cast<DeclRefExpr>(l->variable))
+	{
+		DeclRefExpr *expr = (DeclRefExpr*) (l->variable);
+		GlobalVariable g;
+		g.variable = expr->getNameInfo().getAsString();
+		g.type = expr->getType().getAsString();
+		Stmt* init = Node->getInit();
+		g.Cond = Node->getCond();
+
+		if (dyn_cast<BinaryOperator>(init))
+		{
+			BinaryOperator *bo = dyn_cast<BinaryOperator>(init);	
+			g.Init = bo->getRHS();
+		}
+		else
+		{
+			cerr << "The loop init is not a BinaryOperator class" << endl;
+			exit(-1);
+		}
+
+		if (g.Cond)
+		{
+			BinaryOperator* oc = dyn_cast<BinaryOperator>(g.Cond);
+			if(oc)
+			{
+				//This is a constant integer value
+				//I record it here so that I don't have to declare it as 
+				//a global memory object
+				if (dyn_cast<IntegerLiteral>(oc->getRHS()))
+				{
+					g.isCondInt = true;
+				}
+			}
+		}
+
+		loop->addGlobalVariable(g);
+	}
+	else
+	{
+		cerr << "The loop index is not a DeclRefExpr" << endl;
+		exit(-1);
+		return false;
+	}
+
+
+	return true;
+}
+
+//Generate the prefix for reduction operations
+/*
+ * Generate the loop header for a parallel reduction loop
+ *
+ */
+void OpenCLKernelSchedule::ReductionGroupLoopHeader(OpenCLKernelLoop* curLoop)
+{
+	vector<GlobalVariable> GV = curLoop->getOclLoopIndexs();
+	llvm::raw_ostream& Out = (*fOpenCL);
+
+	assert(GV.size() > 0 && "No loop is found!");
+	Out << "// Each work-group computes multiple elements \n";
+
+	GlobalVariable& outerLoop = GV[0];
+
+	Out << OpenCLIndent() << "for (";
+	Out << outerLoop.type << " " << outerLoop.variable << "= get_group_id(0); ";
+
+	string buf;
+	llvm::raw_string_ostream O(buf);
+	StmtPrinter op(O, Context, NULL, Context.PrintingPolicy, -4);
+	Stmt* Cond = outerLoop.Cond;
+
+
+	if (outerLoop.isCondInt)
+	{
+		op.Visit(Cond);
+		O.flush();
+	}
+	else
+	{
+		BinaryOperator* oc = dyn_cast<BinaryOperator>(Cond);
+		op.Visit(oc->getLHS());
+		O.flush();
+		Out << buf << BinaryOperator::getOpcodeStr(oc->getOpcode()) << "__ocl_" << outerLoop.variable << "_bound";
+	}
+
+	Out << "; " << outerLoop.variable << " += get_num_groups(0) ) {\n";
+
+	//This is the innder loop
+
+}
+
+void OpenCLKernelSchedule::PrintGlobalVariables(OpenCLKernelLoop* curLoop)
+{
+	vector<GlobalVariable> GV = curLoop->getOclLoopIndexs();
+	llvm::raw_ostream& Out = (*fOpenCL);
+
+	Out << OpenCLIndent() << " /*Global variables*/" << "\n";
+
+	unsigned int ii = 0;
+
+	for (vector<GlobalVariable>::iterator iter = GV.begin(); iter != GV.end(); iter++)
+	{
+		Out << OpenCLIndent() << iter->type << " " << iter->variable << " = get_global_id(" << ii << ")";
+		if (iter->Init)
+		{
+			string buf;
+			llvm::raw_string_ostream O(buf);
+			StmtPrinter op(O, Context, NULL, Context.PrintingPolicy, -4);
+			op.PrintStmt(iter->Init);
+			O.flush();
+
+			if (!isAZeroInteger(buf))
+			{
+				Out << " + " << buf;
+			}
+			else
+			{
+				Out << ";\n";
+			}
+		}
+		else
+		{
+			Out << ";\n"; 
+		}
+
+		if (iter->Cond)
+		{
+			string buf;
+			llvm::raw_string_ostream O(buf);
+			StmtPrinter op(O, Context, NULL, Context.PrintingPolicy, -4);
+			Stmt* Cond = iter->Cond;
+			BinaryOperator* oc = dyn_cast<BinaryOperator>(Cond);
+			if (!oc)
+			{
+				cerr << "Damn, the loop condistin is not a binaryOperator, I cannot handle it!" << endl;
+				exit(-1);
+			}
+			else
+			{
+				if (iter->isCondInt)
+				{
+					op.Visit(iter->Cond);
+					O.flush();
+					Out << "if (!(" << buf << ")) return;\n";
+				}
+				else
+				{
+					op.Visit(oc->getLHS());
+					O << BinaryOperator::getOpcodeStr(oc->getOpcode());
+					O.flush();
+					Out << "if (!(" << buf << "__ocl_" << iter->variable << "_bound)) return;\n"; 
+				}
+			}
+
+		}
+
+		ii++;
+	}
+}
+
+
+/*
+ * Check whether a variable is defined as a global variable in the kernel
+ *
+ */
+bool OpenCLKernelSchedule::isAnOpenCLGlobalVariable(OpenCLKernelLoop* curLoop, string& name)
+{
+	vector<GlobalVariable> GV = curLoop->getOclLoopIndexs();
+	for (vector<GlobalVariable>::iterator iter = GV.begin(); iter != GV.end(); iter++)
+	{
+		if (iter->variable == name)
+			return true;
+	}
+
+	return false;
+}
+
+bool OpenCLKernelSchedule::isInLoopIndex(DeclRefExpr* expr, vector<LoopIndex*>& swapableIndex)
+{
+	string name = expr->getNameInfo().getAsString();
+	for (vector<LoopIndex*>::iterator iter = swapableIndex.begin(); iter != swapableIndex.end(); iter++)
+	{
+		LoopIndex *l = (*iter);
+
+		if (dyn_cast<DeclRefExpr>(l->variable))
+		{
+			DeclRefExpr *expr = (DeclRefExpr*) (l->variable);
+			if (expr->getNameInfo().getAsString() == name)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+unsigned int OpenCLKernelSchedule::howManyLoopIndexUse(vector<LoopIndex*>& swapableIndex, ArraySubVariable* a)
+{
+	unsigned int num = 0;
+
+	for (vector<DeclRefExpr*>::iterator it = a->v.begin(); it != a->v.end(); it++)
+	{
+		if (isInLoopIndex(*it, swapableIndex))
+		{
+			num++;
+		}
+	}
+
+	return num;
+}
+
+ForStmt* OpenCLKernelSchedule::whichLoop(vector<ForStmt*>& SwapableLoops, DeclRefExpr* expr)
+{
+	for (vector<ForStmt*>::iterator iter = SwapableLoops.begin(); iter != SwapableLoops.end(); iter++)
+	{
+		ForStmt* for_stmt = (*iter);
+		LoopIndex *l = getLoopIndex(for_stmt);
+
+		if (dyn_cast<DeclRefExpr>(l->variable))
+		{
+			DeclRefExpr *lexpr = (DeclRefExpr*) (l->variable);
+			if (lexpr->getNameInfo().getAsString() == expr->getNameInfo().getAsString())
+			{
+				return for_stmt;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+/*
+ * This function assumes the loop is interchanable which is probably true for the NAS
+ * Parallel benchmark suit. However, it is better to introduce a new pragma
+ *
+ */
+vector<ForStmt*> OpenCLKernelSchedule::InterChangeLoops(vector<ForStmt*>& SwapableLoops, OpenCLKernelLoop* curLoop, bool& swaped)
+{
+
+	swaped = false;
+	/*
+	 * Collect swapable loops index
+	 *
+	 */
+	vector<LoopIndex*> swapableIndexs;
+	for (vector<ForStmt*>::iterator iter = SwapableLoops.begin(); iter != SwapableLoops.end(); iter++)
+	{
+		ForStmt* for_stmt = (*iter);
+		LoopIndex *l = getLoopIndex(for_stmt);
+		swapableIndexs.push_back(l);
+	}
+
+	ArraySubVariable* bestA = NULL;
+	unsigned int bestNum=0;
+
+	for (vector<ArraySubVariable*>::iterator iter = curLoop->arraySubVs.begin(); iter != curLoop->arraySubVs.end(); iter++)
+	{
+		ArraySubVariable* a = (*iter);
+		unsigned int num = howManyLoopIndexUse(swapableIndexs, a);
+		if (num > bestNum)
+		{
+			bestA = a;
+			bestNum = num;
+		}
+	}
+
+	vector<ForStmt*> swapedLoops;
+	if (bestA)
+	{
+		//for (vector<DeclRefExpr*>::iterator it = bestA->v.begin(); it != bestA->v.end(); it++)
+		if (bestA->v.size() > 0)
+		{
+			for (int i=bestA->v.size()-1; i>=0; i--)
+			{
+				ForStmt* stmt = whichLoop(SwapableLoops, bestA->v[i]);
+				if (stmt != NULL)
+				{
+					swapedLoops.push_back(stmt);
+				}		
+			}
+		}
+		swaped = true;
+	}
+	else
+	{
+		return SwapableLoops;
+	}
+
+	//Add the remaining loops back to swapedLoops
+	if (swapedLoops.size() != SwapableLoops.size())
+	{
+		for (unsigned i=0; i<SwapableLoops.size(); i++)
+		{
+			ForStmt* f = SwapableLoops[i];
+			bool found = false;
+			for (unsigned j=0; j<swapedLoops.size(); j++)
+			{
+				if (swapedLoops[j] == f)
+				{
+					found = true;
+					break;
+				}
+			}
+
+			if (!found)
+			{
+				swapedLoops.push_back(f);
+			}
+		}
+
+#if 0
+		cerr << "There maybe something wrong when swap these loops swapedLoops.size()=" << swapedLoops.size() 
+			<< " SwapableLoops.size()=" << SwapableLoops.size() << endl;
+		exit(-1);
+#endif
+	}
+
+	return swapedLoops;
+
+}
+
+/*
+ * This function performs:
+ * a) loop interchange, if possible
+ * b) recording the loop indexs
+ * c) This function returns the opencl kernel
+ */
+Stmt* OpenCLKernelSchedule::ScheduleLoops(OpenCLKernelLoop* curLoop, vector<ForStmt*>& innerLoops, bool& swaped)
+{
+	vector<ForStmt*> SwapableLoops;
+
+	ForStmt* topLoop = curLoop->for_stmt;
+	Stmt* Kernel = topLoop->getBody();
+
+	//The OpenCL kernel can only hanlde up to 3 levels
+
+	if (!isPerfectNestLoop(topLoop))
+	{
+		RetriveGlobalVariable(curLoop, topLoop);
+	}
+	else
+	{
+		int max_loop_level = curLoop->for_stmt->getOMPFor().getParallelDepth();
+		int swapedLoops=1;
+		/*The top-level loop is perfect nested loop*/
+		SwapableLoops.push_back(topLoop);
+
+		if (swapedLoops < max_loop_level)
+		{
+			for (vector<ForStmt*>::iterator iter = curLoop->subLoops.begin(); iter != curLoop->subLoops.end(); iter++)
+			{
+				SwapableLoops.push_back(*iter);		
+				Kernel = (*iter)->getBody();
+
+				swapedLoops++;
+
+				if (!isPerfectNestLoop(*iter))
+				{
+					break;
+				}
+
+				if (swapedLoops >= max_loop_level)
+				{
+					break;
+				}
+
+
+			}
+		}
+
+		if (curLoop->for_stmt->getOMPFor().getSwap())
+		{
+			//this is the user-specific swapable indexs
+			vector<OMPSwapIndex> swapIndexs = curLoop->for_stmt->getOMPFor().getSwapIndexs();
+
+			//The user has specified loop swaption options
+			if (swapIndexs.size())
+			{
+				vector<ForStmt*> newSwapLoops;
+
+				vector<LoopIndex*> swapableIndexs;
+				for (vector<ForStmt*>::iterator iter = SwapableLoops.begin(); iter != SwapableLoops.end(); iter++)
+				{
+					ForStmt* for_stmt = (*iter);
+					LoopIndex *l = getLoopIndex(for_stmt);
+					swapableIndexs.push_back(l);
+				}
+
+				for (unsigned ii=0; ii<swapIndexs.size(); ii++)
+				{
+					string index = swapIndexs[ii].getVariable();		
+					unsigned j;
+
+					for (j=0; j<swapableIndexs.size(); j++)
+					{
+						LoopIndex* l = swapableIndexs[j];				
+						if (dyn_cast<DeclRefExpr>(l->variable))
+						{
+							DeclRefExpr *expr = (DeclRefExpr*) (l->variable);
+							if (expr->getNameInfo().getAsString() == index)
+							{
+								break;
+							}
+						}
+					}
+
+					if (j >= swapableIndexs.size())
+					{
+						cerr << index << " is not swaptable!" << endl;
+						exit(-1);
+					}
+					else
+					{
+						newSwapLoops.push_back(SwapableLoops[j]);
+					}
+				}
+
+				SwapableLoops = newSwapLoops;
+			}
+			else //Peform normal loop swaption
+			{
+				//perform loop swaption
+				SwapableLoops = InterChangeLoops(SwapableLoops, curLoop, swaped);
+			}
+
+		}
+		else
+		{
+			swaped = false;
+			cerr << "This loop won't be swaped!" << endl;
+		}
+
+		unsigned gii = 0;
+		//retrive get_global_id() variables
+		for (vector<ForStmt*>::iterator iter = SwapableLoops.begin(); iter != SwapableLoops.end(); iter++)
+		{
+			if (gii >= OCL_MAX_LOOP_LEVEL)
+			{
+				break;		
+			}
+
+			gii++;
+
+			RetriveGlobalVariable(curLoop, *iter);
+		}
+
+		for (unsigned ri=OCL_MAX_LOOP_LEVEL; ri<SwapableLoops.size(); ri++)
+		{
+			innerLoops.push_back(SwapableLoops[ri]);	
+		}
+	}
+
+	return Kernel;
+}
+
+static string declareAPrivateVariable(DeclRefExpr* declRef)
+{
+	std::string type = declRef->getType().getAsString();
+	string name = declRef->getNameInfo().getAsString();
+
+	//array
+	if (type.find('[') != string::npos)
+	{
+		string t;
+		unsigned int i;
+		for (i = 0; i<type.length(); i++)
+		{
+			if (type[i] == ' ')
+			{
+				i++;
+				break;
+			}
+			t = t + type[i];
+		}
+
+		for (; i<type.length(); i++)
+		{
+			name = name + type[i];
+		}
+
+		type = t;
+	}
+
+	type = type + " " + name + ";";
+
+	return type;
+}
+
+/*
+ * This function is used to generate private 
+ *
+ */
+void OpenCLKernelSchedule::GeneratePrivateVariables(OpenCLKernelLoop* loop)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+
+	Out << "\n" << OpenCLIndent() << "/* Private Variables */" << "\n";
+
+	for (vector<PLoopParam>::iterator iter = loop->params.begin(); iter != loop->params.end(); iter++)
+	{
+		string name = iter->declRef->getNameInfo().getAsString();
+
+		//cerr << "CHECKING " << name << endl;
+
+		/*This variable must have been defined */
+		if (isAnOpenCLGlobalVariable(loop, name))
+		{
+			continue;
+		}
+
+
+		//make sure this is a private variable
+		if ((loop->for_stmt->getOMPFor().isVariablePrivate(name)) == true )
+		{
+			SourceLocation loc = iter->declRef->getDecl()->getLocation();
+			string decl = declareAPrivateVariable(iter->declRef);
+			Out << OpenCLIndent() << decl << "/* DEFINED AT " << getFileName(loc) << " : " << getLineNumber(loc) << " */" << "\n";
+		}
+		else
+			if (loop->isAThreadPrivateVariable(name))
+			{
+				SourceLocation loc = iter->declRef->getDecl()->getLocation();
+				string decl = declareAPrivateVariable(iter->declRef);
+				Out << OpenCLIndent() << decl << "/* THREADPRIVATE: DEFINED AT " << getFileName(loc) << " : " << getLineNumber(loc) << " */" << "\n";
+			}
+	}
+	Out << "\n";
+}
+
+static bool isInUnIntVector(vector<globalVarIndex>& arrays, globalVarIndex gv)
+{
+	for (vector<globalVarIndex>::iterator iter=arrays.begin(); iter != arrays.end(); iter++)
+	{
+		if (iter->i == gv.i && iter->isPointerAccess == gv.isPointerAccess)
+			return true;
+	}
+
+	return false;
+}
+
+
+/*!
+ * This function retuns a name of a function whose argument are
+ * passed as pointer to global memory and offsets
+ */
+string OpenCLKernelSchedule::getReNameFuncName(CallArgInfoContainer* cArg)
+{
+	//Get callee name
+	string funcName;
+	llvm::raw_string_ostream os_v(funcName);
+	StmtPicker p(os_v, Context, NULL, Context.PrintingPolicy);
+	p.PrintExpr(cArg->ce->getCallee());
+	os_v.flush();
+
+	//The index of the pointer access arguments
+	vector<globalVarIndex> PIs;
+	for (unsigned ii=0; ii<cArg->gCallArgs.size(); ii++)
+	{
+		PIs.push_back( globalVarIndex(cArg->gCallArgs[ii].index, cArg->gCallArgs[ii].isPointerAccess) );
+	}
+
+	//Check whether we already have one funcs
+	for (vector<RenamedFuncInfo>::iterator iter=RenamedFuncs.begin(); iter != RenamedFuncs.end(); iter++)
+	{
+		if (iter->orgiFuncName != funcName)
+			continue;	
+
+		bool matched = true;
+
+		for (unsigned ii=0; ii<PIs.size(); ii++)
+		{
+			if (!isInUnIntVector(iter->globalArugIds, PIs[ii]))
+			{
+				matched = false;
+				break;
+			}
+		}
+
+		if (matched)
+		{
+			return iter->newName;
+		}
+	}
+
+	//OK, I need to allocate a name
+	string newName = funcName;
+	for (unsigned ii=0; ii<PIs.size(); ii++)	
+	{
+		char buf[64];
+		if (PIs[ii].isPointerAccess)
+		{
+			snprintf(buf, 64, "p%u", PIs[ii].i);
+		}
+		else
+		{
+			snprintf(buf, 64, "g%u", PIs[ii].i);
+		}
+
+		newName = newName + "_" + buf;
+	}
+
+	RenamedFuncInfo ri(funcName, PIs, newName, cArg);
+	RenamedFuncs.push_back(ri);
+
+	return newName;
+}
+
+
+/*
+ * Visit the callarg to find out function arguments that refer as
+ * a pointer to the global memory
+ *
+ */
+void OpenCLKernelSchedule::findCall2GlobalBuffer(OpenCLKernelLoop* loop)
+{
+	string v_buf;
+	llvm::raw_string_ostream os_v(v_buf);
+
+	GlobalCallArgPicker gp(os_v, Context, NULL, Context.PrintingPolicy, loop->globalMemoryVariables, loop->threadPrivates);
+	gp.PrintStmt(loop->for_stmt->getBody());
+
+	vector<CallArgInfoContainer*>& cf = gp.getCalledFuncs();
+
+	for (vector<CallArgInfoContainer*>::iterator iter=cf.begin(); iter != cf.end(); iter++)
+	{
+		if ((*iter)->gCallArgs.size())
+		{
+			string newFuncName = getReNameFuncName((*iter));
+			CallExpr *ca = (*iter)->ce;
+			ca->setRenameInfo((*iter), newFuncName);
+		}
+	}
+
+}
+
+
+static void addLoopParams(vector<DeclRefExpr*>& decls, OpenCLKernelLoop* loop)
+{
+	for (unsigned i=0; i<decls.size(); i++)
+	{
+		loop->addParam(decls[i]);
+	}
+}
+
+//Get the record definition according to type
+RecordDecl* OpenCLKernelSchedule::getRecordDecl(const QualType& type)
+{
+	string ty = getGlobalType(type.getAsString());
+
+	for (unsigned i=0; i<recordDecls.size(); i++)
+	{
+		RecordDecl* RD = recordDecls[i];
+		IdentifierInfo* II = RD->getIdentifier();
+
+		if (!II)
+		{
+			continue;
+		}
+
+		string str = RD->getKindName ();
+		str = str + ' ';
+		str = str + II->getName().data();
+
+		if (str == ty)
+		{
+			return RD;
+		}
+	}
+
+	cerr << "Could not find the definition of " << ty << endl;
+	exit(-1);
+
+	return NULL;
+}
+
+TypedefDecl* OpenCLKernelSchedule::getTypeDefRef(string ty)
+{
+	for (unsigned i=0; i<typeDefs.size(); i++)
+	{
+		TypedefDecl* D = typeDefs[i];
+		if (D->getUnderlyingType().getAsString() == ty)
+			return D;
+	}
+
+	return NULL;
+}
+
+//Scanning to find any DeclRefExprs whose type are non-primitive
+void OpenCLKernelSchedule::ScanNonPrimitiveType(OpenCLKernelLoop* loop, vector<DeclRefExpr*>& decls)
+{
+	for (unsigned i=0; i<decls.size(); i++)
+	{
+		DeclRefExpr* d = decls[i];
+		const QualType type = d->getType().getCanonicalType();
+		string ty = getGlobalType(type.getAsString());
+
+		//skip functions
+		if (d->getDecl()->getKind() == Decl::Function)
+			continue;
+
+		if (!isOCLPremitiveType(ty))
+		{
+			bool found=false;
+			for (unsigned j=0; j<qtypes.size(); j++)
+			{
+				if (getGlobalType(qtypes[j].getAsString()) == ty)
+				{
+					found = true;
+					break;
+				}
+			}
+
+			if (!found)
+			{
+				this->qtypes.push_back(type);
+				RecordDecl* rd = getRecordDecl(type);
+				TypedefDecl* TD = getTypeDefRef(ty);
+
+				if (rd)
+				{
+					this->usedRDs.push_back(rd);
+				}
+
+				if (TD)
+				{
+					this->usedDefs.push_back(TD);
+				}
+			}	
+		}	
+	}	
+
+}
+
+
+/*!
+ * This function pre-scan the loops and performs loop swaption and call argument revision
+ *
+ */
+void OpenCLKernelSchedule::scanLoop(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+{
+	bool swaped = false;
+	vector<ForStmt*> innerLoops;
+
+	Stmt* Kernel = ScheduleLoops(loop, innerLoops, swaped);
+	loop->Kernel = Kernel;
+	loop->for_stmt->setOpenCLKernel(Kernel);
+	loop->innerLoops = innerLoops;
+
+
+	//Scan thread private variables
+	//FIXME: THIS MAYBE A BUG!!!!
+	ScanThreadPrivate(loop);
+
+	reviseCalledArgs(funcsNeed2Revised, Kernel, loop->for_stmt);
+	CollectGlobalInputParameters(loop);
+	findCall2GlobalBuffer(loop);
+
+	//FIXME: I should remove the scan process in StmtPrinter	
+	//Scan the declaration of the loop kernel
+	string string_buf;
+	llvm::raw_string_ostream Out(string_buf);
+	//dr visits the kernel to record the DeclRef information of variables
+	StmtPicker dr (Out, Context, NULL, Context.PrintingPolicy, 0);
+	dr.Visit(Kernel);
+	Out.flush();
+	//Record read/write set. FIXME: ALL THE DECLREF in getLHS() will be treated as write
+	loop->for_stmt->setRWS(dr.getRWS());
+
+	//Scan non-primitive types of structures
+	ScanNonPrimitiveType(loop, dr.getDecl());
+
+	vector<GlobalVariable>& gvs = loop->getOclLoopIndexs();
+	for (unsigned i=0; i<gvs.size(); i++)
+	{
+		dr.Visit(gvs[i].Init);
+	}	
+
+	vector<DeclRefExpr*>& decls = dr.getDecl();
+	addLoopParams(decls, loop);
+
+	loop->swaped = swaped;
+}
+
+//Declare a reduction variable in the OpenCLKernel
+string OpenCLKernelSchedule::DeclarePrivateVar(ForStmt* for_stmt, vector<ReductionScope>& RS)
+{
+	string result = "/*Reduction Variables*/\n";
+
+	for (vector<ReductionScope>::iterator iter = RS.begin(); iter != RS.end(); iter++)
+	{
+		ValueDecl* d = for_stmt->getReductionDecl(iter->obj.getVariable());
+
+		assert(d && "Could not find the definition of the threadprivate variable");
+
+		string name = d->getNameAsString();
+		string type = getGlobalType(d->getType().getAsString());
+
+		result = result + type + " " + name + " = " + initValue(type) + "; /*REDUCTION VARIABLE*/\n";
+	}
+
+	return result;	
+}
+
+
+//This will insert the reduction variables to the loop body where the
+//reduction operations are defined
+void OpenCLKernelSchedule::InsertReduction2Loop(vector<ReductionScope>& RS)
+{
+	for (vector<ReductionScope>::iterator iter = RS.begin(); iter != RS.end(); iter++)
+	{
+		iter->f->addReductionObj(iter->obj);	
+
+	}
+}
+
+void OpenCLKernelSchedule::ReductionFirstPhaseWriteBack(OpenCLKernelLoop* loop)
+{
+	vector<GlobalVariable> GV = curLoop->getOclLoopIndexs();
+	llvm::raw_ostream& Out = (*fOpenCL);
+	string addition;
+	OpenCLPrinter p(Out, Context, NULL, Context.PrintingPolicy, 4, true);
+
+	Out << "//Write back to the global buffer\n";
+
+	Out << "{\n";
+
+	if (GV.size() > 1)
+	{
+		Out << "	unsigned int _ocl_writeback_index = CALC_" << GV.size() << "D_ARRAY_INDEX(";
+		for (int j=GV.size()-1; j>=0; j--)
+		{
+			if (j > 0)
+				Out << ",";
+			Out << "get_global_size(" << j;
+		}
+
+		for (int j=GV.size()-1; j>=0; j--)
+		{
+			Out << "," << "_ocl_writeback_" << GV[j].variable;
+		}
+
+		Out << ");\n";
+	}
+	else
+	{
+		Out << "	unsigned int _ocl_writeback_index = get_global_id(0);\n";
+	}
+
+	vector<OMPReductionObj>& rObjs = loop->for_stmt->getOMPFor().getReductionObjs();	
+	for (unsigned j=0; j<rObjs.size(); j++)
+	{
+		Out << "__ocl_partial_" << rObjs[j].getVariable() << "[_ocl_writeback_index] = "
+			<< rObjs[j].getVariable() << ";\n";
+	}
+
+	Out << "}\n";
+}
+
+//Generate the first phase for reduction variables
+void OpenCLKernelSchedule::ReductionFirstPhase(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	std::string kernel_name = OpenCLKernelName(loop->func);
+	loop->for_stmt->setKernelName(kernel_name);
+	kernel_name = kernel_name + "_reduction_step1";
+
+	oclKernelNames.push_back(kernel_name);
+
+	Out << "__kernel void ";
+	string inputP = GenerateInputParameters(loop);
+
+	Out << kernel_name << " (" << inputP;
+
+	if (inputP.length()) Out << ",";
+
+	Out << GenerateReductionInput_FirstPhase(loop) << ") {\n";
+
+	if (loop->swaped)
+	{
+		Out << OpenCLIndent() << "// The loops have been swaped. " << "\n";
+	}
+
+	/**
+	 * Declare variables
+	 */
+	{	
+		llvm::raw_ostream& Out = (*fOpenCL);
+
+		string buf;
+		llvm::raw_string_ostream O(buf);
+
+#if 1
+		//Get the reduction scope firstly
+		StmtPicker pk(O, Context, NULL, Context.PrintingPolicy, -4);
+		//Reduction variables
+		vector<OMPReductionObj>& reductions = curLoop->for_stmt->getOMPFor().getReductionObjs();
+		pk.setReductionVariables(reductions);
+		pk.Visit(loop->for_stmt);
+
+		vector<ReductionScope>& RS = pk.getReductionScope();
+
+		InsertReduction2Loop(RS);
+#endif
+		string privateDecl = DeclarePrivateVar(loop->for_stmt, RS);
+
+		GeneratePrivateVariables(loop);
+		Out << privateDecl << "\n";
+		PrintGlobalVariables(loop);
+		declareCopyInBuffers(loop);
+	}
+
+	generateCopyInCode(loop);
+
+	Out << OpenCLIndent() << "//OPENCL KERNEL START " << "\n";
+	OpenCLPrinter op(Out, Context, NULL, Context.PrintingPolicy, 4, true);
+	op.setReductionObj(loop->for_stmt->getOMPFor().getReductionObjs());
+
+	op.setThreadPrivateObjs(loop->threadPrivates);
+	op.setGlobalMemoryVariables(loop->globalMemoryVariables);
+
+	//Printing out the inner loop headers if there are any
+	for (vector<ForStmt*>::iterator iter= loop->innerLoops.begin(); iter != loop->innerLoops.end(); iter++)
+	{
+		op.VisitForHeader((*iter));	
+	}
+
+	//FIXME: This is urgly. I should remove the variable from globalMemoryVariables
+	//instead of passing a thread private vector
+	//Printing the OpenCL Kernel
+	op.PrintStmt(loop->Kernel);
+
+	Out << OpenCLIndent() << "//OPENCL KERNEL END " << "\n";
+
+	Out << "\n";
+	ReductionFirstPhaseWriteBack(loop);
+
+	Out << "}\n\n";
+}
+
+//The second-reduction phase
+void OpenCLKernelSchedule::ReductionSecondPhase(OpenCLKernelLoop* loop)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	string kernelName = loop->for_stmt->getKernelName() + "_reduction_step2";
+	oclKernelNames.push_back(kernelName);
+
+	Out << "__kernel void " << kernelName << "(";
+
+	vector<ValueDecl*>& reducVs = loop->for_stmt->getReductionVariables();
+	vector<OMPReductionObj>& reductionObjs = loop->for_stmt->getOMPFor().getReductionObjs();
+
+	for (unsigned i=0; i<reducVs.size(); i++)
+	{
+		ValueDecl* d = reducVs[i];
+		string type = getGlobalType(d->getType().getAsString());
+		string name = d->getNameAsString();
+
+		if (i > 0)
+			Out << ", ";
+
+		Out << "__global "  << getOclVectorType(type,DEFAULT_VECTOR_SIZE,true) << "* input_" << name;
+		Out << ", __global " << type << "* output_" << name;
+	}
+
+	Out << ") {\n";
+
+	Out << "unsigned int tid = get_local_id(0);\n";
+	Out << "unsigned int bid = get_group_id(0);\n";
+	Out << "unsigned int gid = get_global_id(0);\n";
+	Out << "unsigned int localSize = get_local_size(0);\n\n";
+
+	for (unsigned i=0; i<reducVs.size(); i++)
+	{
+		ValueDecl* d = reducVs[i];
+		string type = getGlobalType(d->getType().getAsString());
+		string name = d->getNameAsString();
+
+		Out << "__local " << getOclVectorType(type,DEFAULT_VECTOR_SIZE, true) << " sdata_" << name << "[GROUP_SIZE];\n";
+	}
+
+	for (unsigned i=0; i<reducVs.size(); i++)
+	{
+		ValueDecl* d = reducVs[i];
+		string name = d->getNameAsString();
+		Out << "sdata_" << name << "[tid] = input_" << name << "[gid];\n";
+	}
+
+	Out << "barrier(CLK_LOCAL_MEM_FENCE);\n\n";
+
+	Out << "for(unsigned int s = localSize / 2; s > 0; s >>= 1)\n";
+	Out << "{\n";
+	Out <<	"if(tid < s)\n";
+	Out <<	"{\n";
+
+	for (unsigned i=0; i<reducVs.size(); i++)
+	{
+		ValueDecl* d = reducVs[i];
+		OMPReductionObj& obj = reductionObjs[i];
+
+		string name = d->getNameAsString();
+		Out << "	sdata_" << name << "[tid] " << getOpCodeFromString (obj.getOperatorCode()) << "= sdata_" << name << "[tid + s];\n";
+	}
+	Out << "}\n";
+	Out << "barrier(CLK_LOCAL_MEM_FENCE);\n";
+	Out << "}\n\n";
+
+	Out << "if(tid == 0) {\n";
+
+	for (unsigned i=0; i<reducVs.size(); i++)
+	{
+		ValueDecl* d = reducVs[i];
+		OMPReductionObj& obj = reductionObjs[i];
+		string name = d->getNameAsString();
+		string sdataName = "sdata_" + name + "[0]";
+
+		Out << "output_" << name << "[bid] = " << reductVectorType2Scalar(sdataName, getOpCodeFromString (obj.getOperatorCode()), DEFAULT_VECTOR_SIZE) << ";\n";
+	}
+
+	Out << "}\n";
+
+	Out << "}\n\n";
+}
+
+//Generate reduction kernels:
+//This will generate a 2-phase kernel
+void OpenCLKernelSchedule::_generateReductionKernel(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+{
+	ReductionFirstPhase(loop, funcsNeed2Revised);
+	ReductionSecondPhase(loop);
+}
+
+//
+// Actual kernel generation routine
+//
+//
+//
+void OpenCLKernelSchedule::_generateKernel(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	bool bReduction = loop->isReductionLoop();
+
+	if (bReduction)
+	{
+		_generateReductionKernel(loop, funcsNeed2Revised);	
+	}
+	else
+	{
+		SourceLocation lc = loop->for_stmt->getForLoc();
+
+
+
+		Out << "/* This is origined from a loop of " << getFileName(lc) << " at line: " << getLineNumber(lc) << " */" << "\n"; 
+
+		std::string kernel_name = OpenCLKernelName(loop->func);
+		loop->for_stmt->setKernelName(kernel_name);
+
+		oclKernelNames.push_back(kernel_name);
+
+		Out << "__kernel void ";
+		Out << kernel_name << " (" << GenerateInputParameters(loop) << ") {\n";
+
+		if (loop->swaped)
+		{
+			Out << OpenCLIndent() << "// The loops have been swaped. " << "\n";
+		}
+
+		/**
+		 * Declare variables
+		 */
+
+		PrintGlobalVariables(loop);
+		GeneratePrivateVariables(loop);
+		declareCopyInBuffers(loop);
+
+		generateCopyInCode(loop);
+
+		Out << OpenCLIndent() << "//OPENCL KERNEL START " << "\n";
+		OpenCLPrinter op(Out, Context, NULL, Context.PrintingPolicy, 4, bReduction);
+
+		op.setThreadPrivateObjs(loop->threadPrivates);
+		op.setGlobalMemoryVariables(loop->globalMemoryVariables);
+
+		//Printing out the inner loop headers if there are any
+		for (vector<ForStmt*>::iterator iter= loop->innerLoops.begin(); iter != loop->innerLoops.end(); iter++)
+		{
+			op.VisitForHeader((*iter));	
+		}
+
+		//FIXME: This is urgly. I should remove the variable from globalMemoryVariables
+		//instead of passing a thread private vector
+		//Printing the OpenCL Kernel
+		op.PrintStmt(loop->Kernel);
+
+		Out << OpenCLIndent() << "//OPENCL KERNEL END " << "\n";
+
+		Out << "}\n\n";
+	}
+}
+
+static string genCalcMarco(unsigned dim)
+{
+	string str = "#define CALC_" + uint2String(dim) + "D_ARRAY_INDEX(";
+
+	for (unsigned i=1; i<=dim; i++)
+	{
+		if (i > 1)
+			str = str + ",";
+		str = str + "M" + uint2String(i);
+	}
+
+	for (unsigned i=1; i<=dim; i++)
+	{
+		str = str + ",m" + uint2String(i);
+	}
+
+	str = str + ") (";
+
+	for (unsigned i=1; i<=dim; i++)
+	{
+		if (i > 1)
+			str = str + "+";
+
+		str = str + "((m" + uint2String(i) + ")";
+		for (unsigned j=i+1; j<=dim; j++)
+		{
+			str = str + "*(M" + uint2String(j) + ")";
+		}
+
+		str = str + ")";
+	}
+
+	str = str + ")\n";
+
+	return str;
+}
+
+string OpenCLKernelSchedule::_generateCommandRoutine()
+{
+	string routine;
+
+	routine = routine + "#pragma OPENCL EXTENSION cl_amd_fp64 : enable\n\n";
+	routine = routine + "//These are some common routines\n";
+	for (unsigned i=2; i<=10; i++)
+	{
+		routine = routine + genCalcMarco(i);
+	}
+
+	char buf[64];
+	snprintf(buf, 64, "%u", DEFAULT_GROUP_SIZE);
+
+	routine = routine + "#define GROUP_SIZE	";
+	routine = routine + buf;
+	routine = routine + "\n";
+	routine = routine + "\n";
+
+	//Print out non-primitive data structure
+	for (unsigned i=0; i<usedRDs.size(); i++)
+	{
+		RecordDecl* rd = usedRDs[i];
+
+		string string_buf;
+		llvm::raw_string_ostream Out(string_buf);
+		DeclPrinter dp(Out, Context, Context.PrintingPolicy, 0);
+		dp.VisitRecordDecl(rd);
+		Out.flush();
+
+		string_buf = string_buf + ";\n";
+
+		routine = routine + string_buf;
+	}
+
+	routine = routine + "\n";
+
+	for (unsigned i=0; i<usedDefs.size(); i++)
+	{
+		TypedefDecl* D = usedDefs[i];
+
+		string S = D->getNameAsString();
+		S = "typedef " + D->getUnderlyingType().getAsString() + " " + S;
+
+		routine = routine + S + ";\n";
+	}
+
+	routine = routine + "\n";
+
+	return routine;
+}
+
+/**
+ * This will be call by StmtPrinter when collecting callee functions
+ * See VisitDeclRefExpr in StmtPrinter
+ */
+void OpenCLKernelSchedule::addCollectedFunction(DeclRefExpr* expr)
+{
+	string ref_name = expr->getNameInfo().getAsString();
+	ValueDecl* decl = expr->getDecl();
+	//Functions will add to another category
+	if (decl->getKind() == Decl::Function)
+	{
+		for (vector<DeclRefExpr*>::iterator iter = collectedFunctions.begin(); iter != collectedFunctions.end(); iter++)
+		{
+			if ((*iter)->getNameInfo().getAsString() == ref_name)
+			{
+				return;
+			}	
+		}
+
+		collectedFunctions.push_back(expr);
+	}
+}
+
+//
+// This prints out the function declaration
+//
+//
+void OpenCLKernelSchedule::generateFuncPrototype(llvm::raw_ostream& Out, FunctionDecl* D)
+{
+	switch (D->getStorageClass()) {
+		case SC_None: break;
+		case SC_Extern: Out << "extern "; break;
+		case SC_Static: Out << "static "; break;
+		case SC_PrivateExtern:
+		case SC_Auto:
+		case SC_Register:
+				break;
+	}
+
+	if (D->isInlineSpecified())  Out << "inline ";
+
+	std::string Proto = D->getNameInfo().getAsString();
+
+	QualType Ty = D->getResultType();
+
+	Out << Ty.getAsString() << " ";
+	Out << Proto << " (";
+
+	DeclPrinter ParamPrinter(Out, Context, Context.PrintingPolicy, 0, true);
+	for (unsigned i = 0, e = D->getNumParams(); i != e; ++i) {
+		if (i > 0)
+		{
+			Out << ", ";
+		}
+
+		ParamPrinter.VisitParmVarDecl(D->getParamDecl(i));
+	}
+
+	Out << ")";
+}
+
+/*
+ * This function visits the functions that need to be generated for the 
+ * OpenCL kernel. It then collects the callee functions used by the funcation.
+ *
+ */
+void OpenCLKernelSchedule::collectCallees(vector<DeclRefExpr*>& functions, vector<FunctionDecl*>& functionDefs)
+{
+	unsigned int ss = functions.size();
+	string v_buf;
+	llvm::raw_string_ostream os_v(v_buf);
+	DeclPrinter dp(os_v, Context, Context.PrintingPolicy, 4);
+
+	dp.disableFunctionTrack();
+	StmtPrinter::isCollectedCallee = true;
+
+	do
+	{
+		for (vector<DeclRefExpr*>::iterator iter = functions.begin(); iter != functions.end(); iter++)
+		{
+			string func_name = (*iter)->getNameInfo().getAsString();
+
+			//Find the definiton of the function and then travere it
+			for (vector<FunctionDecl*>::iterator itt=functionDefs.begin(); itt!=functionDefs.end(); itt++)
+			{
+				if ((*itt)->getNameInfo().getAsString() == func_name)
+				{
+					dp.VisitFunctionDecl(*itt);
+				}
+			}
+
+		}	
+
+
+		for (vector<DeclRefExpr*>::iterator iter = collectedFunctions.begin(); iter != collectedFunctions.end(); iter++)
+		{
+			string cfn = (*iter)->getNameInfo().getAsString();
+
+			bool found = false;
+			for (vector<DeclRefExpr*>::iterator itt = functions.begin(); itt != functions.end(); itt++)
+			{
+				string name = (*itt)->getNameInfo().getAsString();
+				if (name == cfn)
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found)
+			{
+				functions.push_back(*iter);
+				ss++;
+			}
+		}
+
+	}while(ss != functions.size());
+
+	StmtPrinter::isCollectedCallee = false;
+	dp.enableFunctionTrack();
+}
+
+
+/*
+ * Revise the function arguments once the function accesses to global variables
+ *
+ */
+void OpenCLKernelSchedule::reviseFunctionWithGlobalVariable(FunctionDecl* D, vector<DeclRefExpr*> globalVariables)
+{
+	unsigned int numParam = D->getNumParams();
+	vector<QualType> ParamsTypes;
+
+	vector<ParmVarDecl*> Params;
+	for (unsigned i = 0; i < numParam; ++i) {
+		ParmVarDecl* parm = D->getParamDecl(i);
+		Params.push_back(parm);
+		ParamsTypes.push_back(parm->getType());
+	}
+
+	/*This is the global variables, I need to replace array with buffer*/
+	for (unsigned i=0; i<globalVariables.size(); i++)
+	{
+		ValueDecl* decl = globalVariables[i]->getDecl();
+		string st = globalVariables[i]->getType().getAsString();
+		unsigned int dim = getArrayDimension(st);
+
+		string name = globalVariables[i]->getNameInfo().getAsString();
+
+		ParmVarDecl* parm = 
+			ParmVarDecl::Create(D->getASTContext(),
+					D, 
+					decl->getLocStart(), decl->getLocEnd(), decl->getIdentifier(),
+					decl->getType(), 0, SC_None, SC_None, 0);
+
+		//This argument should be printed with __global keyword in
+		//the OpenCL kernel
+		if (dim &&  !otp.isAThreadPrivateVariable(name))
+		{
+			parm->set2GlobalBuf();
+		}
+
+		Params.push_back(parm);
+		ParamsTypes.push_back(decl->getType());
+	
+		D->addAGlobalVariable(FuncProtoExt(globalVariables[i], i+numParam));
+	}
+
+	//Revise the function prototype
+	FunctionProtoType::ExtProtoInfo fpi;
+	fpi.Variadic = D->isVariadic();
+
+	QualType newFT = D->getASTContext().getFunctionType(D->getResultType(), ParamsTypes.data(), ParamsTypes.size(), fpi);
+	D->setType(newFT);
+	D->setParams(Params.data(), Params.size()); 
+}
+
+/*
+ * This function will holist the global variables to the function arguments
+ * Return true if a holis action was happened
+ */
+bool OpenCLKernelSchedule::holistGlobalVariablesInFunction(FunctionDecl* func)
+{
+	string buf;
+	llvm::raw_string_ostream O(buf);
+
+	GlobalVariablePicker gp(O, Context, NULL, Context.PrintingPolicy, 4);
+
+	gp.Visit(func->getBody());
+
+	//Damn, I need to revise the function prototype and definition!!!
+	if (gp.getGlobalVariables().size() > 0)
+	{
+		reviseFunctionWithGlobalVariable(func, gp.getGlobalVariables());
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * This function recursively visits all the code to replace
+ * the call args to a function whose prototype has changed.
+ *
+ */
+void OpenCLKernelSchedule::reviseCalledArgs(vector<FunctionDecl*>& functionDefs, Stmt* E, ForStmt* topF)
+{
+	string v;
+	llvm::raw_string_ostream buf(v);
+
+	CallArgReviseAction ca(buf, Context, NULL, Context.PrintingPolicy, 4, functionDefs);
+	ca.Visit(E);
+	vector<DeclRefExpr*>& expV = ca.getExpVariables();
+
+	/*
+	 * Recorded the expended variables (if any) so that they will be added into 
+	 * the OpenCL Kernel arguments.
+	 *
+	 */
+	for (vector<DeclRefExpr*>::iterator iter = expV.begin(); iter != expV.end(); iter++)
+	{
+		string type = (*iter)->getType().getAsString();
+
+		string passInName = (*iter)->getNameInfo().getAsString();
+		string localName = passInName;
+
+		//Only array with a dimension number larger than 1 needed to be renamed
+#ifdef SHADOW_COPY
+		if (getArrayDimension(type) > 1)
+		{
+			passInName = "__ocl_copyin_" + passInName;
+		}
+#endif
+		ExpendedCallArg arg(passInName, localName, (*iter));
+		topF->addedExpendedCallArg(arg);
+	}	
+}
+
+/*!
+ * Collect functions that will be used by the OpenCL kernels
+ */
+vector<FunctionDecl*> OpenCLKernelSchedule::collectCandidateFunc(vector<FunctionDecl*>& functionDefs)
+{
+	vector<FunctionDecl*> candidateFuncs;
+	//Collect callees
+	collectCallees(OpenCLKernelLoop::functions, functionDefs);
+
+	for (vector<DeclRefExpr*>::iterator iter = OpenCLKernelLoop::functions.begin(); iter != OpenCLKernelLoop::functions.end(); iter++)
+	{
+		string func_name = (*iter)->getNameInfo().getAsString();
+		/*Do not added functions when printting the code*/
+		for (vector<FunctionDecl*>::iterator itt=functionDefs.begin(); itt!=functionDefs.end(); itt++)
+		{
+			if ((*itt)->getNameInfo().getAsString() == func_name)
+			{
+				candidateFuncs.push_back(*itt);
+			}
+		}
+	}
+
+	return candidateFuncs;
+}
+
+/*!
+ *
+ *
+ */
+vector<FunctionDecl*> OpenCLKernelSchedule::findExpendedFunc(vector<FunctionDecl*>& candidateFuncs)
+{
+	vector<FunctionDecl*> funcNeed2Revised;
+
+	//holistic the global variables. This may revise the function prototype and definition
+	for (vector<FunctionDecl*>::iterator iter = candidateFuncs.begin(); iter != candidateFuncs.end(); iter++)
+	{
+		if (holistGlobalVariablesInFunction(*iter))
+		{
+			//Recored the revised functions,
+			//because any call arguments to these functions 
+			//needed to be revised later
+			funcNeed2Revised.push_back(*iter);
+		}
+	}
+
+	return funcNeed2Revised;
+}
+
+
+
+/*!
+ *
+ * Generating the declartion of a function that has been renamed.
+ * The function is renamed is becasue a global memory object is passed as a pointer
+ *
+ */
+string OpenCLKernelSchedule::genProtoType4RenamedFunc(FunctionDecl* D, RenamedFuncInfo& r)
+{
+	string output_buffer;
+	llvm::raw_string_ostream Out (output_buffer);
+
+	switch (D->getStorageClass()) {
+		case SC_None: break;
+		case SC_Extern: Out << "extern "; break;
+		case SC_Static: Out << "static "; break;
+		case SC_PrivateExtern:
+		case SC_Auto:
+		case SC_Register:
+				break;
+	}
+
+	if (D->isInlineSpecified())  Out << "inline ";
+
+	std::string Proto = r.newName;
+
+	QualType Ty = D->getResultType();
+
+	Out << Ty.getAsString() << " ";
+	Out << Proto << " (";
+
+	vector<globalVarIndex> gIds =  r.globalArugIds;
+
+	DeclPrinter ParamPrinter(Out, Context, Context.PrintingPolicy, 0);
+	for (unsigned i = 0, e = D->getNumParams(); i != e; ++i) {
+		if (i > 0)
+		{
+			Out << ", ";
+		}
+
+		bool found = false;
+		for (vector<globalVarIndex>::iterator iter = gIds.begin(); iter != gIds.end(); iter++)
+		{
+			if (iter->i == i)
+			{
+				found = true;
+				break;
+			}
+		}
+
+		ParmVarDecl* decl = D->getParamDecl(i);
+
+		if (!found)
+		{
+			ParamPrinter.VisitParmVarDecl(decl);
+		}
+		else //This arguments should be renamed
+		{
+			Out << "__global ";
+			string type = decl->getType().getAsString();
+			Out << getGlobalType(type) << "* ";
+			Out << decl->getNameAsString();	
+		}
+	}
+
+#ifndef SHADOW_COPY
+	vector<FuncProtoExt>& aGVs = D->getAddedGlobalVariables();
+
+	for (unsigned i=0; i<aGVs.size(); i++)
+	{
+		DeclRefExpr* expr = aGVs[i].expr;
+		string type = expr->getType().getAsString();
+		string name = expr->getNameInfo().getAsString();
+		unsigned int dim = getArrayDimension(type);
+
+		if (dim > 0)
+		{
+			string t = getGlobalType(type);
+			if (D->getNumParams() > 0 || i > 0)
+			{
+				Out << ", __global " << t << " *" << name;
+			}
+			else
+			{
+				Out << " __global " << t << " *" << name;
+			}
+		}	
+	}
+#endif
+
+	for (unsigned i=0; i<gIds.size(); i++)
+	{
+		if (gIds[i].isPointerAccess)
+		{
+			Out << ", unsigned arg_" << gIds[i].i << "_offset";
+		}
+	}
+
+	Out << ")";
+
+	Out.flush();
+
+	return output_buffer;
+}
+
+FunctionDecl* OpenCLKernelSchedule::PickFuncDeclByName(vector<FunctionDecl*>& candidateFuncs, string name)
+{
+	for (vector<FunctionDecl*>::iterator iter = candidateFuncs.begin(); iter != candidateFuncs.end(); iter++)
+	{
+		if ((*iter)->getNameInfo().getAsString() == name)
+			return (*iter);	
+	}
+
+	cerr << "Could find the definition of function: " << name << endl;
+	exit(-1);
+
+	return NULL;
+}
+
+void OpenCLKernelSchedule::generatePrototypeForRenamedFunc(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+{
+	for (vector<RenamedFuncInfo>::iterator iter=rnFuncs.begin(); iter!=rnFuncs.end(); iter++)
+	{
+		FunctionDecl* decl = PickFuncDeclByName(candidateFuncs, iter->orgiFuncName);
+		Out << 	genProtoType4RenamedFunc(decl, *iter) << ";\n";
+	}
+}
+
+/*
+ * This generates the definition for a renamed function
+ *
+ */
+void OpenCLKernelSchedule::generateDef4RenamedFunc(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+{
+	for (vector<RenamedFuncInfo>::iterator iter=rnFuncs.begin(); iter!=rnFuncs.end(); iter++)
+	{
+		FunctionDecl* D = PickFuncDeclByName(candidateFuncs, iter->orgiFuncName);
+		Out << 	genProtoType4RenamedFunc(D, *iter);
+
+		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 4);
+		tp.setThreadPrivateObjs(curLoop->threadPrivates);
+		tp.setGlobalMemoryVariables(D->getAddedGlobalVariables());
+
+		//This parameter should be declared as global memory objects as well
+		vector<globalVarIndex> gIds = iter->globalArugIds;
+		for (unsigned i=0; i<gIds.size(); i++)
+		{
+			ParmVarDecl* param = D->getParamDecl(gIds[i].i);
+
+			if (gIds[i].isPointerAccess)
+			{
+				string offset_string = "arg_";
+				char buf[64];
+				snprintf(buf, 64, "%u", gIds[i].i);
+				offset_string = offset_string + buf;
+				offset_string = offset_string + "_offset";
+				param->setOffsetString(offset_string);
+			}
+
+			tp.addAGlobalMemoryVariables(param);
+		}
+
+		tp.PrintStmt(D->getBody());
+
+		Out << "\n";
+
+
+		//FIXME: This is urgely!
+		//Reset the offset string
+		for (unsigned i=0; i<gIds.size(); i++)
+		{
+			ParmVarDecl* param = D->getParamDecl(gIds[i].i);
+			string offset_string;
+			param->setOffsetString(offset_string);
+		}
+
+		D->RestoreOCLRevisedParams();
+	}
+}
+
+/*
+ * Generating the functions that will be called by the OpenCL Kernels
+ *
+ *
+ */
+void OpenCLKernelSchedule::genrerateCalledFunctions(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+{
+	DeclPrinter dp(Out, Context, Context.PrintingPolicy, 4);
+
+	//traverses the functions that are needed to be generated
+	for (vector<FunctionDecl*>::iterator iter = candidateFuncs.begin(); iter != candidateFuncs.end(); iter++)
+	{
+		generateFuncPrototype(Out, *iter);
+		Out << ";\n";
+	}
+
+	generatePrototypeForRenamedFunc(Out, candidateFuncs, rnFuncs);
+
+	Out << "\n";
+
+	for (vector<FunctionDecl*>::iterator iter = candidateFuncs.begin(); iter != candidateFuncs.end(); iter++)
+	{
+		generateFuncPrototype(Out, *iter);
+
+		OpenCLPrinter tp(Out, Context, NULL, Context.PrintingPolicy, 0);
+		tp.setThreadPrivateObjs(curLoop->threadPrivates);
+		tp.setGlobalMemoryVariables((*iter)->getAddedGlobalVariables());
+		tp.PrintStmt((*iter)->getBody());
+
+		Out << "\n";
+	}
+
+	//Generate definitions of renamed functions
+	generateDef4RenamedFunc(Out, candidateFuncs, rnFuncs);
+
+	Out << "\n";
+}
+
+/*!
+ * This function generates funcs prototype and definitions that will be used by
+ * the OpenCL kernels
+ * 
+ * */
+vector<FunctionDecl*> OpenCLKernelSchedule::generateFuncRoutines(string& string_buf)
+{
+	llvm::raw_string_ostream Out(string_buf);
+	vector<FunctionDecl*> fRevised;
+
+	//This run will collect functions used by the loop kernel
+	for (vector<OpenCLKernelLoop*>::iterator iter = openclLoops.begin(); iter != openclLoops.end(); iter++)
+	{
+		this->curLoop = (*iter);
+		scanLoop(*iter, fRevised);
+	}
+
+	vector<FunctionDecl*> candidateFuncs = collectCandidateFunc(DeclPrinter::functions);
+	//Find functions whose arguments have to be expended
+	fRevised = findExpendedFunc(candidateFuncs);
+
+	//This run re-collect global memory variables in cases some variables have been added as extended variables (because
+	// a function may access a global variable)
+	for (vector<OpenCLKernelLoop*>::iterator iter = openclLoops.begin(); iter != openclLoops.end(); iter++)
+	{
+		this->curLoop = (*iter);
+		scanLoop(*iter, fRevised);
+	}
+
+
+	Out << "//Functions that will be used by the kernels (START)\n\n";
+	genrerateCalledFunctions(Out, candidateFuncs, RenamedFuncs);
+
+	Out << "//Functions that will be used by the kernels (END)\n\n";
+
+	Out.flush();
+
+	return fRevised;
+}
+
+/**
+ * Generate OpenCL Kernels
+ *
+ */
+void OpenCLKernelSchedule::GenerateOpenCLLoopKernel()
+{
+	llvm::raw_ostream& Out = (*fOpenCL);
+	string func_buf;
+
+	vector<FunctionDecl*> fRevised = generateFuncRoutines(func_buf);
+	string command = _generateCommandRoutine();
+
+	Out << command << "\n" << func_buf;
+
+	for (vector<OpenCLKernelLoop*>::iterator iter = openclLoops.begin(); iter != openclLoops.end(); iter++)
+	{
+		this->curLoop = (*iter);
+		_generateKernel(*iter, fRevised);
+	}
+
+	//rollback revised functions
+	for (unsigned i=0; i<fRevised.size(); i++)
+	{
+		FunctionDecl* D = fRevised[i];
+		D->RestoreOCLRevisedParams();
+	}
+}
+
+
+unsigned int OpenCLKernelSchedule::getLineNumber(SourceLocation Loc)
+{
+	SourceManager &SM = Context.getSourceManager();
+	PresumedLoc PLoc = SM.getPresumedLoc(Loc);
+	return PLoc.isValid()? PLoc.getLine() : 0;
+}
+
+
+const char* OpenCLKernelSchedule::getFileName(SourceLocation Loc)
+{
+	SourceManager &SM = Context.getSourceManager();
+	PresumedLoc PLoc = SM.getPresumedLoc(Loc);
+	return PLoc.getFilename();
+}
+
+/// ------------------------------------------------------------------------------
+//
+//	OpenCL Related Routines
+//
+//  ------------------------------------------------------------------------------
+
+

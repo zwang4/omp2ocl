@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/128433/cfe/trunk/include/clang/Frontend
+END
+HeaderSearchOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/126223/cfe/trunk/include/clang/Frontend/HeaderSearchOptions.h
+END
+FrontendOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/127141/cfe/trunk/include/clang/Frontend/FrontendOptions.h
+END
+VerifyDiagnosticsClient.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/119736/cfe/trunk/include/clang/Frontend/VerifyDiagnosticsClient.h
+END
+LangStandards.def
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/127743/cfe/trunk/include/clang/Frontend/LangStandards.def
+END
+TextDiagnosticPrinter.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/128371/cfe/trunk/include/clang/Frontend/TextDiagnosticPrinter.h
+END
+CompilerInstance.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/128011/cfe/trunk/include/clang/Frontend/CompilerInstance.h
+END
+ChainedDiagnosticClient.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/88835/cfe/trunk/include/clang/Frontend/ChainedDiagnosticClient.h
+END
+MultiplexConsumer.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/124227/cfe/trunk/include/clang/Frontend/MultiplexConsumer.h
+END
+FrontendActions.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/127141/cfe/trunk/include/clang/Frontend/FrontendActions.h
+END
+DiagnosticOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/128371/cfe/trunk/include/clang/Frontend/DiagnosticOptions.h
+END
+Utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/128014/cfe/trunk/include/clang/Frontend/Utils.h
+END
+AnalyzerOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/126676/cfe/trunk/include/clang/Frontend/AnalyzerOptions.h
+END
+LangStandard.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/90053/cfe/trunk/include/clang/Frontend/LangStandard.h
+END
+PreprocessorOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/127339/cfe/trunk/include/clang/Frontend/PreprocessorOptions.h
+END
+CompilerInvocation.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/128011/cfe/trunk/include/clang/Frontend/CompilerInvocation.h
+END
+CommandLineSourceLoc.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/117414/cfe/trunk/include/clang/Frontend/CommandLineSourceLoc.h
+END
+DependencyOutputOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/124750/cfe/trunk/include/clang/Frontend/DependencyOutputOptions.h
+END
+FrontendAction.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/124227/cfe/trunk/include/clang/Frontend/FrontendAction.h
+END
+CodeGenOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/128433/cfe/trunk/include/clang/Frontend/CodeGenOptions.h
+END
+PreprocessorOutputOptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/124723/cfe/trunk/include/clang/Frontend/PreprocessorOutputOptions.h
+END
+TextDiagnosticBuffer.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/90125/cfe/trunk/include/clang/Frontend/TextDiagnosticBuffer.h
+END
+FrontendDiagnostic.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/124441/cfe/trunk/include/clang/Frontend/FrontendDiagnostic.h
+END
+Analyses.def
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/126676/cfe/trunk/include/clang/Frontend/Analyses.def
+END
+ASTConsumers.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/127141/cfe/trunk/include/clang/Frontend/ASTConsumers.h
+END
+FrontendPluginRegistry.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/106113/cfe/trunk/include/clang/Frontend/FrontendPluginRegistry.h
+END
+ASTUnit.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/128011/cfe/trunk/include/clang/Frontend/ASTUnit.h
+END

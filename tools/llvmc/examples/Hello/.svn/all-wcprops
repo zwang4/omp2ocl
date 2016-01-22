@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/111826/llvm/trunk/tools/llvmc/examples/Hello
+END
+Hello.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/111553/llvm/trunk/tools/llvmc/examples/Hello/Hello.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/111826/llvm/trunk/tools/llvmc/examples/Hello/Makefile
+END

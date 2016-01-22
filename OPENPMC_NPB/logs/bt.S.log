@@ -1,0 +1,700 @@
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  04.6268065141007e-126 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  14.6255356758449e-126 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  24.6242132080817e-126 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  34.6230376121351e-126 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  44.6219929203662e-126 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636873066e+00 4.9976913345812e-04 1.2583337979796e+04
+ FAILURE:  1 2.4228338416408e+00 4.5195666782962e-05 5.3606657859672e+04
+ FAILURE:  2 4.0272682521070e+00 7.3973765172921e-05 5.4440844925600e+04
+ FAILURE:  3 3.9076151271637e+00 7.3821238632440e-05 5.2932480927080e+04
+ FAILURE:  4 9.0278764330193e+00 8.9269630987491e-04 1.0112043297204e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.84
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.80
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.88
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.83
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.82
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.18
+ Mop/s total     =                   194.28
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.68
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.86
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.84
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1
+
+
+ NAS Parallel Benchmarks 2.3 OpenMP C version - BT Benchmark
+
+ No input file inputbt.data. Using compiled defaults
+ Size:  12x 12x 12
+ Iterations:  60   dt:   0.010000
+ Time step    1
+ Time step   20
+ Time step   40
+ Time step   60
+ Verification being performed for cclass S
+ accuracy setting for epsilon =  1.0000000000000e-08
+ Comparison of RMS-norms of residual
+ FAILURE:  0 0.0000000000000e+00 1.7034283709541e-01 1.0000000000000e+00
+ FAILURE:  1 0.0000000000000e+00 1.2975252070034e-02 1.0000000000000e+00
+ FAILURE:  2 0.0000000000000e+00 3.2527926989486e-02 1.0000000000000e+00
+ FAILURE:  3 0.0000000000000e+00 2.6436421275167e-02 1.0000000000000e+00
+ FAILURE:  4 0.0000000000000e+00 1.9211784131744e-01 1.0000000000000e+00
+ Comparison of RMS-norms of solution error
+ FAILURE:  0 6.2892636529827e+00 4.9976913345812e-04 1.2583337911116e+04
+ FAILURE:  1 2.4228338095603e+00 4.5195666782962e-05 5.3606657149859e+04
+ FAILURE:  2 4.0272682173583e+00 7.3973765172921e-05 5.4440844455857e+04
+ FAILURE:  3 3.9076150923244e+00 7.3821238632440e-05 5.2932480455139e+04
+ FAILURE:  4 9.0278763969269e+00 8.9269630987491e-04 1.0112043256773e+04
+ Verification failed
+
+
+ BT Benchmark Completed
+ Class           =                        S
+ Size            =               12x 12x 12
+ Iterations      =                       60
+ Threads         =                        1
+ Time in seconds =                     1.17
+ Mop/s total     =                   194.77
+ Operation type  =           floating point
+ Verification    =             UNSUCCESSFUL
+ Version         =                      2.3
+ Compile date    =              21 Feb 2012
+
+ Compile options:
+    CC           = gcc
+    CLINK        = gcc
+    C_LIB        = -lm
+    C_INC        = -I../common
+    CFLAGS       = -O3 
+    CLINKFLAGS   = (none)
+    RAND         = (none)
+/***********************/ 
+/* Input Configuration */ 
+/***********************/ 
+====> GPU Block Size: 1024 
+/**********************/ 
+/* Used Optimizations */ 
+/**********************/ 
+====> MallocPitch Opt is used.
+====> MatrixTranspose Opt is used.
+====> ParallelLoopSwap Opt is used.
+====> LoopCollapse Opt is used.
+====> Unrolling-on-reduction Opt is used.
+====> Allocate GPU variables as global ones.
+====> Optimize globally allocated GPU variables .
+====> CPU-GPU Mem Transfer Opt Level: 4
+====> Cuda Malloc Opt Level: 1
+====> Assume that all loops have non-zero iterations.
+====> Cache shared scalar variables onto GPU registers.
+====> Cache shared array elements onto GPU registers.
+====> Cache private array variables onto GPU shared memory.
+====> Cache R/O shared scalar variables onto GPU constant memory.
+====> local array reduction variable configuration = 1

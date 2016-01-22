@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/llvm-project/!svn/ver/128707/llvm/trunk/test
+END
+TestRunner.sh
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/112425/llvm/trunk/test/TestRunner.sh
+END
+site.exp.in
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/llvm-project/!svn/ver/120274/llvm/trunk/test/site.exp.in
+END
+lit.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/llvm-project/!svn/ver/126383/llvm/trunk/test/lit.cfg
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/126092/llvm/trunk/test/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/llvm-project/!svn/ver/127239/llvm/trunk/test/Makefile
+END
+lit.site.cfg.in
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/125173/llvm/trunk/test/lit.site.cfg.in
+END
+Makefile.tests
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/96936/llvm/trunk/test/Makefile.tests
+END

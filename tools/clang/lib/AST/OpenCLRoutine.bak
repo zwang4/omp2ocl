@@ -1,0 +1,627 @@
+#include "clang/Omp2Ocl/OpenCLRoutine.h"
+#include "clang/AST/StmtPrinter.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <assert.h>
+#include <stack>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+bool isOCLPremitiveType(string type)
+{
+	if ( type == "float" || type == "double" || type == "long" || type == "int" || type == "uchar" || type == "uint" || type == "ulong")
+	{
+		return true;
+	}
+
+
+	return false;
+}
+
+static void getArrayIndex(unsigned* va, vector<unsigned>& arrayInfo)
+{
+	unsigned arraySize = arrayInfo.size();
+	int vi = arraySize-1;
+
+	//I need to increment the upper dimension array index;
+	if (va[vi] + 1 >= arrayInfo[vi])
+	{
+		while (vi >= 0 )
+		{
+			va[vi] = 0;
+			vi--;
+			if ((va[vi] + 1) < arrayInfo[vi])
+			{
+				va[vi]++;
+				break;
+			}
+		}
+	}
+	else
+	{
+		va[vi]++;
+	}
+}
+
+static void __generateLoadStmt(llvm::raw_ostream& Out, string& passInName, string& localName, unsigned* va, unsigned times, 
+		unsigned n, char** loadToken, vector<unsigned>& arrayInfo, unsigned& offset, string& indent)
+{
+	unsigned arraySize = arrayInfo.size();
+
+	//16-bit load
+	for (unsigned int i=0; i<times; i++)
+	{
+		Out << indent << "__vl" << n << " = vload" << n << "(" << offset << ", " << passInName << ");\n";
+		offset += n;
+		unsigned m = 0;
+
+		while(m < n)
+		{
+			unsigned int ai=0;
+			getArrayIndex(va, arrayInfo);
+
+			Out << (indent) << localName;
+
+			while (ai < arraySize)
+			{
+				Out << "[" << va[ai] << "]";
+				ai++;
+			}
+
+			Out << " = " << "__vl" << n << "." << loadToken[m] << ";\n";
+
+			m++;
+		}
+
+		Out << "\n";
+	}
+}
+
+bool isVLoadable(DeclContext *DC)
+
+string getVectorCopyInCode(string type, string& passInName, string& localName, vector<unsigned>& arrayInfo)
+{
+	string result;
+	llvm::raw_string_ostream Out(result);
+
+	#define DEFAULT_LOAD_VECTOR 16 
+
+	if (!isOCLPremitiveType(type))
+	{	
+		cerr << "Vector Load for " << type 
+			<< " is not supported. A Scalar load implementation is needed!" << endl;
+		exit(-1);
+	}
+
+	string indent = "	";
+	
+	unsigned int total_size = 1;
+	for (unsigned i=0; i<arrayInfo.size(); i++)
+	{
+		total_size = total_size * arrayInfo[i];
+	}
+
+	unsigned u16 = 0;
+	unsigned u8 = 0;
+	unsigned u4 = 0;
+	unsigned u2 = 0;
+	unsigned tmp = 0;
+
+	if (DEFAULT_LOAD_VECTOR == 16)
+	{
+		u16 = total_size / 16;
+		tmp = total_size % 16;
+
+		u8 = tmp / 8;
+		tmp = tmp % 8;
+
+		u4 = tmp / 4;
+		tmp = tmp % 4;
+
+		u2 = tmp / 2;
+		tmp = tmp % 2;
+	}
+	else
+	if (DEFAULT_LOAD_VECTOR == 8)
+	{
+		u8 = total_size / 8;
+		tmp = total_size % 8;
+
+		u4 = tmp / 4;
+		tmp = tmp % 4;
+
+		u2 = tmp / 2;
+		tmp = tmp % 2;
+	}
+	else
+	if (DEFAULT_LOAD_VECTOR == 4)
+	{
+		u4 = total_size / 4;
+		tmp = total_size % 4;
+
+		u2 = tmp / 2;
+		tmp = tmp % 2;
+	}
+	else
+	if (DEFAULT_LOAD_VECTOR == 2)
+	{
+		u2 = total_size / 2;
+		tmp = total_size % 2;
+	}
+	
+
+	//Out << OpenCLIndent(indent) << "{";
+	//indent += 2;
+
+	//Declare vector values
+	//FIXED ME: I SHOULD USE MACRO HERE
+	if (u16)
+	{
+		Out << indent << "__private " << type << "16 __vl16;\n";
+	}
+
+	if (u8)
+	{
+		Out << (indent) << "__private " << type << "8 __vl8;\n";
+	}
+
+	if (u4)
+	{
+		Out << (indent) << "__private " << type << "4 __vl4;\n";
+	}
+
+	if (u2)
+	{
+		Out << (indent) << "__private " << type << "2 __vl2;\n";
+	}
+
+	Out << "\n";
+
+	//FULLY UNLOAD
+	unsigned offset=0;
+	unsigned arraySize = arrayInfo.size();
+	unsigned *va = new unsigned[arraySize];
+
+	for (unsigned i=0; i<arraySize; i++)
+	{
+		va[i] = 0;
+	}
+	va[arraySize-1] = -1;
+
+	char *v16[] = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "sa", "sb", "sc", "sd", "se", "sf"};
+	char *v8[] = {"s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7"};
+	char *v4[] = {"x", "y", "z", "w"};
+	char *v2[] = {"x", "y"};
+
+	Out << type << "* __ocl_p_" << localName << " = &" << localName;
+	for (unsigned i=0; i<arraySize; i++)
+	{
+		Out << "[0]";
+	}
+
+	Out << ";\n";
+
+	//16-bit load
+	__generateLoadStmt(Out, passInName, localName, va, u16, 16, v16, arrayInfo, offset, indent);
+	__generateLoadStmt(Out, passInName, localName, va, u8, 8, v8, arrayInfo, offset, indent);
+	__generateLoadStmt(Out, passInName, localName, va, u4, 4, v4, arrayInfo, offset, indent);
+	__generateLoadStmt(Out, passInName, localName, va, u2, 2, v2, arrayInfo, offset, indent);
+
+	if (tmp)
+	{
+		getArrayIndex(va, arrayInfo);
+		unsigned int ai=0;
+
+		Out << indent << localName;
+
+		while (ai < arraySize)
+		{
+			Out << "[" << va[ai] << "]";
+			ai++;
+		}
+
+		Out << " = " << passInName << "[" << (total_size - 1) << "];\n\n";
+	}	
+
+	delete []va;
+	Out.flush();
+
+	return result;
+}
+
+//get vectorize type, e.g.g double4
+string getOclVectorType(string type, unsigned vectorSize, bool isOCLKernel)
+{
+	char buf[64];
+	snprintf(buf, 64, "%u", vectorSize);
+
+	string r;
+	if (!isOCLKernel)
+	{
+		r = "cl_";
+	}
+
+	r = r + type + buf;
+
+	return r;
+}
+
+//Reduce a vector type to a scalar
+string reductVectorType2Scalar(string var, string op, unsigned vectorSize)
+{
+	string red;
+	vector<string> subV;
+
+	if (vectorSize == 1)
+	{
+		return var;
+	}
+	else
+	if (vectorSize == 2)
+	{
+		subV.push_back("x");
+		subV.push_back("y");
+	}
+	else
+	if (vectorSize == 4)
+	{
+		subV.push_back("x");
+		subV.push_back("y");
+		subV.push_back("z");
+		subV.push_back("w");
+	}
+	else
+	if (vectorSize == 8)
+	{
+		subV.push_back("s0");
+		subV.push_back("s1");
+		subV.push_back("s2");
+		subV.push_back("s3");
+		subV.push_back("s4");
+		subV.push_back("s5");
+		subV.push_back("s6");
+		subV.push_back("s7");
+	
+	}
+	else
+	if (vectorSize == 16)
+	{
+		subV.push_back("s0");
+		subV.push_back("s1");
+		subV.push_back("s2");
+		subV.push_back("s3");
+		subV.push_back("s4");
+		subV.push_back("s5");
+		subV.push_back("s6");
+		subV.push_back("s7");
+		subV.push_back("s8");
+		subV.push_back("s9");
+		subV.push_back("sa");
+		subV.push_back("sb");
+		subV.push_back("sc");
+		subV.push_back("sd");
+		subV.push_back("se");
+		subV.push_back("sf");
+	}
+
+	for (unsigned i=0; i<subV.size(); i++)
+	{
+		if (i > 0)
+			red = red + op;
+		red = red + var + "." + subV[i];
+	}
+
+	red = "(" + red + ")";
+
+	return red;
+}
+
+string initValue(string type)
+{
+	string result;
+
+	if (type == "double")
+	{
+		result = "0.0";
+	}
+	else if (type == "float")
+	{
+		result = "0.0";
+	}
+	else
+	{
+		result = "0";
+	}
+
+	return result;
+}
+
+string getOpCodeFromString(string op)
+{
+	string r;
+	if (op == "plus")
+	{
+		r = "+";
+	}
+	else
+	{
+		cerr << "Unknow op=" << op << endl;
+		exit(-1);
+	}
+
+	return r;
+}
+
+
+string getStringStmt(ASTContext& Context, Stmt* S)
+{
+	string buf;
+	llvm::raw_string_ostream O(buf);
+	StmtPrinter op(O, Context, NULL, Context.PrintingPolicy, -4);
+	op.Visit(S);
+	O.flush();
+
+	return buf;
+}
+
+vector<DeclRefExpr*> getDeclRefExprs(ASTContext& Context, Stmt* S)
+{
+	string buf;
+	llvm::raw_string_ostream O(buf);
+	StmtPicker op(O, Context, NULL, Context.PrintingPolicy, -4);
+	op.Visit(S);
+	O.flush();
+
+	return op.getDecl();
+}
+
+vector<unsigned> getArrayDef(string type)
+{
+	vector<unsigned> subs;
+	string str="";
+	unsigned i;
+
+	for (i=0; i<type.length(); i++)
+	{
+		if (type[i] == '[')
+			break;
+	}
+
+	for (; i<type.length(); i++)
+	{
+		if (type[i] == '[')
+		{
+			continue;
+		}
+		else
+			if (type[i] == ']')
+			{
+				unsigned n = atoi(str.c_str());
+				str="";
+				subs.push_back(n);
+				continue;
+			}
+
+		str = str + type[i];
+	}
+
+	return subs;
+}
+
+string mergeNameandType(string& type, string& name)
+{
+	string result = getGlobalType(type) + " " + name;
+
+	if (type.find('[') != string::npos)
+	{
+		vector<unsigned> subs = getArrayDef(type);
+		for (unsigned i=0; i<subs.size(); i++)
+		{
+			char buf[64];
+			snprintf(buf, 64, "%u", subs[i]);
+			result = result + "[";
+			result = result + buf;
+			result = result + "]";
+		}
+	}
+
+	return result;
+
+}
+
+string calcArrayIndex(vector<unsigned>& defs, unsigned index, string subs)
+{
+	string results;
+	string ss="";
+
+	assert(defs.size() > 0 && "zero array");
+	assert(defs.size() > index && "over subscript of an array");
+
+
+	for (unsigned i=(index+1); i<defs.size(); i++)
+	{
+		char buf[64];
+
+		snprintf(buf, 64, "%u", defs[i]);
+
+		if (i > (index + 1))
+			ss = ss + "*";
+
+		ss = ss +  buf;
+	}
+
+	results = ss;
+	results = "(" + results + ")";
+	results = "( " + results + "*(" + subs + ") )";
+
+	return results;
+}
+
+unsigned getArrayDimension(string type)
+{
+	if (type.find('[') == string::npos)
+		return 0;
+
+	unsigned dim = 0;
+	for (unsigned i=0; i<type.length(); i++)
+	{
+		if (type[i] == '[')
+			dim++;
+	}
+
+	return dim;
+}
+
+string getGlobalType(string type)
+{
+	string argu="";
+
+	for (size_t i=0; i<type.length(); i++)
+	{
+		if (type[i] == ' ' && argu != "struct")
+		{
+			break;
+		}
+
+		argu = argu + type[i];
+	}
+
+	return argu;
+}
+
+
+static string PopFromStack(stack<char>& tokenStack)
+{
+	stack<char> results;
+	char c;
+
+	while(tokenStack.size())	
+	{
+		c = tokenStack.top();
+		tokenStack.pop();
+
+		results.push(c);
+
+		if (c == '[')
+		{
+			break;
+		}
+
+	}
+
+	//reverse the results
+	string ss="";
+	while(results.size())
+	{
+		ss = ss + results.top();
+		results.pop();
+	}
+
+	return ss;
+}
+
+/*!
+ * The cunciton collect the subscriptions of an array
+ *
+ */
+arraySubInfo getSubScripts(string& str)
+{
+	string name = "";
+	stack<char> tokenStack;
+	unsigned int i;
+	arraySubInfo info;
+
+	for (i=0; i<str.size(); i++)
+	{
+		if (str[i] == '[')
+			break;
+
+		name = name + str[i];
+	}
+
+	info.name = name;
+
+	unsigned start = i;
+	unsigned end = start;
+
+	for ( ; i<str.size(); i++)
+	{
+		char c = str[i];
+		if (c == ']')
+		{
+			string pc = PopFromStack(tokenStack);
+			//add ']'
+			end = end + 1;
+
+			//add the push out stuff
+			end = end + pc.length();
+
+			if (!tokenStack.size())
+			{
+				//skip the first '['
+				start++;
+				//skip the last ']'
+				info.subExprs.push_back(str.substr(start, end-start-1));
+				start = end;
+			}			
+
+		}
+		else
+		{
+			tokenStack.push(c);
+		}
+	}
+#if 0
+	if (tokenStack.size()  != 0)
+	{
+		cerr << "I am afraid something is wrong with the array: " << str << endl;
+		cerr << "The extracted info is:" << endl;
+		for (unsigned i=0; i<info.subExprs.size(); i++)
+		{
+			cerr << info.subExprs[i] << " ";
+		}
+		cerr << endl;
+
+		cerr << "left:" << endl;
+
+		while(tokenStack.size())
+		{
+			cerr << tokenStack.top() << " ";
+			tokenStack.pop();
+		}
+
+		cerr << endl;
+	}
+#endif
+	return info;
+}
+
+void trim(string& str)
+{
+	string::size_type pos = str.find_last_not_of(' ');
+	if(pos != string::npos) {
+		str.erase(pos + 1);
+		pos = str.find_first_not_of(' ');
+		if(pos != string::npos) str.erase(0, pos);
+	}
+	else str.erase(str.begin(), str.end());
+}
+
+bool isAZeroInteger(string str)
+{
+	trim(str);
+
+	return (str == "0;\n");
+}
+
+string uint2String(unsigned i)
+{
+	char buf[64];
+	snprintf(buf, 64, "%u", i);
+
+	string s = buf;
+	return s;
+}

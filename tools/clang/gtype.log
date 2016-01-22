@@ -1,0 +1,190 @@
+include/clang/Sema/CodeCompleteConsumer.h:    const FunctionType *getFunctionType() const;
+include/clang/Sema/.svn/text-base/CodeCompleteConsumer.h.svn-base:    const FunctionType *getFunctionType() const;
+include/clang/Sema/.svn/text-base/DeclSpec.h.svn-base:  /// getFunctionTypeInfo - Retrieves the function type info object
+include/clang/Sema/.svn/text-base/DeclSpec.h.svn-base:  DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() {
+include/clang/Sema/.svn/text-base/DeclSpec.h.svn-base:  /// getFunctionTypeInfo - Retrieves the function type info object
+include/clang/Sema/.svn/text-base/DeclSpec.h.svn-base:  const DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() const {
+include/clang/Sema/.svn/text-base/DeclSpec.h.svn-base:    return const_cast<Declarator*>(this)->getFunctionTypeInfo();
+include/clang/Sema/DeclSpec.h:  /// getFunctionTypeInfo - Retrieves the function type info object
+include/clang/Sema/DeclSpec.h:  DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() {
+include/clang/Sema/DeclSpec.h:  /// getFunctionTypeInfo - Retrieves the function type info object
+include/clang/Sema/DeclSpec.h:  const DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() const {
+include/clang/Sema/DeclSpec.h:    return const_cast<Declarator*>(this)->getFunctionTypeInfo();
+include/clang/AST/ASTContext.h:		/// getFunctionType - Return a normal function type with a typed
+include/clang/AST/ASTContext.h:		QualType getFunctionType(QualType ResultTy,
+include/clang/AST/.svn/text-base/ASTContext.h.svn-base:  /// getFunctionType - Return a normal function type with a typed
+include/clang/AST/.svn/text-base/ASTContext.h.svn-base:  QualType getFunctionType(QualType ResultTy,
+include/clang/AST/.svn/text-base/Expr.h.svn-base:  /// getFunctionType - Return the underlying function type for this block.
+include/clang/AST/.svn/text-base/Expr.h.svn-base:  const FunctionType *getFunctionType() const;
+include/clang/AST/Expr.h:  /// getFunctionType - Return the underlying function type for this block.
+include/clang/AST/Expr.h:  const FunctionType *getFunctionType() const;
+lib/Sema/SemaOverload.cpp:  QualType TargetFunctionType; // Extracted function type from target type 
+lib/Sema/SemaOverload.cpp:    if (!TargetFunctionType->isFunctionType()) {        
+lib/Sema/SemaOverload.cpp:    return TargetFunctionType->isFunctionType();
+lib/Sema/SemaOverload.cpp:    TargetFunctionType = S.ExtractUnqualifiedFunctionType(TargetType);
+lib/Sema/SemaOverload.cpp:                                      TargetFunctionType, Specialization, 
+lib/Sema/SemaOverload.cpp:    assert(TargetFunctionType
+lib/Sema/SemaOverload.cpp:      if (Context.hasSameUnqualifiedType(TargetFunctionType, 
+lib/Sema/SemaOverload.cpp:          IsNoReturnConversion(Context, FunDecl->getType(), TargetFunctionType, 
+lib/Sema/SemaOverload.cpp:        << OvlExpr->getName() << TargetFunctionType
+lib/Sema/SemaExprCXX.cpp:        = Context.getFunctionType(Context.VoidTy, ArgTypes.data(),
+lib/Sema/SemaExprCXX.cpp:  QualType FnType = Context.getFunctionType(Return, &Argument, 1, EPI);
+lib/Sema/SemaDeclAttr.cpp:static const FunctionType *getFunctionType(const Decl *d,
+lib/Sema/SemaDeclAttr.cpp:  return getFunctionType(d, false) != NULL;
+lib/Sema/SemaDeclAttr.cpp:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/SemaDeclAttr.cpp:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/SemaDeclAttr.cpp:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/SemaDeclAttr.cpp:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/SemaDeclAttr.cpp:  if (const FunctionType *FnTy = getFunctionType(d)) {
+lib/Sema/SemaDeclAttr.cpp:      const FunctionType *FT = Ty->isFunctionPointerType() ? getFunctionType(d)
+lib/Sema/SemaDeclAttr.cpp:  if (isFunction(D) && getFunctionType(D)->getResultType()->isVoidType()) {
+lib/Sema/SemaTemplateInstantiateDecl.cpp:    New->setType(SemaRef.Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/SemaType.cpp:    declarator.getFunctionTypeInfo().hasPrototype = true;
+lib/Sema/SemaType.cpp:  return Context.getFunctionType(T, ParamTypes, NumParamTypes, EPI);
+lib/Sema/SemaType.cpp:        T = Context.getFunctionType(T, ArgTys.data(), ArgTys.size(), EPI);
+lib/Sema/SemaType.cpp:        T = Context.getFunctionType(FnTy->getResultType(), 
+lib/Sema/SemaDecl.cpp:      NewQType = Context.getFunctionType(NewFuncType->getResultType(),
+lib/Sema/SemaDecl.cpp:      New->setType(Context.getFunctionType(MergedReturn, &ArgTypes[0],
+lib/Sema/SemaDecl.cpp:    (D.isFunctionDeclarator() && D.getFunctionTypeInfo().hasPrototype) ||
+lib/Sema/SemaDecl.cpp:    DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/SemaDecl.cpp:    QualType R = Context.getFunctionType(FT->getResultType(), 0, 0, EPI);
+lib/Sema/SemaDecl.cpp:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/SemaCodeComplete.cpp:    = dyn_cast<FunctionProtoType>(getFunctionType());
+lib/Sema/SemaCodeComplete.cpp:    const FunctionType *FT = getFunctionType();
+lib/Sema/SemaCodeComplete.cpp:      if (const FunctionType *FType = Results[I].getFunctionType())
+lib/Sema/SemaExceptionSpec.cpp:    QualType NewType = Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/SemaExceptionSpec.cpp:    QualType NewType = Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:      NewQType = Context.getFunctionType(NewFuncType->getResultType(),
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:      New->setType(Context.getFunctionType(MergedReturn, &ArgTypes[0],
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:    (D.isFunctionDeclarator() && D.getFunctionTypeInfo().hasPrototype) ||
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:    DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:    QualType R = Context.getFunctionType(FT->getResultType(), 0, 0, EPI);
+lib/Sema/.svn/text-base/SemaDecl.cpp.svn-base:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/.svn/text-base/SemaTemplate.cpp.svn-base:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/.svn/text-base/SemaType.cpp.svn-base:    declarator.getFunctionTypeInfo().hasPrototype = true;
+lib/Sema/.svn/text-base/SemaType.cpp.svn-base:  return Context.getFunctionType(T, ParamTypes, NumParamTypes, EPI);
+lib/Sema/.svn/text-base/SemaType.cpp.svn-base:        T = Context.getFunctionType(T, ArgTys.data(), ArgTys.size(), EPI);
+lib/Sema/.svn/text-base/SemaType.cpp.svn-base:        T = Context.getFunctionType(FnTy->getResultType(), 
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:  return Context.getFunctionType(Context.VoidTy, Proto->arg_type_begin(),
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:  return Context.getFunctionType(Context.VoidTy, 0, 0, EPI);
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:    D.getFunctionTypeInfo().freeArgs();
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:    R = Context.getFunctionType(ConvType, 0, 0, Proto->getExtProtoInfo());
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:                                 Context.getFunctionType(Context.VoidTy,
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:          NewCtorType = Context.getFunctionType(BaseCtorType->getResultType(),
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:  QualType Ty = Context.getFunctionType(Context.VoidTy, 0, 0, EPI);
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:                            Context.getFunctionType(RetType, &ArgType, 1, EPI),
+lib/Sema/.svn/text-base/SemaDeclCXX.cpp.svn-base:                                 Context.getFunctionType(Context.VoidTy,
+lib/Sema/.svn/text-base/SemaTemplateInstantiateDecl.cpp.svn-base:    New->setType(SemaRef.Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:  QualType TargetFunctionType; // Extracted function type from target type 
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:    if (!TargetFunctionType->isFunctionType()) {        
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:    return TargetFunctionType->isFunctionType();
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:    TargetFunctionType = S.ExtractUnqualifiedFunctionType(TargetType);
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:                                      TargetFunctionType, Specialization, 
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:    assert(TargetFunctionType
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:      if (Context.hasSameUnqualifiedType(TargetFunctionType, 
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:          IsNoReturnConversion(Context, FunDecl->getType(), TargetFunctionType, 
+lib/Sema/.svn/text-base/SemaOverload.cpp.svn-base:        << OvlExpr->getName() << TargetFunctionType
+lib/Sema/.svn/text-base/TreeTransform.h.svn-base:  const FunctionType *exprFunctionType = E->getFunctionType();
+lib/Sema/.svn/text-base/CodeCompleteConsumer.cpp.svn-base:CodeCompleteConsumer::OverloadCandidate::getFunctionType() const {
+lib/Sema/.svn/text-base/SemaExprCXX.cpp.svn-base:        = Context.getFunctionType(Context.VoidTy, ArgTypes.data(),
+lib/Sema/.svn/text-base/SemaExprCXX.cpp.svn-base:  QualType FnType = Context.getFunctionType(Return, &Argument, 1, EPI);
+lib/Sema/.svn/text-base/SemaLookup.cpp.svn-base:      = R.getSema().Context.getFunctionType(R.getLookupName().getCXXNameType(),
+lib/Sema/.svn/text-base/SemaExpr.cpp.svn-base:      BlockTy = Context.getFunctionType(RetTy, 0, 0, EPI);
+lib/Sema/.svn/text-base/SemaExpr.cpp.svn-base:      BlockTy = Context.getFunctionType(RetTy,
+lib/Sema/.svn/text-base/SemaExpr.cpp.svn-base:    BlockTy = Context.getFunctionType(RetTy, 0, 0, EPI);
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:static const FunctionType *getFunctionType(const Decl *d,
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  return getFunctionType(d, false) != NULL;
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (const FunctionType *FnTy = getFunctionType(d))
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (const FunctionType *FnTy = getFunctionType(d)) {
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:      const FunctionType *FT = Ty->isFunctionPointerType() ? getFunctionType(d)
+lib/Sema/.svn/text-base/SemaDeclAttr.cpp.svn-base:  if (isFunction(D) && getFunctionType(D)->getResultType()->isVoidType()) {
+lib/Sema/.svn/text-base/SemaCodeComplete.cpp.svn-base:    = dyn_cast<FunctionProtoType>(getFunctionType());
+lib/Sema/.svn/text-base/SemaCodeComplete.cpp.svn-base:    const FunctionType *FT = getFunctionType();
+lib/Sema/.svn/text-base/SemaCodeComplete.cpp.svn-base:      if (const FunctionType *FType = Results[I].getFunctionType())
+lib/Sema/.svn/text-base/SemaExceptionSpec.cpp.svn-base:    QualType NewType = Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/.svn/text-base/SemaExceptionSpec.cpp.svn-base:    QualType NewType = Context.getFunctionType(NewProto->getResultType(),
+lib/Sema/SemaDeclCXX.cpp:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/SemaDeclCXX.cpp:  return Context.getFunctionType(Context.VoidTy, Proto->arg_type_begin(),
+lib/Sema/SemaDeclCXX.cpp:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Sema/SemaDeclCXX.cpp:  return Context.getFunctionType(Context.VoidTy, 0, 0, EPI);
+lib/Sema/SemaDeclCXX.cpp:    D.getFunctionTypeInfo().freeArgs();
+lib/Sema/SemaDeclCXX.cpp:    R = Context.getFunctionType(ConvType, 0, 0, Proto->getExtProtoInfo());
+lib/Sema/SemaDeclCXX.cpp:                                 Context.getFunctionType(Context.VoidTy,
+lib/Sema/SemaDeclCXX.cpp:          NewCtorType = Context.getFunctionType(BaseCtorType->getResultType(),
+lib/Sema/SemaDeclCXX.cpp:  QualType Ty = Context.getFunctionType(Context.VoidTy, 0, 0, EPI);
+lib/Sema/SemaDeclCXX.cpp:                            Context.getFunctionType(RetType, &ArgType, 1, EPI),
+lib/Sema/SemaDeclCXX.cpp:                                 Context.getFunctionType(Context.VoidTy,
+lib/Sema/CodeCompleteConsumer.cpp:CodeCompleteConsumer::OverloadCandidate::getFunctionType() const {
+lib/Sema/SemaLookup.cpp:      = R.getSema().Context.getFunctionType(R.getLookupName().getCXXNameType(),
+lib/Sema/TreeTransform.h:  const FunctionType *exprFunctionType = E->getFunctionType();
+lib/Sema/SemaExpr.cpp:      BlockTy = Context.getFunctionType(RetTy, 0, 0, EPI);
+lib/Sema/SemaExpr.cpp:      BlockTy = Context.getFunctionType(RetTy,
+lib/Sema/SemaExpr.cpp:    BlockTy = Context.getFunctionType(RetTy, 0, 0, EPI);
+lib/Sema/SemaTemplate.cpp:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Serialization/ASTReader.cpp:    return Context->getFunctionType(ResultType, ParamTypes.data(), NumParams,
+lib/Serialization/.svn/text-base/ASTReader.cpp.svn-base:    return Context->getFunctionType(ResultType, ParamTypes.data(), NumParams,
+lib/AST/ASTImporter.cpp:  return Importer.getToContext().getFunctionType(ToResultType, ArgTypes.data(),
+lib/AST/StmtPrinter.cpp:	const FunctionType *AFT = Node->getFunctionType();
+lib/AST/ExprCXX.cpp:         Context.getPointerType(Context.getFunctionType(Context.VoidTy, 0, 0,
+lib/AST/ASTContext.cpp:		Result = getFunctionType(FPT->getResultType(), FPT->arg_type_begin(),
+lib/AST/ASTContext.cpp:/// getFunctionType - Return a normal function type with a typed argument
+lib/AST/ASTContext.cpp:ASTContext::getFunctionType(QualType ResultTy,
+lib/AST/ASTContext.cpp:		Canonical = getFunctionType(getCanonicalType(ResultTy),
+lib/AST/ASTContext.cpp:		return getFunctionType(retType, types.begin(), types.size(), EPI);
+lib/AST/ASTContext.cpp:		return getFunctionType(retType, proto->arg_type_begin(),
+lib/AST/ASTContext.cpp:					= getFunctionType(OldReturnType, FPT->arg_type_begin(),
+lib/AST/ASTContext.cpp:	return getFunctionType(ResType, ArgTypes.data(), ArgTypes.size(), EPI);
+lib/AST/.svn/text-base/ASTImporter.cpp.svn-base:  return Importer.getToContext().getFunctionType(ToResultType, ArgTypes.data(),
+lib/AST/.svn/text-base/Expr.cpp.svn-base:/// getFunctionType - Return the underlying function type for this block.
+lib/AST/.svn/text-base/Expr.cpp.svn-base:const FunctionType *BlockExpr::getFunctionType() const {
+lib/AST/.svn/text-base/ExprCXX.cpp.svn-base:         Context.getPointerType(Context.getFunctionType(Context.VoidTy, 0, 0,
+lib/AST/.svn/text-base/StmtPrinter.cpp.svn-base:  const FunctionType *AFT = Node->getFunctionType();
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:    Result = getFunctionType(FPT->getResultType(), FPT->arg_type_begin(),
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:/// getFunctionType - Return a normal function type with a typed argument
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:ASTContext::getFunctionType(QualType ResultTy,
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:    Canonical = getFunctionType(getCanonicalType(ResultTy),
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:    return getFunctionType(retType, types.begin(), types.size(), EPI);
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:    return getFunctionType(retType, proto->arg_type_begin(),
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:          = getFunctionType(OldReturnType, FPT->arg_type_begin(),
+lib/AST/.svn/text-base/ASTContext.cpp.svn-base:  return getFunctionType(ResType, ArgTypes.data(), ArgTypes.size(), EPI);
+lib/AST/Expr.cpp:/// getFunctionType - Return the underlying function type for this block.
+lib/AST/Expr.cpp:const FunctionType *BlockExpr::getFunctionType() const {
+lib/AST/GlobalVariablePicker.cpp:	const FunctionType *AFT = Node->getFunctionType();
+lib/AST/OpenCLPrinter.cpp:	const FunctionType *AFT = Node->getFunctionType();
+lib/Rewrite/RewriteObjC.cpp:      return Context->getFunctionType(result, args, numArgs, fpi);
+lib/Rewrite/RewriteObjC.cpp:  const FunctionType *AFT = CE->getFunctionType();
+lib/Rewrite/RewriteObjC.cpp:  QualType BFT = convertFunctionTypeOfBlocks(Exp->getFunctionType());
+lib/Rewrite/.svn/text-base/RewriteObjC.cpp.svn-base:      return Context->getFunctionType(result, args, numArgs, fpi);
+lib/Rewrite/.svn/text-base/RewriteObjC.cpp.svn-base:  const FunctionType *AFT = CE->getFunctionType();
+lib/Rewrite/.svn/text-base/RewriteObjC.cpp.svn-base:  QualType BFT = convertFunctionTypeOfBlocks(Exp->getFunctionType());
+Binary file lib/Frontend/BoostConAction.o matches
+lib/Parse/.svn/text-base/Parser.cpp.svn-base:      Declarator.getFunctionTypeInfo().isKNRPrototype()) 
+lib/Parse/.svn/text-base/Parser.cpp.svn-base:  const DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Parse/.svn/text-base/Parser.cpp.svn-base:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Parse/.svn/text-base/ParseDeclCXX.cpp.svn-base:    = DeclaratorInfo.getFunctionTypeInfo();
+lib/Parse/ParseDeclCXX.cpp:    = DeclaratorInfo.getFunctionTypeInfo();
+lib/Parse/Parser.cpp:      Declarator.getFunctionTypeInfo().isKNRPrototype()) 
+lib/Parse/Parser.cpp:  const DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/Parse/Parser.cpp:  DeclaratorChunk::FunctionTypeInfo &FTI = D.getFunctionTypeInfo();
+lib/CodeGen/CGObjCRuntime.cpp:  SyncArg = CGF.Builder.CreateBitCast(SyncArg, syncEnterFn->getFunctionType()->getParamType(0));
+lib/CodeGen/CodeGenFunction.cpp:      getContext().getFunctionType(RetTy, 0, 0,
+lib/CodeGen/CGCall.cpp:      const llvm::FunctionType *ActualFT = CalleeF->getFunctionType();
+lib/CodeGen/.svn/text-base/CGCall.cpp.svn-base:      const llvm::FunctionType *ActualFT = CalleeF->getFunctionType();
+lib/CodeGen/.svn/text-base/CodeGenFunction.cpp.svn-base:      getContext().getFunctionType(RetTy, 0, 0,
+lib/CodeGen/.svn/text-base/CGBlocks.cpp.svn-base:    cast<FunctionProtoType>(blockInfo.getBlockExpr()->getFunctionType());
+lib/CodeGen/.svn/text-base/CGObjCRuntime.cpp.svn-base:  SyncArg = CGF.Builder.CreateBitCast(SyncArg, syncEnterFn->getFunctionType()->getParamType(0));
+lib/CodeGen/.svn/text-base/CGBuiltin.cpp.svn-base:    const llvm::FunctionType *FTy = F->getFunctionType();
+lib/CodeGen/CGBlocks.cpp:    cast<FunctionProtoType>(blockInfo.getBlockExpr()->getFunctionType());
+lib/CodeGen/CGBuiltin.cpp:    const llvm::FunctionType *FTy = F->getFunctionType();
+tags:TargetFunctionType	lib/Sema/SemaOverload.cpp	/^  QualType TargetFunctionType; \/\/ Extracted function type from target type $/;"	m	class:clang::AddressOfFunctionResolver	file:
+tags:getFunctionType	lib/AST/ASTContext.cpp	/^ASTContext::getFunctionType(QualType ResultTy,$/;"	f	class:ASTContext
+tags:getFunctionType	lib/AST/Expr.cpp	/^const FunctionType *BlockExpr::getFunctionType() const {$/;"	f	class:BlockExpr
+tags:getFunctionType	lib/Sema/CodeCompleteConsumer.cpp	/^CodeCompleteConsumer::OverloadCandidate::getFunctionType() const {$/;"	f	class:CodeCompleteConsumer::OverloadCandidate
+tags:getFunctionType	lib/Sema/SemaDeclAttr.cpp	/^static const FunctionType *getFunctionType(const Decl *d,$/;"	f	file:
+tags:getFunctionTypeInfo	include/clang/Sema/DeclSpec.h	/^  DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() {$/;"	f	class:clang::Declarator
+tags:getFunctionTypeInfo	include/clang/Sema/DeclSpec.h	/^  const DeclaratorChunk::FunctionTypeInfo &getFunctionTypeInfo() const {$/;"	f	class:clang::Declarator

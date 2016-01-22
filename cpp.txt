@@ -1,0 +1,45 @@
+./tools/clang/lib/FrontendTool/ExecuteCompilerInvocation.cpp://===--- ExecuteCompilerInvocation.cpp ------------------------------------===//
+./tools/clang/lib/FrontendTool/ExecuteCompilerInvocation.cpp:// This file holds ExecuteCompilerInvocation(). It is split into its own file to
+./tools/clang/lib/FrontendTool/ExecuteCompilerInvocation.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/lib/FrontendTool/ExecuteCompilerInvocation.cpp:bool clang::ExecuteCompilerInvocation(CompilerInstance *Clang) {
+./tools/clang/lib/Frontend/CompilerInstance.cpp:  : Invocation(new CompilerInvocation()) {
+./tools/clang/lib/Frontend/CompilerInstance.cpp:void CompilerInstance::setInvocation(CompilerInvocation *Value) {
+./tools/clang/lib/Frontend/CompilerInvocation.cpp://===--- CompilerInvocation.cpp -------------------------------------------===//
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:void CompilerInvocation::toArgs(std::vector<std::string> &Res) {
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:std::string CompilerInvocation::GetResourcesPath(const char *Argv0,
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:void CompilerInvocation::setLangDefaults(LangOptions &Opts, InputKind IK,
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:  CompilerInvocation::setLangDefaults(Opts, IK, LangStd);
+./tools/clang/lib/Frontend/CompilerInvocation.cpp:void CompilerInvocation::CreateFromArgs(CompilerInvocation &Res,
+./tools/clang/lib/Frontend/ASTUnit.cpp:ASTUnit::ComputePreamble(CompilerInvocation &Invocation, 
+./tools/clang/lib/Frontend/ASTUnit.cpp:                                          CompilerInvocation PreambleInvocation,
+./tools/clang/lib/Frontend/ASTUnit.cpp:ASTUnit *ASTUnit::create(CompilerInvocation *CI,
+./tools/clang/lib/Frontend/ASTUnit.cpp:bool ASTUnit::LoadFromCompilerInvocation(bool PrecompilePreamble) {
+./tools/clang/lib/Frontend/ASTUnit.cpp:ASTUnit *ASTUnit::LoadFromCompilerInvocation(CompilerInvocation *CI,
+./tools/clang/lib/Frontend/ASTUnit.cpp:  return AST->LoadFromCompilerInvocation(PrecompilePreamble)? 0 : AST.take();
+./tools/clang/lib/Frontend/ASTUnit.cpp:  llvm::IntrusiveRefCntPtr<CompilerInvocation> CI;
+./tools/clang/lib/Frontend/ASTUnit.cpp:    CI = new CompilerInvocation();
+./tools/clang/lib/Frontend/ASTUnit.cpp:    CompilerInvocation::CreateFromArgs(*CI,
+./tools/clang/lib/Frontend/ASTUnit.cpp:  llvm::CrashRecoveryContextCleanupRegistrar<CompilerInvocation,
+./tools/clang/lib/Frontend/ASTUnit.cpp:    llvm::CrashRecoveryContextReleaseRefCleanup<CompilerInvocation> >
+./tools/clang/lib/Frontend/ASTUnit.cpp:  return AST->LoadFromCompilerInvocation(PrecompilePreamble) ? 0 : AST.take();
+./tools/clang/lib/Frontend/ASTUnit.cpp:  llvm::IntrusiveRefCntPtr<CompilerInvocation>
+./tools/clang/lib/Frontend/ASTUnit.cpp:    CCInvocation(new CompilerInvocation(*Invocation));
+./tools/clang/lib/Serialization/ChainedIncludesSource.cpp:    llvm::OwningPtr<CompilerInvocation> CInvok;
+./tools/clang/lib/Serialization/ChainedIncludesSource.cpp:    CInvok.reset(new CompilerInvocation(CI.getInvocation()));
+./tools/clang/tools/driver/cc1_main.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/tools/driver/cc1_main.cpp:  CompilerInvocation Invocation;
+./tools/clang/tools/driver/cc1_main.cpp:  CompilerInvocation::CreateFromArgs(Invocation, ArgBegin, ArgEnd, Diags);
+./tools/clang/tools/driver/cc1_main.cpp:  CompilerInvocation Invocation2;
+./tools/clang/tools/driver/cc1_main.cpp:  CompilerInvocation::CreateFromArgs(Invocation2, Invocation2Args.begin(),
+./tools/clang/tools/driver/cc1_main.cpp:  // FIXME: Implement CompilerInvocation comparison.
+./tools/clang/tools/driver/cc1_main.cpp:  CompilerInvocation::CreateFromArgs(Clang->getInvocation(), ArgBegin, ArgEnd,
+./tools/clang/tools/driver/cc1_main.cpp:      CompilerInvocation::GetResourcesPath(Argv0, MainAddr);
+./tools/clang/tools/driver/cc1_main.cpp:  bool Success = ExecuteCompilerInvocation(Clang.get());
+./tools/clang/examples/clang-interpreter/main.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/examples/clang-interpreter/main.cpp:  llvm::OwningPtr<CompilerInvocation> CI(new CompilerInvocation);
+./tools/clang/examples/clang-interpreter/main.cpp:  CompilerInvocation::CreateFromArgs(*CI,
+./tools/clang/examples/clang-interpreter/main.cpp:      CompilerInvocation::GetResourcesPath(argv[0], MainAddr);
+./tools/clang/unittests/Frontend/FrontendActionTest.cpp:#include "clang/Frontend/CompilerInvocation.h"
+./tools/clang/unittests/Frontend/FrontendActionTest.cpp:  CompilerInvocation *invocation = new CompilerInvocation;

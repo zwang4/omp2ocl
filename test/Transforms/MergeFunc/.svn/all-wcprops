@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/125180/llvm/trunk/test/Transforms/MergeFunc
+END
+fold-weak.ll
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/124182/llvm/trunk/test/Transforms/MergeFunc/fold-weak.ll
+END
+2011-02-08-RemoveEqual.ll
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/llvm-project/!svn/ver/125180/llvm/trunk/test/Transforms/MergeFunc/2011-02-08-RemoveEqual.ll
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/70892/llvm/trunk/test/Transforms/MergeFunc/dg.exp
+END
+vector.ll
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/124368/llvm/trunk/test/Transforms/MergeFunc/vector.ll
+END
+vectors-and-arrays.ll
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/108517/llvm/trunk/test/Transforms/MergeFunc/vectors-and-arrays.ll
+END
+phi-speculation1.ll
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/81537/llvm/trunk/test/Transforms/MergeFunc/phi-speculation1.ll
+END
+phi-speculation2.ll
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/81537/llvm/trunk/test/Transforms/MergeFunc/phi-speculation2.ll
+END

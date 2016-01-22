@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/llvm-project/!svn/ver/128405/llvm/trunk/lib/Target/PTX
+END
+PTXISelLowering.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/128405/llvm/trunk/lib/Target/PTX/PTXISelLowering.cpp
+END
+PTXMCAsmStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/127873/llvm/trunk/lib/Target/PTX/PTXMCAsmStreamer.cpp
+END
+PTX.td
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/127677/llvm/trunk/lib/Target/PTX/PTX.td
+END
+PTXRegisterInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/119740/llvm/trunk/lib/Target/PTX/PTXRegisterInfo.h
+END
+PTXSubtarget.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/127677/llvm/trunk/lib/Target/PTX/PTXSubtarget.h
+END
+PTXFrameLowering.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/126936/llvm/trunk/lib/Target/PTX/PTXFrameLowering.h
+END
+PTXISelLowering.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/127895/llvm/trunk/lib/Target/PTX/PTXISelLowering.h
+END
+PTXMFInfoExtract.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/126824/llvm/trunk/lib/Target/PTX/PTXMFInfoExtract.cpp
+END
+PTXInstrInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/128405/llvm/trunk/lib/Target/PTX/PTXInstrInfo.cpp
+END
+PTXTargetMachine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/126838/llvm/trunk/lib/Target/PTX/PTXTargetMachine.cpp
+END
+PTXMCAsmInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/114294/llvm/trunk/lib/Target/PTX/PTXMCAsmInfo.cpp
+END
+PTXInstrInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/128084/llvm/trunk/lib/Target/PTX/PTXInstrInfo.h
+END
+PTXInstrFormats.td
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/114294/llvm/trunk/lib/Target/PTX/PTXInstrFormats.td
+END
+PTXTargetMachine.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/126838/llvm/trunk/lib/Target/PTX/PTXTargetMachine.h
+END
+PTXMCAsmInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/114294/llvm/trunk/lib/Target/PTX/PTXMCAsmInfo.h
+END
+PTXIntrinsicInstrInfo.td
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/127677/llvm/trunk/lib/Target/PTX/PTXIntrinsicInstrInfo.td
+END
+PTXAsmPrinter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/127895/llvm/trunk/lib/Target/PTX/PTXAsmPrinter.cpp
+END
+PTX.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/127577/llvm/trunk/lib/Target/PTX/PTX.h
+END
+PTXRegisterInfo.td
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/126824/llvm/trunk/lib/Target/PTX/PTXRegisterInfo.td
+END
+PTXISelDAGToDAG.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/128153/llvm/trunk/lib/Target/PTX/PTXISelDAGToDAG.cpp
+END
+PTXMachineFunctionInfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/126837/llvm/trunk/lib/Target/PTX/PTXMachineFunctionInfo.h
+END
+PTXInstrInfo.td
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/128405/llvm/trunk/lib/Target/PTX/PTXInstrInfo.td
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/llvm-project/!svn/ver/119056/llvm/trunk/lib/Target/PTX/Makefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/126068/llvm/trunk/lib/Target/PTX/CMakeLists.txt
+END
+PTXRegisterInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/114294/llvm/trunk/lib/Target/PTX/PTXRegisterInfo.cpp
+END
+PTXSubtarget.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/127677/llvm/trunk/lib/Target/PTX/PTXSubtarget.cpp
+END
+PTXFrameLowering.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/123170/llvm/trunk/lib/Target/PTX/PTXFrameLowering.cpp
+END

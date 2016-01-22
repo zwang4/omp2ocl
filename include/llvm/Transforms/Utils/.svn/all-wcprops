@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/127924/llvm/trunk/include/llvm/Transforms/Utils
+END
+Cloning.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/116387/llvm/trunk/include/llvm/Transforms/Utils/Cloning.h
+END
+Local.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/127924/llvm/trunk/include/llvm/Transforms/Utils/Local.h
+END
+SSAUpdater.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/123501/llvm/trunk/include/llvm/Transforms/Utils/SSAUpdater.h
+END
+BasicBlockUtils.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/124526/llvm/trunk/include/llvm/Transforms/Utils/BasicBlockUtils.h
+END
+SSAUpdaterImpl.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/103184/llvm/trunk/include/llvm/Transforms/Utils/SSAUpdaterImpl.h
+END
+ValueMapper.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/123058/llvm/trunk/include/llvm/Transforms/Utils/ValueMapper.h
+END
+BasicInliner.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/llvm-project/!svn/ver/83998/llvm/trunk/include/llvm/Transforms/Utils/BasicInliner.h
+END
+AddrModeMatcher.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/122458/llvm/trunk/include/llvm/Transforms/Utils/AddrModeMatcher.h
+END
+UnifyFunctionExitNodes.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/llvm-project/!svn/ver/116820/llvm/trunk/include/llvm/Transforms/Utils/UnifyFunctionExitNodes.h
+END
+BuildLibCalls.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/122576/llvm/trunk/include/llvm/Transforms/Utils/BuildLibCalls.h
+END
+PromoteMemToReg.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/llvm-project/!svn/ver/123662/llvm/trunk/include/llvm/Transforms/Utils/PromoteMemToReg.h
+END
+UnrollLoop.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/75529/llvm/trunk/include/llvm/Transforms/Utils/UnrollLoop.h
+END
+FunctionUtils.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/75529/llvm/trunk/include/llvm/Transforms/Utils/FunctionUtils.h
+END

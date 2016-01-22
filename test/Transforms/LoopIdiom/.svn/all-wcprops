@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/127182/llvm/trunk/test/Transforms/LoopIdiom
+END
+debug-line.ll
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/127182/llvm/trunk/test/Transforms/LoopIdiom/debug-line.ll
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/122573/llvm/trunk/test/Transforms/LoopIdiom/dg.exp
+END
+basic.ll
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/126044/llvm/trunk/test/Transforms/LoopIdiom/basic.ll
+END

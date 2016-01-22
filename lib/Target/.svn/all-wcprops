@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/llvm-project/!svn/ver/128709/llvm/trunk/lib/Target
+END
+TargetAsmInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/123170/llvm/trunk/lib/Target/TargetAsmInfo.cpp
+END
+TargetRegisterInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/123170/llvm/trunk/lib/Target/TargetRegisterInfo.cpp
+END
+TargetSubtarget.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/88682/llvm/trunk/lib/Target/TargetSubtarget.cpp
+END
+TargetFrameLowering.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/123170/llvm/trunk/lib/Target/TargetFrameLowering.cpp
+END
+TargetMachine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/128431/llvm/trunk/lib/Target/TargetMachine.cpp
+END
+SubtargetFeature.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/122193/llvm/trunk/lib/Target/SubtargetFeature.cpp
+END
+TargetData.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/120298/llvm/trunk/lib/Target/TargetData.cpp
+END
+TargetInstrInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/128227/llvm/trunk/lib/Target/TargetInstrInfo.cpp
+END
+TargetLoweringObjectFile.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/124059/llvm/trunk/lib/Target/TargetLoweringObjectFile.cpp
+END
+Mangler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/125363/llvm/trunk/lib/Target/Mangler.cpp
+END
+TargetIntrinsicInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/84192/llvm/trunk/lib/Target/TargetIntrinsicInfo.cpp
+END
+TargetELFWriterInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/115469/llvm/trunk/lib/Target/TargetELFWriterInfo.cpp
+END
+Target.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/125965/llvm/trunk/lib/Target/Target.cpp
+END
+TargetAsmLexer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/94940/llvm/trunk/lib/Target/TargetAsmLexer.cpp
+END
+TargetLibraryInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/126940/llvm/trunk/lib/Target/TargetLibraryInfo.cpp
+END
+README.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/128286/llvm/trunk/lib/Target/README.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/94378/llvm/trunk/lib/Target/Makefile
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/126068/llvm/trunk/lib/Target/CMakeLists.txt
+END

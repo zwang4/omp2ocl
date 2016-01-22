@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/repo/inf/clash/!svn/ver/296/omp2ocl/benchmarks/npb-ocl/BT-tuned
+END
+bt.A.cl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/inf/clash/!svn/ver/276/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.A.cl
+END
+bt.B.cl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.B.cl
+END
+bt.C.cl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.C.cl
+END
+bt.S.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repo/inf/clash/!svn/ver/277/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.S.c
+END
+bt.c-original
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.c-original
+END
+bt.W.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repo/inf/clash/!svn/ver/296/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.W.c
+END
+bt.c-template
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.c-template
+END
+bt.S.cl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/inf/clash/!svn/ver/277/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.S.cl
+END
+bt.A.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repo/inf/clash/!svn/ver/296/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.A.c
+END
+bt.B.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.B.c
+END
+bt.C.c
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.C.c
+END
+bt.W.cl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repo/inf/clash/!svn/ver/277/omp2ocl/benchmarks/npb-ocl/BT-tuned/bt.W.cl
+END
+transpose.cl
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/transpose.cl
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/Makefile
+END
+header.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/repo/inf/clash/!svn/ver/271/omp2ocl/benchmarks/npb-ocl/BT-tuned/header.h
+END

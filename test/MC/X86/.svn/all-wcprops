@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/llvm-project/!svn/ver/127875/llvm/trunk/test/MC/X86
+END
+x86_64-imm-widths.s
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/115685/llvm/trunk/test/MC/X86/x86_64-imm-widths.s
+END
+x86_64-avx-encoding.s
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_64-avx-encoding.s
+END
+x86_operands.s
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_operands.s
+END
+x86_errors.s
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_errors.s
+END
+x86_64-encoding.s
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/125795/llvm/trunk/test/MC/X86/x86_64-encoding.s
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/dg.exp
+END
+x86_64-avx-clmul-encoding.s
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_64-avx-clmul-encoding.s
+END
+3DNow.s
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/115477/llvm/trunk/test/MC/X86/3DNow.s
+END
+x86-32-fma3.s
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86-32-fma3.s
+END
+x86-32-coverage.s
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/llvm-project/!svn/ver/125795/llvm/trunk/test/MC/X86/x86-32-coverage.s
+END
+x86-32-avx.s
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86-32-avx.s
+END
+x86_directives.s
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_directives.s
+END
+x86_64-fma3-encoding.s
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/115292/llvm/trunk/test/MC/X86/x86_64-fma3-encoding.s
+END
+x86-32.s
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/127875/llvm/trunk/test/MC/X86/x86-32.s
+END
+x86-64.s
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/127875/llvm/trunk/test/MC/X86/x86-64.s
+END

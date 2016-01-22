@@ -1,0 +1,412 @@
+
+from __future__ import division
+
+import re
+import os
+
+import sqlite3
+import numpy as np
+import itertools
+#import matplotlib.pyplot as plt
+
+  
+experiments = [ \
+               [ "stream_sdk_AES_encrypt", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_AES_decrypt", "width>=1024 AND height=width", "width" ], \
+               [ "stream_sdk_binarySearch_binarySearch", "length>=1048576 AND subDivSize=8", "length" ], \
+               [ "stream_sdk_blackscholes_blackscholes", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_boxFilter", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_horizontalSAT0", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_horizontalSAT", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_verticalSAT", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_vertical", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_boxFilter_horizontal","width>=1024 AND width=height", "width" ] , \
+               [ "stream_sdk_boxFilter_horizontalLocal", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_DCT_DCT", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_histogram_histogram256", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_histogramAtomics_histogramGlobal", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_histogramAtomics_histogramLocal", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_mandelbrot_mandelbrot", "width>=1024 AND width=height AND maxIter=32", "width" ], \
+               [ "stream_sdk_matrixMul_matrixMul", "widthA>=1024 AND heightA=widthA AND widthA=widthB", "widthA" ], \
+               [ "stream_sdk_matrixMul_matrixMul_local", "widthA>=1024 AND heightA=widthA AND widthA=widthB", "widthA" ], \
+               [ "stream_sdk_matrixMul_matrixMul_local2", "widthA>=1024 AND heightA=widthA AND widthA=widthB", "widthA" ], \
+               [ "stream_sdk_mersenneTwister_gaussianRand", "width>=1024 AND width=height", "width" ], \
+               [ "stream_sdk_monteCarloAsian_calPriceVega", "width>=1024 AND width=height AND noOfSum=12 AND width < 4096", "width" ], \
+               [ "stream_sdk_nbody_nbody_sim", "numBodies>=32768", "numBodies" ], \
+
+               [ "shoc_fft_fft1D", "n_ffts>=16384 AND localx=64", "n_ffts" ], \
+               [ "shoc_fft_ifft1D", "n_ffts>=16384 AND localx=64", "n_ffts" ], \
+               [ "shoc_md_computeAccel", "nAtom>=32768 AND localx=256", "nAtom" ], \
+               [ "shoc_md_applyBoundary", "nAtom>=1048576 AND localx=256", "nAtom" ], \
+               [ "shoc_md_updateVelocities", "nAtom>=1048576 AND localx=256", "nAtom" ], \
+               [ "shoc_md_updateCoordinates", "nAtom>=1048576 AND localx=256", "nAtom" ], \
+               #[ "shoc_reduction_reduce", "size>=1048576 AND numBlocks=64 AND localx=256", "size" ], \
+               [ "shoc_scan_addUniform", "numElements>=1048576 AND localx=256", "numElements" ], \
+               [ "shoc_scan_scan", "numElements>=1048576 AND localx=256", "numElements" ], \
+               [ "shoc_sgemm_sgemmNT", "N>=1024 AND localx=16 AND localy=4", "N" ], \
+               [ "shoc_sgemm_sgemmNN", "N>=1024 AND localx=16 AND localy=4", "N" ], \
+
+               [ "nvidia_sdk_blackscholes_blackscholes", "optn>=10000000 AND localx=128", "optn" ], \
+               [ "nvidia_sdk_convolutionSeparable_convolutionColumns", "imageWidth>=1024 AND imageWidth=imageHeight AND kernelRadius=8 AND localx=16 AND localy=4", "imageWidth" ], \
+               [ "nvidia_sdk_convolutionSeparable_convolutionRows", "imageWidth>=1024 AND imageWidth=imageHeight AND kernelRadius=8 AND localx=16 AND localy=4", "imageWidth" ], \
+               [ "nvidia_sdk_dotProduct_dotProduct", "length>=262144 AND localx=64", "length" ], \
+               [ "nvidia_sdk_matrixMul_matrixMul", "widthA>=1024 AND widthA=heightA AND widthA==widthB AND localx=16 AND localy=16", "widthA" ], \
+               [ "nvidia_sdk_matVecMul_matVecMulUncoalesced0", "width>=1024 AND width=height AND localx=32", "width" ], \
+               [ "nvidia_sdk_matVecMul_matVecMulUncoalesced1", "width>=1024 AND width=height AND localx=32", "width" ], \
+               [ "nvidia_sdk_matVecMul_matVecMulCoalesced0", "width>=1024 AND width=height AND localx=32", "width" ], \
+               [ "nvidia_sdk_matVecMul_matVecMulCoalesced1", "width>=1024 AND width=height AND localx=32", "width" ], \
+               [ "nvidia_sdk_matVecMul_matVecMulCoalesced2", "width>=1024 AND width=height AND localx=32", "width" ], \
+
+               [ "parboil_cp_cuenergy", "volx>=1024 AND volx=voly AND atoms=2000 AND localx=8 AND localy=8", "volx" ], \
+               [ "parboil_mri-fhd_computeFH", "numx>=1048576 AND numk=1024 AND localx=64", "numx" ], \
+               [ "parboil_mri-fhd_computeRhoPhi", "numk>=32768 AND localx=64", "numk" ], \
+               [ "parboil_mri-q_computeQ", "numx>=1048576 AND numk=1024 AND localx=64", "numx" ], \
+               [ "parboil_mri-q_computePhiMag", "numk>=32768 AND localx=64", "numk" ], \
+              ]
+
+
+benchmarks = [ ("bt",["tuned","ocl-noswap"]),
+               ("cg",["tuned"]),
+               ("ep",["tuned-nvidia"]),
+               ("ft",["tuned","ocl-noswap"]),
+               ("is",["manual"]),
+               ("lu",["soa","ocl-noswap"]),
+               ("mg",["swap","ocl"]),
+               ("sp",["tuned","expand-noswap"])
+             ]
+inputs = [ "S", "W", "A", "B", "C" ]
+
+
+  #featFuncs = [ \
+  #             #lambda f: (f["IntOps"] + f["Int4Ops"] + f["FloatOps"] + f["Float4Ops"]) * f["GlobalWorksize"], \
+  #             #lambda f: f["IntOps"] * f["GlobalWorksize"], \
+  #             #lambda f: f["Int4Ops"] * f["GlobalWorksize"], \
+  #             #lambda f: f["FloatOps"] * f["GlobalWorksize"], \
+  #             #lambda f: f["Float4Ops"] * f["GlobalWorksize"], \
+  #             #lambda f: f["GlobalMemUse"] * f["GlobalWorksize"], \
+  #             #lambda f: f["LocalMemUse"] * f["GlobalWorksize"], \
+  #             #lambda f: f["Barriers"] * f["GlobalWorksize"], \
+  #             #lambda f: f["OCLArithmetic"] * f["GlobalWorksize"], \
+
+  #             #lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) * f["GlobalWorksize"], \
+  #             lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) / f["GlobalMemUse"], \
+  #             #lambda f: f["DataTransferSize"], \
+  #             #lambda f: f["DynamicLocalMemSize"] + f["StaticLocalMemSize"], \
+  #             #lambda f: f["GlobalWorksize"], \
+  #             lambda f: (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])) / f["DataTransferSize"], \
+  #             #lambda f: f["LocalMemUse"] / (f["GlobalMemUse"] + f["LocalMemUse"])
+
+  #             #lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"]) * f["GlobalWorksize"], \
+  #             #lambda f: (4*f["Int4Ops"] + 4*f["Float4Ops"]) / (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"]), \
+  #             #lambda f: (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])) / f["DataTransferSize"], \
+  #             #lambda f: f["CoalescedMemAccess"] / f["GlobalMemUse"], \
+  #             #lambda f: f["LocalMemUse"] / (f["LocalMemUse"] + f["GlobalMemUse"]), \
+  #            ]
+
+featFuncs = [
+             #lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) / f["GlobalMemUse"],
+             ##lambda f: f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"]),
+             ##lambda f: f["DataTransferSize"],
+             #lambda f: (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])) / f["DataTransferSize"],
+             ##lambda f: f["CoalescedMemAccess"] / f["GlobalMemUse"], \
+
+             #lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) / f["GlobalMemUse"],
+             #lambda f: (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])) / f["DataTransferSize"],
+             #lambda f: (f["IntOps"] + 4*f["Int4Ops"]) / f["GlobalMemUse"],
+	     #lambda f: f["LocalMemUse"] / f["GlobalMemUse"],
+	     #lambda f: (((f["GlobalWorksize"] * (f["IntOps"] + f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"]) / (f["DataTransferSize"]))) / (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) / f["GlobalMemUse"]),
+             #lambda f: f["CoalescedMemAccess"] / f["GlobalMemUse"],
+             #lambda f: f["DataTransferSize"] / f["GlobalMemUse"],
+
+             #lambda f: (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"]) / f["GlobalMemUse"],
+             #lambda f: (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])) / f["DataTransferSize"],
+             lambda f: f["DataTransferSize"] / (f["GlobalWorksize"] * (f["IntOps"] + 4*f["Int4Ops"] + f["FloatOps"] + 4*f["Float4Ops"] + f["OCLArithmetic"] + f["GlobalMemUse"] + f["LocalMemUse"])),
+             #lambda f: f["DataTransferSize"],
+             lambda f: f["CoalescedMemAccess"] / f["GlobalMemUse"],
+	         lambda f: f["LocalMemUse"] / f["GlobalMemUse"],
+			 lambda f: (f["FloatOps"] + 4*f["Float4Ops"])/f["GlobalMemUse"],
+            ]
+  
+
+
+def read_features (filename):
+  if not os.path.isfile (filename): return None
+  f = open (filename, 'r')
+
+  featVals = {}
+
+  for line in f:
+    pattern = "\s*(\w+): (\d+)"
+    m = re.match (pattern, line)
+    if m:
+      featVals[m.group(1)] = int(m.group(2))
+
+  return featVals
+
+
+
+def collect_train_data (cursCPU, cursGPU, kernelList, kernelConstr, kernelOrder, featFuncs):
+
+  # iterate over files in feature-directory
+  featDir = "data/train/feat-extract/"
+
+  feats = []
+  timesCPU = []
+  timesGPU = []
+
+  for (kernel,constr,orderBy) in zip (kernelList, kernelConstr, kernelOrder):
+
+    kernelName = kernel.rpartition ("_")[0]
+
+    kernelPath = featDir + kernel
+    for filename in os.listdir (kernelPath):
+
+      if re.match ("\..*\.swp", filename):
+        continue
+
+      # build query from filename
+      args = filename.split('-')
+      #(argNames,argValues) = zip (*[ arg.split('_') for arg in args ])
+
+      query = "SELECT overall_avg FROM " + kernel.replace('-','_') + " WHERE "
+      query += " AND ".join ( arg[::-1].replace ('_', '=', 1)[::-1] for arg in args )
+      if (constr != ""):
+        query += " AND " + constr
+      query += " ORDER BY " + orderBy + " ASC"
+
+      # CPU
+      try:
+        cursCPU.execute(query)
+      except sqlite3.OperationalError:
+        continue
+
+      db_ret = cursCPU.fetchone()
+      cursCPU.fetchall()
+      if db_ret == None:
+        continue
+
+      runtime = db_ret[0]
+      timesCPU.append (runtime)
+
+      # GPU
+      try:
+        cursGPU.execute(query)
+      except sqlite3.OperationalError:
+        timesCPU.pop()
+        continue
+
+      db_ret = cursGPU.fetchone()
+      cursGPU.fetchall()
+      if db_ret == None:
+        timesCPU.pop()
+        continue
+
+      runtime = db_ret[0]
+      timesGPU.append (runtime)
+
+
+      # features
+      featVals = read_features (kernelPath + "/" + filename)
+      if featVals == None:
+        timesCPU.pop()
+        timesGPU.pop()
+        continue
+
+      features = [ f(featVals) for f in featFuncs ]
+      feats.append (features)
+
+
+  tCPU = np.array (timesCPU)
+  tGPU = np.array (timesGPU)
+
+  features = np.array (feats, copy=False)
+
+  return (features, tCPU, tGPU)
+
+
+
+def collect_train (cpu_name, gpu_name):
+
+  train_data_dir = "data/train"
+
+  dbCPU = sqlite3.connect (os.path.join (train_data_dir, "%s.db" % cpu_name))
+  cursCPU = dbCPU.cursor()
+
+  dbGPU = sqlite3.connect (os.path.join (train_data_dir, "%s.db" % gpu_name))
+  cursGPU = dbGPU.cursor()
+  
+  (kernelList, kernelConstr, kernelOrder) = zip (*experiments)
+  
+  
+  
+  ret = collect_train_data (cursCPU, cursGPU, kernelList, kernelConstr, kernelOrder, featFuncs)
+
+  cursCPU.close()
+  dbCPU.close()
+
+  cursGPU.close()
+  dbGPU.close()
+
+  return ret
+
+
+
+def collect_test_data (cursCPU, cursGPU):
+
+  # iterate over files in feature-directory
+  featDir = "data/test/ml_features/"
+
+  feats = []
+  timesCPU = []
+  timesGPU = []
+  benchs = []
+
+  data = []
+
+  for (bench,versions) in benchmarks:
+
+    for version in versions:
+
+      for inp in inputs:
+
+        # build query
+        query = "SELECT time FROM %s_%s WHERE INPUT='%s'"
+        cpuQuery = query % (bench,"omp",inp)
+        gpuQuery = query % (bench,version.replace('-','_'),inp)
+
+        # CPU
+        try:
+          #print (cpuQuery)
+          cursCPU.execute(cpuQuery)
+        except sqlite3.OperationalError:
+          print ("cannot find CPU times for %s.%s.%s (DB error)" % (bench,version,inp))
+          continue
+
+        db_ret = cursCPU.fetchall()
+        if db_ret == None or db_ret == []:
+          print ("cannot find CPU times for %s.%s.%s" % (bench,version,inp))
+          continue
+
+        runtimes = np.array (db_ret)
+        timeCPU = np.median (runtimes)
+
+        # GPU
+        try:
+          #print (gpuQuery)
+          cursGPU.execute(gpuQuery)
+        except sqlite3.OperationalError:
+          print ("cannot find GPU times for %s.%s.%s (DB error)" % (bench,version,inp))
+          continue
+
+        db_ret = cursGPU.fetchall()
+        if db_ret == None or db_ret == []:
+          print ("cannot find GPU times for %s.%s.%s" % (bench,version,inp))
+          continue
+
+        runtimes = np.array (db_ret)
+        timeGPU = np.median (runtimes)
+
+
+        # features
+        featFile = os.path.join (featDir, "%s-%s" % (bench,version), "%s.%s" % (bench,inp))
+        featVals = read_features (featFile)
+        if featVals == None:
+          print ("cannot find features for %s.%s.%s" % (bench,version,inp))
+          continue
+        # add features not listed in files
+        featVals["GlobalWorksize"] = 1  # feature values are already multiplied by global worksize
+
+        # collect transfer size from DB (always use first version, sizes are equal for all versions)
+        query = "SELECT transfer FROM %s_%s WHERE INPUT='%s'" % (bench,versions[0].replace('-','_'),inp)
+        #print (query)
+        cursGPU.execute (query)
+        db_ret = cursGPU.fetchall ()
+        if db_ret == None or db_ret == []:
+          print ("cannot find transfer data for %s.%s.%s" % (bench,versions[0],inp))
+          continue
+        transfers = db_ret
+        #if (np.where (transfers != transfers[0]))[0].size > 1:
+        if len(np.where (transfers != transfers[0])) > 1:
+          print ("FAIL: inconsistent transfer data!!")
+          continue
+        #print (type(long(transfers[0][0])))
+        featVals["DataTransferSize"] = long (transfers[0][0])
+        
+
+        features = [ f(featVals) for f in featFuncs ]
+
+        feats.append (features)
+        timesCPU.append (timeCPU)
+        timesGPU.append (timeGPU)
+        benchs.append ( (bench,version,inp) )
+
+        data.append ((bench, version, inp, features, timeCPU, timeGPU))
+
+
+  feats = np.array (feats)
+  tCPU = np.array (timesCPU)
+  tGPU = np.array (timesGPU)
+
+  #return data
+  return (benchs,feats, tCPU, tGPU);
+
+
+
+def collect_test (cpu_name, gpu_name):
+
+  train_data_dir = "data/test"
+
+  dbCPU = sqlite3.connect (os.path.join (train_data_dir, "%s.db" % cpu_name))
+  cursCPU = dbCPU.cursor()
+
+  dbGPU = sqlite3.connect (os.path.join (train_data_dir, "%s.db" % gpu_name))
+  cursGPU = dbGPU.cursor()
+  
+
+  ret = collect_test_data (cursCPU, cursGPU)
+
+  cursCPU.close()
+  dbCPU.close()
+
+  cursGPU.close()
+  dbGPU.close()
+
+  return ret
+
+
+def plotPredictions (inputs, targets, predictions, bounds, kernels, xlim=None, ylim=None):
+
+  for (lo,hi,kernel) in zip (bounds,bounds[1:],kernels):
+    x = inputs[lo:hi]
+    y_real = targets[lo:hi]
+    y_pred = predictions[lo:hi]
+
+
+    # sort data before plotting
+    idxs = x.argsort()
+    x = x[idxs]
+    y_real = y_real[idxs]
+    y_pred = y_pred[idxs]
+
+
+    plt.plot (x,y_real, label="real", marker='o')
+    plt.plot (x,y_pred, label="prediction", marker='x')
+
+    plt.title (kernel)
+    plt.xlabel ("global work size")
+    plt.ylabel ("runtime (in ms)")
+
+    plt.legend (loc="best")
+
+    ax = plt.gca()
+    ax.set_xscale ('log', basex=2)
+
+    if xlim:
+      ax.set_xlim (xlim)
+    if ylim:
+      ax.set_ylim (ylim)
+
+    plt.show()
+    plt.close()
+
+

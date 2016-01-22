@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/llvm-project/!svn/ver/127555/llvm/trunk/tools/edis
+END
+EnhancedDisassembly.exports
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/101399/llvm/trunk/tools/edis/EnhancedDisassembly.exports
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/127555/llvm/trunk/tools/edis/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/123659/llvm/trunk/tools/edis/Makefile
+END
+EDMain.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/108869/llvm/trunk/tools/edis/EDMain.cpp
+END

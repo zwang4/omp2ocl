@@ -1,0 +1,159 @@
+Host-side debug code generation is turned off.
+This can be turned on by passing -debug_cg=on.
+Parsing...ft.host.c:125:41: warning: unused parameter '__ocl_buffer_x' [-Wunused-parameter]
+double myrandlc(double *x, ocl_buffer * __ocl_buffer_x, double a)
+                                        ^
+ft.host.c:205:51: warning: unused parameter '__ocl_buffer_x_seed' [-Wunused-parameter]
+void myvranlc(int n, double *x_seed, ocl_buffer * __ocl_buffer_x_seed, double a,
+                                                  ^
+ft.host.c:206:33: warning: unused parameter '__ocl_buffer_y' [-Wunused-parameter]
+              double y[], ocl_buffer * __ocl_buffer_y)
+                                       ^
+ft.host.c:309:14: warning: unused parameter 'argc' [-Wunused-parameter]
+int main(int argc, char **argv)
+             ^
+ft.host.c:309:27: warning: unused parameter 'argv' [-Wunused-parameter]
+int main(int argc, char **argv)
+                          ^
+ft.host.c:522:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 0,
+                                              ^
+ft.host.c:524:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 1,
+                                              ^
+ft.host.c:526:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 2,
+                                              ^
+ft.host.c:528:20: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArg(__ocl_evolve_0, 3, sizeof(int), &t);
+                                        ^
+ft.host.c:529:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 4,
+                                              ^
+ft.host.c:531:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 5,
+                                              ^
+ft.host.c:533:26: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArgBuffer(__ocl_evolve_0, 6,
+                                              ^
+ft.host.c:536:20: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArg(__ocl_evolve_0, 7, sizeof(int),
+                                        ^
+ft.host.c:539:20: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArg(__ocl_evolve_0, 8, sizeof(int),
+                                        ^
+ft.host.c:542:20: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclSetKernelArg(__ocl_evolve_0, 9, sizeof(int),
+                                        ^
+ft.host.c:560:16: error: use of undeclared identifier '__ocl_buffer_ex'
+                        oclDevReads(__ocl_buffer_ex);
+                                    ^
+ft.host.c:567:17: error: use of undeclared identifier '__ocl_evolve_0'
+                        oclRunKernel(__ocl_evolve_0, 3, _ocl_gws);
+                                     ^
+ft.host.c:495:27: warning: unused parameter 'u0_real' [-Wunused-parameter]
+static void evolve(double u0_real[128][256][256],
+                          ^
+ft.host.c:497:13: warning: unused parameter 'u0_imag' [-Wunused-parameter]
+                   double u0_imag[128][256][256],
+                          ^
+ft.host.c:499:13: warning: unused parameter 'u1_real' [-Wunused-parameter]
+                   double u1_real[128][256][256],
+                          ^
+ft.host.c:501:13: warning: unused parameter 'u1_imag' [-Wunused-parameter]
+                   double u1_imag[128][256][256],
+                          ^
+ft.host.c:502:45: warning: unused parameter 't' [-Wunused-parameter]
+                   ocl_buffer * __ocl_buffer_u1_imag, int t,
+                                                          ^
+ft.host.c:503:10: warning: unused parameter 'indexmap' [-Wunused-parameter]
+                   int indexmap[128][256][256],
+                       ^
+ft.host.c:505:19: warning: unused parameter '__ocl_buffer_d' [-Wunused-parameter]
+                   ocl_buffer * __ocl_buffer_d)
+                                ^
+ft.host.c:574:25: warning: unused parameter '__ocl_buffer_u0_real' [-Wunused-parameter]
+                                       ocl_buffer * __ocl_buffer_u0_real,
+                                                    ^
+ft.host.c:576:25: warning: unused parameter '__ocl_buffer_u0_imag' [-Wunused-parameter]
+                                       ocl_buffer * __ocl_buffer_u0_imag,
+                                                    ^
+ft.host.c:577:16: warning: unused parameter 'd' [-Wunused-parameter]
+                                       int d[3], ocl_buffer * __ocl_buffer_d)
+                                           ^
+ft.host.c:577:35: warning: unused parameter '__ocl_buffer_d' [-Wunused-parameter]
+                                       int d[3], ocl_buffer * __ocl_buffer_d)
+                                                              ^
+ft.host.c:610:19: warning: unused parameter '__ocl_buffer_result' [-Wunused-parameter]
+                   ocl_buffer * __ocl_buffer_result)
+                                ^
+ft.host.c:667:2: error: use of undeclared identifier '__ocl_p_indexmap_compute_indexmap'
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+        ^
+ft.host.c:668:6: note: instantiated from:
+                                 __ocl_p_indexmap_compute_indexmap, indexmap,
+                                 ^
+ft.host.c:667:2: error: use of undeclared identifier '__ocl_buffer_indexmap_compute_indexmap'
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+        ^
+ft.host.c:667:27: note: instantiated from:
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+                                 ^
+ft.host.c:667:2: error: use of undeclared identifier '__ocl_p_indexmap_compute_indexmap'
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+        ^
+ft.host.c:668:6: note: instantiated from:
+                                 __ocl_p_indexmap_compute_indexmap, indexmap,
+                                 ^
+ft.host.c:667:2: error: use of undeclared identifier '__ocl_buffer_indexmap_compute_indexmap'
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+        ^
+ft.host.c:667:27: note: instantiated from:
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+                                 ^
+ft.host.c:667:2: error: use of undeclared identifier '__ocl_buffer_indexmap_compute_indexmap'
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+        ^
+ft.host.c:667:27: note: instantiated from:
+        CREATE_FUNC_LEVEL_BUFFER(__ocl_buffer_indexmap_compute_indexmap,
+                                 ^
+ft.host.c:690:20: error: use of undeclared identifier '__ocl_compute_indexmap_0'; did you mean 'compute_indexmap'?
+                        oclSetKernelArg(__ocl_compute_indexmap_0, 0,
+                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+                                        compute_indexmap
+ft.host.c:663:13: note: 'compute_indexmap' declared here
+static void compute_indexmap(int indexmap[128][256][256],
+            ^
+ft.host.c:690:20: warning: incompatible pointer types passing 'void (int (*)[256][256], ocl_buffer *, int *, ocl_buffer *)' to parameter of type 'ocl_kernel *'
+                        oclSetKernelArg(__ocl_compute_indexmap_0, 0,
+                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/zwang4/opencl/ocl_runtime.h:90:34: note: passing argument to parameter 'kernel' here
+int oclSetKernelArg (ocl_kernel *kernel, cl_uint index, size_t size, void *value);
+                                 ^
+ft.host.c:692:20: error: use of undeclared identifier '__ocl_compute_indexmap_0'; did you mean 'compute_indexmap'?
+                        oclSetKernelArg(__ocl_compute_indexmap_0, 1,
+                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+                                        compute_indexmap
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+			[OK]
+Generating OpenCL Kernel Code...[OK]
+Generating Host code...		[OK]
+Generating Makefile...		[OK]
+Indenting...			[OK]
+
+----------------------------------------------------------
+Compiler options:
+	Software Cache	true
+	Local Memory	true
+	DefaultParallelDepth	3
+	UserDefParallelDepth	false
+	EnableLoopInterchange	true
+	Generating debug/profiling code	false
+	EnableMLFeatureCollection	false
+	Array Linearization	false
+	GPU TLS	false
+	Strict TLS Checking	true
+	Check TLS Conflict at the end of program execution	true
+	Use OCL TLS 	false
+----------------------------------------------------------
+18 warnings and 20 errors generated.

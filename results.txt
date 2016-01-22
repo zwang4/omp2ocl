@@ -1,0 +1,61 @@
+./tools/clang/lib/AST/StmtPrinter.cpp:#include "clang/AST/OpenCLKernelSchedule.h"
+./tools/clang/lib/AST/StmtPrinter.cpp:	ops = new OpenCLKernelSchedule(C);
+./tools/clang/lib/AST/OpenCLHostCode.cpp:#include "clang/AST/OpenCLKernelSchedule.h"
+./tools/clang/lib/AST/OpenCLHostCode.cpp:		vector<OpenCLKernelLoop*>& ocl = OpenCLKernelSchedule::getOpenCLKernelLoops();
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:#include "clang/AST/OpenCLKernelSchedule.h"
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<OpenCLKernelLoop*> OpenCLKernelSchedule::openclLoops;
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<DeclRefExpr*> OpenCLKernelSchedule::collectedFunctions;
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:unsigned int OpenCLKernelSchedule::getKernelIndex(string funcName)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:std::string OpenCLKernelSchedule::OpenCLKernelName(const FunctionDecl*& f)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::initArraySubRecord(ArraySubscriptExpr* Node)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::forLoopEndRoutine()
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::recordArraySub(DeclRefExpr* e)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::setArrayBase(DeclRefExpr* base)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:DeclRefExpr* OpenCLKernelSchedule::getArrayBase()
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::enableTrackingArraySubExpr() { 
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::metArrayDecl(DeclRefExpr* expr) { 
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::newOpenCLCurrentLoop(ForStmt* forNode, const FunctionDecl* func) { 
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::setOpenCLOut(llvm::raw_fd_ostream* opencl)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:string OpenCLKernelSchedule::OpenCLIndent(unsigned int level)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::disableTrackingArraySubExpr() { 
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::isExpVariableAlreadyInParameterList(string name, vector<string>& ParamList)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::CollectGlobalInputParameters(OpenCLKernelLoop* curLoop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:std::string OpenCLKernelSchedule::GenerateInputParameters(OpenCLKernelLoop* curLoop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::isPerfectNestLoop(ForStmt* forLoop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:LoopIndex* OpenCLKernelSchedule::getLoopIndex(ForStmt* Node)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::RetriveGlobalVariable(OpenCLKernelLoop* loop, ForStmt* Node)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::PrintGlobalVariables(OpenCLKernelLoop* curLoop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::isAnOpenCLGlobalVariable(OpenCLKernelLoop* curLoop, string& name)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::isInLoopIndex(DeclRefExpr* expr, vector<LoopIndex*>& swapableIndex)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:unsigned int OpenCLKernelSchedule::howManyLoopIndexUse(vector<LoopIndex*>& swapableIndex, ArraySubVariable* a)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:ForStmt* OpenCLKernelSchedule::whichLoop(vector<ForStmt*>& SwapableLoops, DeclRefExpr* expr)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<ForStmt*> OpenCLKernelSchedule::InterChangeLoops(vector<ForStmt*>& SwapableLoops, OpenCLKernelLoop* curLoop, bool& swaped)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:Stmt* OpenCLKernelSchedule::ScheduleLoops(OpenCLKernelLoop* curLoop, bool& swaped)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::GeneratePrivateVariables(OpenCLKernelLoop* loop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::__generateLoadStmt(llvm::raw_ostream& Out, string& passInName, string& localName, unsigned* va, unsigned times, 
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::VLoad(ExpendedCallArg& arg, vector<unsigned>& arrayInfo)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::prepareLocalShadowForCopyInBuf(OpenCLKernelLoop* loop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:string OpenCLKernelSchedule::getReNameFuncName(CallArgInfoContainer* cArg)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::findPointer2GlobalBuffer(OpenCLKernelLoop* loop)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::scanLoop(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::_generateKernel(OpenCLKernelLoop* loop, vector<FunctionDecl*>& funcsNeed2Revised)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::_generateCommandRoutine()
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::addCollectedFunction(DeclRefExpr* expr)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::generateFuncPrototype(FunctionDecl* D)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::collectCallees(vector<DeclRefExpr*>& functions, vector<FunctionDecl*>& functionDefs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::reviseFunctionWithGlobalVariable(FunctionDecl* D, vector<DeclRefExpr*> globalVariables)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:bool OpenCLKernelSchedule::holistGlobalVariablesInFunction(FunctionDecl* func)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::reviseCalledArgs(vector<FunctionDecl*>& functionDefs, Stmt* E, ForStmt* topF)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<FunctionDecl*> OpenCLKernelSchedule::collectCandidateFunc(vector<FunctionDecl*>& functionDefs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<FunctionDecl*> OpenCLKernelSchedule::findExpendedFunc(vector<FunctionDecl*>& candidateFuncs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:string OpenCLKernelSchedule::genProtoType4RenamedFunc(FunctionDecl* D, RenamedFuncInfo& r)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:FunctionDecl* OpenCLKernelSchedule::PickFuncDeclByName(vector<FunctionDecl*>& candidateFuncs, string name)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::generatePrototypeForRenamedFunc(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::generateDef4RenamedFunc(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::genrerateCalledFunctions(llvm::raw_ostream& Out, vector<FunctionDecl*>& candidateFuncs, vector<RenamedFuncInfo>& rnFuncs)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:vector<FunctionDecl*> OpenCLKernelSchedule::generateFuncRoutines()
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:void OpenCLKernelSchedule::GenerateOpenCLLoopKernel()
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:unsigned int OpenCLKernelSchedule::getLineNumber(SourceLocation Loc)
+./tools/clang/lib/AST/OpenCLKernelSchedule.cpp:const char* OpenCLKernelSchedule::getFileName(SourceLocation Loc)
+./tools/clang/lib/Frontend/FrontendAction.cpp:#include "clang/AST/OpenCLKernelSchedule.h"
+./tools/clang/lib/Frontend/FrontendAction.cpp:	OpenCLKernelSchedule OpenCLSh(CI.getASTContext());

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/llvm-project/!svn/ver/120978/llvm/trunk/test/MC/COFF
+END
+dg.exp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/115523/llvm/trunk/test/MC/COFF/dg.exp
+END
+simple-fixups.s
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/116150/llvm/trunk/test/MC/COFF/simple-fixups.s
+END
+switch-relocations.ll
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/116150/llvm/trunk/test/MC/COFF/switch-relocations.ll
+END
+align-nops.s
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/116150/llvm/trunk/test/MC/COFF/align-nops.s
+END
+bss.s
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/116155/llvm/trunk/test/MC/COFF/bss.s
+END
+weak.s
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/116669/llvm/trunk/test/MC/COFF/weak.s
+END
+module-asm.ll
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/116151/llvm/trunk/test/MC/COFF/module-asm.ll
+END
+symbol-fragment-offset.s
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/120978/llvm/trunk/test/MC/COFF/symbol-fragment-offset.s
+END
+basic-coff.s
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/120978/llvm/trunk/test/MC/COFF/basic-coff.s
+END
+symbol-alias.s
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/116150/llvm/trunk/test/MC/COFF/symbol-alias.s
+END

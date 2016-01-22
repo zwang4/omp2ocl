@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/126068/llvm/trunk/lib/Target/CBackend
+END
+CTargetMachine.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/103492/llvm/trunk/lib/Target/CBackend/CTargetMachine.h
+END
+CBackend.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/121471/llvm/trunk/lib/Target/CBackend/CBackend.cpp
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/126068/llvm/trunk/lib/Target/CBackend/CMakeLists.txt
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/94378/llvm/trunk/lib/Target/CBackend/Makefile
+END

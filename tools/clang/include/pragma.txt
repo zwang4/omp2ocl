@@ -1,0 +1,74 @@
+./clang/Sema/Sema.h:  /// PackContext - Manages the stack for #pragma pack. An alignment
+./clang/Sema/Sema.h:  /// VisContext - Manages the stack for #pragma GCC visibility.
+./clang/Sema/Sema.h:  /// #pragma weak before declared. rare. may alias another
+./clang/Sema/Sema.h:  /// #pragma weak during processing of other Decls.
+./clang/Sema/Sema.h:  /// WeakTopLevelDeclDecls - access to #pragma weak-generated Decls
+./clang/Sema/Sema.h:    POAK_Native,  // #pragma options align=native
+./clang/Sema/Sema.h:    POAK_Natural, // #pragma options align=natural
+./clang/Sema/Sema.h:    POAK_Packed,  // #pragma options align=packed
+./clang/Sema/Sema.h:    POAK_Power,   // #pragma options align=power
+./clang/Sema/Sema.h:    POAK_Mac68k,  // #pragma options align=mac68k
+./clang/Sema/Sema.h:    POAK_Reset    // #pragma options align=reset
+./clang/Sema/Sema.h:  /// ActOnPragmaOptionsAlign - Called on well formed #pragma options align.
+./clang/Sema/Sema.h:    PPK_Default, // #pragma pack([n])
+./clang/Sema/Sema.h:    PPK_Show,    // #pragma pack(show), only supported by MSVC.
+./clang/Sema/Sema.h:    PPK_Push,    // #pragma pack(push, [identifier], [n])
+./clang/Sema/Sema.h:    PPK_Pop      // #pragma pack(pop, [identifier], [n])
+./clang/Sema/Sema.h:  /// ActOnPragmaPack - Called on well formed #pragma pack(...).
+./clang/Sema/Sema.h:  /// ActOnPragmaUnused - Called on well-formed '#pragma unused'.
+./clang/Sema/Sema.h:  /// ActOnPragmaVisibility - Called on well formed #pragma GCC visibility... .
+./clang/Sema/Sema.h:  /// ActOnPragmaWeakID - Called on well formed #pragma weak ident.
+./clang/Sema/Sema.h:  /// ActOnPragmaWeakAlias - Called on well formed #pragma weak ident = ident.
+./clang/Sema/Sema.h:  /// #pragma {STDC,OPENCL} FP_CONTRACT
+./clang/Sema/Sema.h:  /// a the record decl, to handle '#pragma pack' and '#pragma options align'.
+./clang/Sema/Sema.h:  /// AddPushedVisibilityAttribute - If '#pragma GCC visibility' was used,
+./clang/Sema/Sema.h:  /// for '#pragma GCC visibility' and visibility attributes on namespaces.
+./clang/Lex/Pragma.h:   * \brief Describes how the pragma was introduced, e.g., with #pragma, 
+./clang/Lex/Pragma.h:   * _Pragma, or __pragma.
+./clang/Lex/Pragma.h:     * \brief The pragma was introduced via #pragma.
+./clang/Lex/Pragma.h:     * \brief The pragma was introduced via the C99 _Pragma(string-literal).
+./clang/Lex/Pragma.h:     * \brief The pragma was introduced via the Microsoft 
+./clang/Lex/Pragma.h:     * __pragma(token-string).
+./clang/Lex/Pragma.h:    PIK___pragma
+./clang/Lex/Pragma.h:/// pragmas that the language front-end uses.  Each handler optionally has a
+./clang/Lex/Pragma.h:/// name (e.g. "pack") and the HandlePragma method is invoked when a pragma with
+./clang/Lex/Pragma.h:/// pragmas the handler with a null identifier is invoked, if it exists.
+./clang/Lex/Pragma.h:/// Note that the PragmaNamespace class can be used to subdivide pragmas, e.g.
+./clang/Lex/Pragma.h:/// we treat "#pragma STDC" and "#pragma GCC" as namespaces that contain other
+./clang/Lex/Pragma.h:/// pragmas.
+./clang/Lex/Pragma.h:/// EmptyPragmaHandler - A pragma handler which takes no action, which can be
+./clang/Lex/Pragma.h:/// used to ignore particular pragmas.
+./clang/Lex/Pragma.h:/// PragmaNamespace - This PragmaHandler subdivides the namespace of pragmas,
+./clang/Lex/Pragma.h:/// allowing hierarchical pragmas to be defined.  Common examples of namespaces
+./clang/Lex/Pragma.h:/// are "#pragma GCC", "#pragma STDC", and "#pragma omp", but any namespaces may
+./clang/Lex/Pragma.h:  /// AddPragma - Add a pragma to this namespace.
+./clang/Lex/HeaderSearch.h:  /// isImport - True if this is a #import'd or #pragma once file.
+./clang/Lex/HeaderSearch.h:  /// by #pragma gcc system_header.  This is an instance of
+./clang/Lex/HeaderSearch.h:  /// due to #pragma once.
+./clang/Lex/HeaderSearch.h:  /// due to #pragma GCC system_header.
+./clang/Lex/Lexer.h:  /// isPragmaLexer - Returns true if this Lexer is being used to lex a pragma.
+./clang/Lex/Preprocessor.h:  IdentifierInfo *Ident_Pragma, *Ident__pragma;    // _Pragma, __pragma
+./clang/Lex/Preprocessor.h:  /// PragmaHandlers - This tracks all of the pragmas that the client registered
+./clang/Lex/Preprocessor.h:  /// PragmaPushMacroInfo - For each IdentifierInfo used in a #pragma 
+./clang/Lex/Preprocessor.h:  /// AddPragmaHandler - Add the specified pragma handler to the preprocessor.
+./clang/Lex/Preprocessor.h:  /// pragma line before the pragma string starts, e.g. "STDC" or "GCC".
+./clang/Lex/Preprocessor.h:  /// RemovePragmaHandler - Remove the specific pragma handler from
+./clang/Lex/Preprocessor.h:  /// RegisterBuiltinPragmas - Install the standard preprocessor pragmas:
+./clang/Lex/Preprocessor.h:  /// #pragma GCC poison/system_header/dependency and #pragma once.
+./clang/Lex/Preprocessor.h:  /// HandleMicrosoft__pragma - Like Handle_Pragma except the pragma text
+./clang/Lex/Preprocessor.h:  void HandleMicrosoft__pragma(Token &Tok);
+./clang/Lex/Preprocessor.h:  ///  pragma or a macro.
+./clang/Lex/PPCallbacks.h:  /// PragmaComment - This callback is invoked when a #pragma comment directive
+./clang/Lex/PPCallbacks.h:  /// PragmaMessage - This callback is invoked when a #pragma message directive
+./clang/Serialization/ASTReader.h:  /// \brief The floating point pragma option settings.
+./clang/Serialization/ASTBitCodes.h:      /// \brief Record code for #pragma diagnostic mappings.
+./clang/Serialization/ASTBitCodes.h:      /// \brief Record code for floating point #pragma options.
+./clang/Basic/TargetInfo.h:  /// hasAlignMac68kSupport - Check whether this target support '#pragma options
+./clang/Basic/SourceManager.h:  /// FileIDInfos when a #pragma system_header is seen or various other cases.
+./clang/Basic/DiagnosticIDs.h:  /// "unknown-pragmas" to have the specified mapping.  This returns true and
+./clang/Basic/Diagnostic.h:  /// A new DiagState is created and kept around when diagnostic pragmas modify
+./clang/Basic/Diagnostic.h:  /// modified because of a pragma. 'Loc' can be null if the point represents
+./clang/Basic/Diagnostic.h:  /// state due to diagnostic pragmas. The vector is always sorted according to
+./clang/Basic/Diagnostic.h:  /// "unknown-pragmas" to have the specified mapping.  This returns true and
+./clang/Basic/Diagnostic.h:    if (isPragma) Map |= 0x10;  // Set the bit for diagnostic pragma mappings.
+./clang/Parse/Parser.h:  /// \brief Handle the annotation token produced for #pragma unused(...)

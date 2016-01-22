@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/llvm-project/!svn/ver/128705/llvm/trunk/unittests/VMCore
+END
+MetadataTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/109061/llvm/trunk/unittests/VMCore/MetadataTest.cpp
+END
+PassManagerTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/128622/llvm/trunk/unittests/VMCore/PassManagerTest.cpp
+END
+InstructionsTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/128705/llvm/trunk/unittests/VMCore/InstructionsTest.cpp
+END
+DerivedTypesTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/128622/llvm/trunk/unittests/VMCore/DerivedTypesTest.cpp
+END
+ValueMapTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/119606/llvm/trunk/unittests/VMCore/ValueMapTest.cpp
+END
+VerifierTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/llvm-project/!svn/ver/123529/llvm/trunk/unittests/VMCore/VerifierTest.cpp
+END
+ConstantsTest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/122613/llvm/trunk/unittests/VMCore/ConstantsTest.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/74438/llvm/trunk/unittests/VMCore/Makefile
+END

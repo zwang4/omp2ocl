@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/llvm-project/!svn/ver/128488/llvm/trunk/lib/MC
+END
+MCELFStreamer.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/127343/llvm/trunk/lib/MC/MCELFStreamer.h
+END
+MCLabel.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/103989/llvm/trunk/lib/MC/MCLabel.cpp
+END
+TargetAsmBackend.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/122598/llvm/trunk/lib/MC/TargetAsmBackend.cpp
+END
+MCInstPrinter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/127101/llvm/trunk/lib/MC/MCInstPrinter.cpp
+END
+MCStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/127101/llvm/trunk/lib/MC/MCStreamer.cpp
+END
+MCAsmStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/128370/llvm/trunk/lib/MC/MCAsmStreamer.cpp
+END
+MCLoggingStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/MCLoggingStreamer.cpp
+END
+MCAsmInfoCOFF.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/MCAsmInfoCOFF.cpp
+END
+MCAsmInfo.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/128227/llvm/trunk/lib/MC/MCAsmInfo.cpp
+END
+MCAsmInfoDarwin.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/126297/llvm/trunk/lib/MC/MCAsmInfoDarwin.cpp
+END
+MCObjectWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/125648/llvm/trunk/lib/MC/MCObjectWriter.cpp
+END
+MCMachObjectTargetWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/122042/llvm/trunk/lib/MC/MCMachObjectTargetWriter.cpp
+END
+MCObjectStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/127343/llvm/trunk/lib/MC/MCObjectStreamer.cpp
+END
+MCELFStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/127780/llvm/trunk/lib/MC/MCELFStreamer.cpp
+END
+MCELF.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/llvm-project/!svn/ver/126686/llvm/trunk/lib/MC/MCELF.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/126686/llvm/trunk/lib/MC/CMakeLists.txt
+END
+MCValue.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/llvm-project/!svn/ver/98791/llvm/trunk/lib/MC/MCValue.cpp
+END
+MachObjectWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/llvm-project/!svn/ver/128169/llvm/trunk/lib/MC/MachObjectWriter.cpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/llvm-project/!svn/ver/108869/llvm/trunk/lib/MC/Makefile
+END
+MCNullStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/MCNullStreamer.cpp
+END
+MCAssembler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/125648/llvm/trunk/lib/MC/MCAssembler.cpp
+END
+MCPureStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/MCPureStreamer.cpp
+END
+MCExpr.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/llvm-project/!svn/ver/128037/llvm/trunk/lib/MC/MCExpr.cpp
+END
+WinCOFFStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/WinCOFFStreamer.cpp
+END
+ELFObjectWriter.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/127972/llvm/trunk/lib/MC/ELFObjectWriter.h
+END
+MCContext.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/128430/llvm/trunk/lib/MC/MCContext.cpp
+END
+MCMachOStreamer.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/MCMachOStreamer.cpp
+END
+MCSectionELF.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/llvm-project/!svn/ver/127028/llvm/trunk/lib/MC/MCSectionELF.cpp
+END
+WinCOFFObjectWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/126488/llvm/trunk/lib/MC/WinCOFFObjectWriter.cpp
+END
+MCELFObjectTargetWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/122134/llvm/trunk/lib/MC/MCELFObjectTargetWriter.cpp
+END
+MCSectionCOFF.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/119547/llvm/trunk/lib/MC/MCSectionCOFF.cpp
+END
+MCDwarf.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/123170/llvm/trunk/lib/MC/MCDwarf.cpp
+END
+MCSection.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/llvm-project/!svn/ver/103267/llvm/trunk/lib/MC/MCSection.cpp
+END
+MCCodeEmitter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/121953/llvm/trunk/lib/MC/MCCodeEmitter.cpp
+END
+MCSymbol.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/llvm-project/!svn/ver/119152/llvm/trunk/lib/MC/MCSymbol.cpp
+END
+MCELF.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/llvm-project/!svn/ver/126686/llvm/trunk/lib/MC/MCELF.cpp
+END
+ELFObjectWriter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/llvm-project/!svn/ver/127972/llvm/trunk/lib/MC/ELFObjectWriter.cpp
+END
+MCSectionMachO.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/127944/llvm/trunk/lib/MC/MCSectionMachO.cpp
+END
+MCInst.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/llvm-project/!svn/ver/104696/llvm/trunk/lib/MC/MCInst.cpp
+END
+MCDisassembler.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/llvm-project/!svn/ver/83318/llvm/trunk/lib/MC/MCDisassembler.cpp
+END
